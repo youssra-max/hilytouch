@@ -1,0 +1,78 @@
+.categories-hub {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+.hub-header {
+  margin-bottom: 4rem;
+}
+.text-center {
+  text-align: center;
+}
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hub-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.hub-col-large {
+  grid-column: span 1;
+}
+/* For the wide category */
+.hub-col-wide {
+  grid-column: span 2;
+}
+.hub-col-wide .category-card {
+  aspect-ratio: 16/9; /* Make it wider */
+}
+.hub-col-small {
+  grid-column: span 1;
+}
+
+.secret-garden-banner {
+  background: #f7ede8;
+  border-radius: 20px;
+  padding: 4rem;
+  margin-top: 5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 4rem;
+}
+.secret-garden-content h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+.secret-garden-content p {
+  color: var(--color-text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+.secret-garden-images {
+  position: relative;
+  height: 300px;
+}
+.sg-img-1 {
+  position: absolute;
+  width: 50%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 16px;
+  top: 10%;
+  left: 10%;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+.sg-img-2 {
+  position: absolute;
+  width: 45%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 16px;
+  bottom: 10%;
+  right: 15%;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transform: rotate(5deg);
+}

@@ -1,0 +1,103 @@
+.product-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.4s ease;
+}
+.product-card:hover { transform: translateY(-4px); }
+
+.product-image-container {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4/5;
+  background: #f0ede8;
+}
+
+.badge-new {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: var(--color-gold);
+  color: white;
+  padding: 0.3rem 1rem;
+  font-size: 0.65rem;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  z-index: 10;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+.product-card:hover .product-image { transform: scale(1.05); }
+
+.product-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  background: linear-gradient(to top, rgba(44,36,32,0.5), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+  display: flex;
+  justify-content: center;
+}
+.product-card:hover .product-overlay { opacity: 1; }
+
+.btn-add-cart {
+  background: var(--color-gold);
+  color: white;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 0.75rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  transform: translateY(15px);
+  transition: all 0.3s;
+}
+.product-card:hover .btn-add-cart { transform: translateY(0); }
+.btn-add-cart:hover {
+  background: var(--color-gold-dark);
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.product-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--color-dark);
+  margin: 0;
+  font-style: italic;
+}
+
+.product-category {
+  font-size: 0.7rem;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 400;
+  margin: 0;
+}
+
+.product-price {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--color-gold);
+  margin-top: 0.1rem;
+}

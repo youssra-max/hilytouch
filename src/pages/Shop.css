@@ -1,0 +1,95 @@
+.shop-page {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+.page-title {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+}
+.page-desc {
+  font-size: 1.15rem;
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+}
+.shop-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(60, 43, 37, 0.1);
+}
+.filters {
+  display: flex;
+  gap: 1rem;
+}
+.filter-btn {
+  background: white;
+  border: 1px solid rgba(60, 43, 37, 0.1);
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s;
+}
+.filter-btn:hover {
+  border-color: var(--color-text-primary);
+}
+.filter-btn.active {
+  background: var(--color-text-primary);
+  color: white;
+  border-color: var(--color-text-primary);
+}
+.sort-by span {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+.sort-by strong {
+  color: var(--color-text-primary);
+  margin-left: 0.2rem;
+}
+
+.newsletter-banner {
+  background: #f7ede8;
+  border-radius: 20px;
+  padding: 3rem 4rem;
+  margin-top: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+.newsletter-banner h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.newsletter-banner p {
+  color: var(--color-text-secondary);
+  font-size: 1.05rem;
+}
+.newsletter-form-inline {
+  display: flex;
+  gap: 0.5rem;
+}
+.newsletter-form-inline input {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  width: 300px;
+  font-size: 1rem;
+  outline: none;
+}
+.newsletter-form-inline .btn {
+  border-radius: 8px;
+}
