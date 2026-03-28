@@ -1,0 +1,27 @@
+.shipping-page { padding: 4rem 0; }
+.shipping-section { margin-bottom: 4rem; }
+.shipping-section h2 { display: flex; align-items: center; gap: 0.8rem; font-size: 1.6rem; margin-bottom: 2rem; }
+.shipping-section h2 svg { color: var(--color-gold); }
+
+.shipping-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.shipping-option { padding: 2rem; background: white; border-radius: 12px; border: 1px solid rgba(176,141,87,0.12); transition: all 0.3s; }
+.shipping-option:hover { border-color: var(--color-gold-light); }
+.shipping-option--highlight { border-color: var(--color-gold); position: relative; }
+.shipping-option--highlight::before { content: 'POPULAIRE'; position: absolute; top: -10px; right: 20px; background: var(--color-gold); color: white; font-size: 0.65rem; padding: 0.2rem 0.7rem; border-radius: 10px; letter-spacing: 0.1em; font-family: var(--font-sans); }
+.option-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.8rem; }
+.option-header h3 { font-family: var(--font-serif); font-size: 1.2rem; }
+.option-price { font-family: var(--font-sans); font-size: 0.85rem; color: var(--color-gold); font-weight: 600; }
+.shipping-option p { font-size: 0.9rem; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 0.5rem; }
+.option-detail { font-size: 0.8rem; color: var(--color-text-secondary); font-style: italic; }
+
+.returns-info { display: flex; flex-direction: column; gap: 1.5rem; }
+.return-step { display: flex; gap: 1.5rem; align-items: start; padding: 1.5rem; background: white; border-radius: 10px; border: 1px solid rgba(176,141,87,0.1); }
+.step-number { width: 36px; height: 36px; border-radius: 50%; background: var(--color-gold); color: white; display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 1.1rem; flex-shrink: 0; }
+.return-step h3 { font-family: var(--font-serif); font-size: 1.1rem; margin-bottom: 0.3rem; }
+.return-step p { font-size: 0.9rem; color: var(--color-text-secondary); line-height: 1.6; }
+
+.guarantees-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; padding: 3rem 0; }
+.guarantee-card { text-align: center; padding: 2rem 1.5rem; background: rgba(176,141,87,0.04); border-radius: 12px; border: 1px solid rgba(176,141,87,0.1); }
+.guarantee-card svg { color: var(--color-gold); margin-bottom: 0.8rem; }
+.guarantee-card h3 { font-family: var(--font-serif); font-size: 1rem; margin-bottom: 0.3rem; }
+.guarantee-card p { font-size: 0.8rem; color: var(--color-text-secondary); }

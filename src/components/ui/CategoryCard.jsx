@@ -1,10 +1,11 @@
 import React from 'react';
+import Link from 'next/link';
 import './CategoryCard.css';
 import { ArrowRight } from 'lucide-react';
 
-const CategoryCard = ({ image, title, subtitle, linkText = "DÉCOUVRIR" }) => {
+const CategoryCard = ({ image, title, subtitle, linkText = "DÉCOUVRIR", href = "#" }) => {
   return (
-    <div className="category-card fade-in">
+    <Link href={href} className="category-card fade-in">
       <img src={image} alt={title} className="category-image" />
       <div className="category-overlay">
         <div className="category-content">
@@ -15,7 +16,7 @@ const CategoryCard = ({ image, title, subtitle, linkText = "DÉCOUVRIR" }) => {
           </span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

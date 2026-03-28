@@ -1,4 +1,6 @@
+"use client";
 import React from 'react';
+import Link from 'next/link';
 import { Instagram, Facebook, Twitter, Youtube, ArrowRight } from 'lucide-react';
 import './Footer.css';
 
@@ -30,31 +32,31 @@ const Footer = () => {
             <div className="footer-col">
               <h4>Boutique</h4>
               <ul>
-                <li><a href="/shop">Visage</a></li>
-                <li><a href="/shop">Corps</a></li>
-                <li><a href="/shop">Maquillage</a></li>
-                <li><a href="/shop">Outils</a></li>
-                <li><a href="/shop">Nouveautés</a></li>
+                <li><Link href="/category/soins-visage">Visage</Link></li>
+                <li><Link href="/category/soins-corps">Corps</Link></li>
+                <li><Link href="/category/maquillage">Maquillage</Link></li>
+                <li><Link href="/category/accessoires">Outils</Link></li>
+                <li><Link href="/shop?filter=new">Nouveautés</Link></li>
               </ul>
             </div>
             <div className="footer-col">
               <h4>Entreprise</h4>
               <ul>
-                <li><a href="#">À propos</a></li>
-                <li><a href="#">Notre impact</a></li>
-                <li><a href="#">Accessibilité</a></li>
-                <li><a href="/blog">Blog</a></li>
-                <li><a href="#">Partenariats</a></li>
+                <li><Link href="/about">À propos</Link></li>
+                <li><Link href="/impact">Notre impact</Link></li>
+                <li><Link href="/accessibility">Accessibilité</Link></li>
+                <li><Link href="/blog">Blog</Link></li>
+                <li><Link href="/partners">Partenariats</Link></li>
               </ul>
             </div>
             <div className="footer-col">
               <h4>Service Client</h4>
               <ul>
-                <li><a href="#">Contactez-nous</a></li>
-                <li><a href="#">Livraison & Retours</a></li>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="/diagnostic">Diagnostique Peau</a></li>
-                <li><a href="#">Suivi de commande</a></li>
+                <li><Link href="/contact">Contactez-nous</Link></li>
+                <li><Link href="/shipping">Livraison & Retours</Link></li>
+                <li><Link href="/faq">FAQ</Link></li>
+                <li><Link href="/diagnostic">Diagnostique Peau</Link></li>
+                <li><Link href="/tracking">Suivi de commande</Link></li>
               </ul>
             </div>
           </div>

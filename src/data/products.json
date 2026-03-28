@@ -1,0 +1,296 @@
+[
+  {
+    "id": 1,
+    "title": "Sérum Éclat Floral",
+    "category": "Soins Visage",
+    "type": "soins-visage",
+    "price": 6800,
+    "priceFormatted": "6 800 DA",
+    "image": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=1974&auto=format&fit=crop",
+    "isNew": false,
+    "isFeatured": true,
+    "rating": 4.8,
+    "reviews": 124,
+    "description": "Un élixir concentré d'actifs botaniques rares. Ce sérum biphasé fusionne l'eau florale de rose ancienne avec de l'huile précieuse d'immortelle pour régénérer, repulper et illuminer instantanément le teint fatigué.",
+    "benefits": [
+      "Illumine le teint",
+      "Hydratation 24h",
+      "Anti-oxydant puissant"
+    ],
+    "ingredients": "Eau florale de Rosa Damascena (50%), Huile de graines de Simmondsia Chinensis (Jojoba), Extrait de fleur d'Helichrysum Italicum.",
+    "usage": "Appliquer 3 à 4 gouttes matin et soir sur peau propre avant votre crème hydratante. Masser délicatement de l'intérieur vers l'extérieur du visage."
+  },
+  {
+    "id": 2,
+    "title": "Baume Botanique",
+    "category": "Soins Corps",
+    "type": "soins-corps",
+    "price": 5700,
+    "priceFormatted": "5 700 DA",
+    "image": "https://images.unsplash.com/photo-1615397323758-6da8b3d6a9a0?q=80&w=1964&auto=format&fit=crop",
+    "isNew": true,
+    "isFeatured": true,
+    "rating": 4.6,
+    "reviews": 89,
+    "description": "Un baume fondant enrichi en beurre de karité bio et en huile d'argan pour nourrir intensément les peaux les plus sèches. Texture veloutée qui pénètre rapidement sans film gras.",
+    "benefits": [
+      "Nutrition intense",
+      "Peau soyeuse",
+      "Protection longue durée"
+    ],
+    "ingredients": "Beurre de Butyrospermum Parkii (Karité), Huile d'Argania Spinosa, Cire d'abeille, Vitamine E.",
+    "usage": "Appliquer généreusement sur le corps après la douche. Masser en mouvements circulaires pour favoriser l'absorption."
+  },
+  {
+    "id": 3,
+    "title": "Huile de Nuit Précieuse",
+    "category": "Soins Visage",
+    "type": "soins-visage",
+    "price": 7800,
+    "priceFormatted": "7 800 DA",
+    "image": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?q=80&w=1953&auto=format&fit=crop",
+    "isNew": false,
+    "isFeatured": true,
+    "rating": 4.9,
+    "reviews": 210,
+    "description": "Une huile de soin nocturne aux 7 huiles précieuses qui régénère la peau pendant le sommeil. Formulée avec de l'huile de rose musquée et de l'extrait de jasmin pour une peau éclatante au réveil.",
+    "benefits": [
+      "Régénération nocturne",
+      "Anti-rides",
+      "Éclat au réveil"
+    ],
+    "ingredients": "Huile de Rosa Moschata, Huile de Jasminum Officinale, Huile de Prunus Amygdalus, Squalane végétal.",
+    "usage": "Appliquer 4-5 gouttes le soir sur peau nettoyée. Masser délicatement du centre vers l'extérieur du visage."
+  },
+  {
+    "id": 4,
+    "title": "Palette Regard Divin",
+    "category": "Maquillage",
+    "type": "maquillage",
+    "price": 12800,
+    "priceFormatted": "12 800 DA",
+    "image": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=2000&auto=format&fit=crop",
+    "isNew": true,
+    "isFeatured": true,
+    "rating": 4.7,
+    "reviews": 156,
+    "description": "Une palette de 12 fards à paupières aux nuances envoûtantes. Des textures ultra-fondantes et des pigments intenses pour créer des regards captivants du naturel au smoky sophistiqué.",
+    "benefits": [
+      "12 teintes harmonieuses",
+      "Pigmentation intense",
+      "Tenue longue durée"
+    ],
+    "ingredients": "Mica, Talc, Dimethicone, Silica, Tocopheryl Acetate (Vitamin E). Sans parabènes.",
+    "usage": "Appliquer au pinceau ou au doigt. Estomper pour un effet naturel, intensifier pour un regard plus dramatique."
+  },
+  {
+    "id": 5,
+    "title": "Rouge à Lèvres Velours",
+    "category": "Maquillage",
+    "type": "maquillage",
+    "price": 6300,
+    "priceFormatted": "6 300 DA",
+    "image": "https://images.unsplash.com/photo-1586495777744-4413f21062fa?q=80&w=1996&auto=format&fit=crop",
+    "isNew": false,
+    "isFeatured": false,
+    "rating": 4.5,
+    "reviews": 98,
+    "description": "Un rouge à lèvres au fini velours mat enrichi en huile de jojoba. Couleur intense et longue tenue sans dessécher les lèvres.",
+    "benefits": [
+      "Fini velours mat",
+      "Hydratant",
+      "Tenue 8h"
+    ],
+    "ingredients": "Cire de Candelilla, Huile de Jojoba, Pigments naturels, Beurre de Cacao.",
+    "usage": "Appliquer directement sur les lèvres. Pour plus de précision, utiliser un pinceau à lèvres."
+  },
+  {
+    "id": 6,
+    "title": "Lait Nettoyant",
+    "category": "Soins Visage",
+    "type": "soins-visage",
+    "price": 4200,
+    "priceFormatted": "4 200 DA",
+    "image": "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?q=80&w=1780&auto=format&fit=crop",
+    "isNew": false,
+    "isFeatured": false,
+    "rating": 4.4,
+    "reviews": 76,
+    "description": "Un lait nettoyant onctueux qui élimine en douceur le maquillage et les impuretés tout en respectant l'équilibre naturel de la peau.",
+    "benefits": [
+      "Nettoyage en douceur",
+      "Respecte le pH",
+      "Peau douce et apaisée"
+    ],
+    "ingredients": "Eau florale de Camomille, Huile d'Amande Douce, Glycérine végétale, Aloe Vera.",
+    "usage": "Appliquer matin et soir sur peau sèche. Masser en cercles puis rincer à l'eau tiède."
+  },
+  {
+    "id": 7,
+    "title": "Crème de Jour",
+    "category": "Soins Visage",
+    "type": "soins-visage",
+    "price": 6300,
+    "priceFormatted": "6 300 DA",
+    "image": "https://images.unsplash.com/photo-1617897903246-719242758050?q=80&w=1974&auto=format&fit=crop",
+    "isNew": true,
+    "isFeatured": false,
+    "rating": 4.6,
+    "reviews": 134,
+    "description": "Une crème de jour légère et protectrice enrichie en acide hyaluronique végétal et en extrait de thé vert antioxydant.",
+    "benefits": [
+      "Hydratation légère",
+      "Protection anti-pollution",
+      "Peau matifiée"
+    ],
+    "ingredients": "Acide Hyaluronique végétal, Extrait de Camellia Sinensis, Niacinamide, Vitamine C.",
+    "usage": "Appliquer chaque matin sur peau nettoyée et tonifiée. Masser jusqu'à absorption complète."
+  },
+  {
+    "id": 8,
+    "title": "Gommage Végétal",
+    "category": "Soins Corps",
+    "type": "soins-corps",
+    "price": 5300,
+    "priceFormatted": "5 300 DA",
+    "image": "https://images.unsplash.com/photo-1601049541289-9b1b72740441?q=80&w=1974&auto=format&fit=crop",
+    "isNew": false,
+    "isFeatured": false,
+    "rating": 4.3,
+    "reviews": 67,
+    "description": "Un gommage corporel aux micro-grains de noyaux d'abricot et au sucre de canne pour une exfoliation douce qui révèle une peau lisse et lumineuse.",
+    "benefits": [
+      "Exfoliation douce",
+      "Peau lisse",
+      "Stimule la circulation"
+    ],
+    "ingredients": "Sucre de Canne, Poudre de Noyaux d'Abricot, Huile de Coco, Extrait de Vanille.",
+    "usage": "Sur peau mouillée, masser en mouvements circulaires. Insister sur les zones rugueuses. Rincer abondamment."
+  },
+  {
+    "id": 9,
+    "title": "Fond de Teint Lumineux",
+    "category": "Maquillage",
+    "type": "maquillage",
+    "price": 9600,
+    "priceFormatted": "9 600 DA",
+    "image": "https://images.unsplash.com/photo-1608223652646-64157d6faaf9?q=80&w=1974&auto=format&fit=crop",
+    "isNew": false,
+    "isFeatured": false,
+    "rating": 4.7,
+    "reviews": 189,
+    "description": "Un fond de teint fluide au fini lumineux naturel. Sa formule légère et buildable offre une couvrance modulable pour un teint parfait toute la journée.",
+    "benefits": [
+      "Fini lumineux",
+      "Couvrance modulable",
+      "Tenue 12h"
+    ],
+    "ingredients": "Eau, Dimethicone, Acide Hyaluronique, Niacinamide, Pigments minéraux.",
+    "usage": "Déposer quelques gouttes au centre du visage et estomper vers l'extérieur au pinceau, éponge ou au doigt."
+  },
+  {
+    "id": 10,
+    "title": "Illuminateur Soyeux",
+    "category": "Maquillage",
+    "type": "maquillage",
+    "price": 8300,
+    "priceFormatted": "8 300 DA",
+    "image": "https://images.unsplash.com/photo-1599305090598-fe179d501227?q=80&w=1998&auto=format&fit=crop",
+    "isNew": false,
+    "isFeatured": false,
+    "rating": 4.5,
+    "reviews": 102,
+    "description": "Un highlighter crémeux qui capture la lumière pour un éclat subtil et sophistiqué. Sa texture fondante se fond dans la peau pour un glow naturel.",
+    "benefits": [
+      "Éclat naturel",
+      "Texture fondante",
+      "Multi-usage"
+    ],
+    "ingredients": "Mica, Silica, Dimethicone, Huile de Jojoba, Pigments nacrés.",
+    "usage": "Appliquer sur les pommettes, l'arête du nez, l'arc de Cupidon et la pointe du menton."
+  },
+  {
+    "id": 11,
+    "title": "Mascara Volume Noir",
+    "category": "Maquillage",
+    "type": "maquillage",
+    "price": 5700,
+    "priceFormatted": "5 700 DA",
+    "image": "https://images.unsplash.com/photo-1512496115851-a408e8cece11?q=80&w=1974&auto=format&fit=crop",
+    "isNew": false,
+    "isFeatured": false,
+    "rating": 4.6,
+    "reviews": 145,
+    "description": "Un mascara volumisant à la brosse fibres qui enrobe chaque cil d'un noir intense. Formule enrichie en cire de riz pour des cils spectaculaires sans paquets.",
+    "benefits": [
+      "Volume spectaculaire",
+      "Noir intense",
+      "Ne transfère pas"
+    ],
+    "ingredients": "Cire de Riz, Cire d'abeille, Pigments de noir de carbone, Panthénol.",
+    "usage": "Appliquer en zigzag de la racine à la pointe des cils. Superposer pour plus de volume."
+  },
+  {
+    "id": 12,
+    "title": "Duo Blush Fraîcheur",
+    "category": "Maquillage",
+    "type": "maquillage",
+    "price": 7200,
+    "priceFormatted": "7 200 DA",
+    "image": "https://images.unsplash.com/photo-1515688594390-b649af70d282?q=80&w=2006&auto=format&fit=crop",
+    "isNew": false,
+    "isFeatured": false,
+    "rating": 4.4,
+    "reviews": 78,
+    "description": "Un duo de blush complémentaire pour un effet bonne mine naturel. Les deux teintes se mélangent pour un résultat sur-mesure et un teint frais toute la journée.",
+    "benefits": [
+      "Deux teintes complémentaires",
+      "Effet bonne mine",
+      "Modulable"
+    ],
+    "ingredients": "Mica, Talc, Silica, Pigments minéraux, Vitamine E.",
+    "usage": "Sourire et appliquer sur les pommettes avec un pinceau. Mélanger les deux teintes pour un résultat personnalisé."
+  },
+  {
+    "id": 13,
+    "title": "Eyeliner Précision",
+    "category": "Maquillage",
+    "type": "maquillage",
+    "price": 4800,
+    "priceFormatted": "4 800 DA",
+    "image": "https://images.unsplash.com/photo-1629198725807-68b37ec841fb?q=80&w=1974&auto=format&fit=crop",
+    "isNew": false,
+    "isFeatured": false,
+    "rating": 4.3,
+    "reviews": 56,
+    "description": "Un eyeliner feutre à pointe ultra-fine pour des traits précis et des cat-eyes parfaits. Formule waterproof pour une tenue impeccable.",
+    "benefits": [
+      "Pointe ultra-fine",
+      "Waterproof",
+      "Séchage rapide"
+    ],
+    "ingredients": "Eau, Acrylates Copolymer, Butylene Glycol, Pigment noir de carbone.",
+    "usage": "Tracer un trait le long de la ligne des cils supérieurs. Épaissir vers l'extérieur pour un effet cat-eye."
+  },
+  {
+    "id": 14,
+    "title": "Brume Fixatrice Éclat",
+    "category": "Soins Visage",
+    "type": "soins-visage",
+    "price": 6800,
+    "priceFormatted": "6 800 DA",
+    "image": "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=1974&auto=format&fit=crop",
+    "isNew": false,
+    "isFeatured": false,
+    "rating": 4.5,
+    "reviews": 91,
+    "description": "Une brume fixatrice légère qui prolonge la tenue du maquillage tout en apportant un voile d'hydratation. Enrichie en eau de rose pour un teint frais et lumineux.",
+    "benefits": [
+      "Fixe le maquillage",
+      "Hydrate",
+      "Éclat naturel"
+    ],
+    "ingredients": "Eau de Rosa Centifolia, Glycérine végétale, Niacinamide, Acide Hyaluronique.",
+    "usage": "Vaporiser à 20 cm du visage après l'application du maquillage. Peut aussi s'utiliser en brume rafraîchissante."
+  }
+]

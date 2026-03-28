@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "slug": "rituels-matin",
+    "title": "Les 5 rituels pour un réveil lumineux",
+    "excerpt": "Découvrez les gestes essentiels pour commencer votre journée avec un teint éclatant et une peau revitalisée.",
+    "content": "Le matin est le moment idéal pour préparer votre peau à affronter la journée. Voici les 5 rituels incontournables :\n\n1. **Le nettoyage doux** — Commencez par un lait nettoyant qui respecte le film hydrolipidique de votre peau.\n\n2. **La lotion tonique** — Appliquez une eau florale pour tonifier et préparer la peau à recevoir les soins.\n\n3. **Le sérum ciblé** — Choisissez un sérum adapté à vos besoins : éclat, hydratation ou anti-âge.\n\n4. **La crème hydratante** — Une crème de jour légère protégera votre peau tout au long de la journée.\n\n5. **La protection solaire** — Indispensable même en hiver, appliquez un SPF 30 minimum.",
+    "image": "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?q=80&w=1974&auto=format&fit=crop",
+    "category": "Rituels Beauté",
+    "author": "Équipe Hilytouch",
+    "date": "2026-03-24",
+    "readTime": "5 min"
+  },
+  {
+    "id": 2,
+    "slug": "bienfaits-bio",
+    "title": "Pourquoi passer au bio est le meilleur cadeau pour votre peau",
+    "excerpt": "Les cosmétiques bio ne sont pas qu'une tendance. Découvrez pourquoi votre peau vous remerciera.",
+    "content": "La cosmétique bio représente bien plus qu'une simple mode. C'est un engagement envers votre santé et celle de la planète.\n\n**Des ingrédients purs** — Les formules bio excluent les parabènes, silicones et perturbateurs endocriniens.\n\n**Une efficacité prouvée** — Les actifs végétaux concentrés offrent des résultats visibles sans compromettre la santé cutanée.\n\n**Le respect de l'environnement** — Des procédés de fabrication éco-responsables et des emballages recyclables.\n\n**Une tolérance maximale** — Moins d'allergènes et d'irritants pour les peaux les plus réactives.",
+    "image": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2070&auto=format&fit=crop",
+    "category": "Engagements",
+    "author": "Équipe Hilytouch",
+    "date": "2026-03-20",
+    "readTime": "4 min"
+  },
+  {
+    "id": 3,
+    "slug": "routine-hiver",
+    "title": "Adapter sa routine beauté pour l'hiver",
+    "excerpt": "Le froid agresse votre peau. Voici comment la protéger efficacement avec les bons gestes et les bons produits.",
+    "content": "L'hiver met la peau à rude épreuve. Le froid, le vent et le chauffage la déshydratent en profondeur.\n\n**Passez aux textures riches** — Remplacez votre crème légère par un baume nourrissant.\n\n**N'oubliez pas les lèvres** — Appliquez régulièrement un baume à lèvres enrichi en beurre de karité.\n\n**Hydratez de l'intérieur** — Buvez au moins 1,5L d'eau par jour et consommez des aliments riches en oméga-3.\n\n**Le masque hebdomadaire** — Un masque hydratant une fois par semaine restaure l'éclat perdu.",
+    "image": "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?q=80&w=1976&auto=format&fit=crop",
+    "category": "Conseils",
+    "author": "Équipe Hilytouch",
+    "date": "2026-03-15",
+    "readTime": "6 min"
+  },
+  {
+    "id": 4,
+    "slug": "ingredients-naturels",
+    "title": "Les 10 ingrédients naturels les plus puissants en cosmétique",
+    "excerpt": "De l'acide hyaluronique végétal à l'huile de rose musquée, ces actifs naturels sont de véritables trésors pour votre peau.",
+    "content": "La nature regorge de trésors pour la beauté. Voici les 10 ingrédients stars :\n\n1. **Acide Hyaluronique Végétal** — Hydratation en profondeur.\n2. **Huile de Rose Musquée** — Régénération cellulaire.\n3. **Beurre de Karité** — Nutrition intense.\n4. **Aloe Vera** — Apaisement et cicatrisation.\n5. **Vitamine C** — Éclat et anti-taches.\n6. **Niacinamide** — Pores resserrés et teint unifié.\n7. **Huile de Jojoba** — Régulation du sébum.\n8. **Eau de Rose** — Tonifiant naturel.\n9. **Squalane Végétal** — Barrière protectrice.\n10. **Extrait de Thé Vert** — Antioxydant puissant.",
+    "image": "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=1974&auto=format&fit=crop",
+    "category": "Ingrédients",
+    "author": "Équipe Hilytouch",
+    "date": "2026-03-10",
+    "readTime": "7 min"
+  },
+  {
+    "id": 5,
+    "slug": "maquillage-naturel",
+    "title": "Le guide du maquillage naturel : sublimer sans masquer",
+    "excerpt": "Apprenez à créer un look naturel et lumineux qui met en valeur votre beauté authentique.",
+    "content": "Le maquillage naturel est un art subtil qui consiste à rehausser vos traits sans les cacher.\n\n**La base parfaite** — Un fond de teint fluide et léger, appliqué au doigt pour un rendu seconde peau.\n\n**Les joues** — Une touche de blush crème rosé pour un effet bonne mine naturel.\n\n**Les yeux** — Un trait de mascara et un fard nude sur la paupière mobile.\n\n**Les lèvres** — Un baume teinté pour des lèvres hydratées et subtilement colorées.",
+    "image": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=2000&auto=format&fit=crop",
+    "category": "Maquillage",
+    "author": "Équipe Hilytouch",
+    "date": "2026-03-05",
+    "readTime": "5 min"
+  }
+]

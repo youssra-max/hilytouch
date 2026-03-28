@@ -1,0 +1,26 @@
+.tracking-page { padding: 4rem 0; }
+
+.tracking-form-wrapper { max-width: 500px; margin: 0 auto; }
+.tracking-form { background: white; padding: 2.5rem; border-radius: 16px; border: 1px solid rgba(176,141,87,0.12); }
+
+.tracking-result { max-width: 700px; margin: 0 auto; }
+.tracking-header { display: flex; justify-content: space-between; align-items: start; padding: 2rem; background: white; border-radius: 12px; border: 1px solid rgba(176,141,87,0.12); margin-bottom: 2rem; }
+.tracking-header h2 { font-size: 1.4rem; margin-bottom: 0.3rem; }
+.tracking-status { display: flex; align-items: center; gap: 0.5rem; color: var(--color-gold); font-size: 0.9rem; }
+.tracking-delivery { text-align: right; }
+.tracking-delivery span { font-size: 0.75rem; color: var(--color-text-secondary); display: block; margin-bottom: 0.2rem; }
+.tracking-delivery strong { font-family: var(--font-serif); font-size: 1.1rem; }
+
+.tracking-timeline { padding: 2rem; background: white; border-radius: 12px; border: 1px solid rgba(176,141,87,0.12); margin-bottom: 2rem; }
+.timeline-step { display: flex; gap: 1.2rem; align-items: start; padding: 1rem 0; position: relative; }
+.timeline-step:not(:last-child)::after { content: ''; position: absolute; left: 9px; top: 36px; bottom: -4px; width: 2px; background: rgba(176,141,87,0.15); }
+.timeline-step.completed::after { background: var(--color-gold); }
+.timeline-dot { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: rgba(176,141,87,0.1); color: var(--color-text-secondary); }
+.timeline-step.completed .timeline-dot { background: var(--color-gold); color: white; }
+.timeline-content h4 { font-family: var(--font-serif); font-size: 1rem; margin-bottom: 0.1rem; }
+.timeline-content p { font-size: 0.8rem; color: var(--color-text-secondary); }
+
+.tracking-details { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem; }
+.detail-item { padding: 1.2rem; background: rgba(176,141,87,0.04); border-radius: 8px; }
+.detail-item span { font-size: 0.75rem; color: var(--color-text-secondary); display: block; margin-bottom: 0.3rem; }
+.detail-item strong { font-size: 0.95rem; }

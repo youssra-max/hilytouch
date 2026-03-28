@@ -1,10 +1,11 @@
+"use client";
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import './ProductCard.css';
 
 const ProductCard = ({ id = 1, image, title, category, price, isNew }) => {
   return (
-    <Link to={`/product/${id}`} className="product-card fade-in">
+    <Link href={`/product/${id}`} className="product-card fade-in">
       <div className="product-image-container">
         {isNew && <span className="badge-new">Nouveau</span>}
         <img src={image} alt={title} className="product-image" />
