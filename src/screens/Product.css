@@ -197,6 +197,7 @@
 .add-to-cart-btn-large {
   flex: 1;
   font-size: 1rem;
+  white-space: nowrap;
 }
 
 /* Accordion */

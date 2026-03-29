@@ -47,10 +47,10 @@ const Header = () => {
         <div className="header-actions">
           <button className="icon-btn"><Search size={20} /></button>
           <button className="icon-btn"><Heart size={20} /></button>
-          <button className="icon-btn">
+          <Link href="/cart" className="icon-btn">
             <ShoppingBag size={20} />
             <span className="cart-badge">2</span>
-          </button>
+          </Link>
         </div>
       </div>
       <Suspense fallback={null}>
