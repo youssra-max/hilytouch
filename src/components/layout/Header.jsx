@@ -26,7 +26,7 @@ const CategoriesNav = () => {
         <button className={`filter-btn ${activeFilter === 'soins-corps' ? 'active' : ''}`} onClick={() => setFilter('soins-corps')}>Soins Corps</button>
         <button className={`filter-btn ${activeFilter === 'maquillage' ? 'active' : ''}`} onClick={() => setFilter('maquillage')}>Maquillage</button>
         <button className={`filter-btn ${activeFilter === 'nails' ? 'active' : ''}`} onClick={() => setFilter('nails')}>Nails</button>
-        <button className={`filter-btn ${activeFilter === 'para-dose' ? 'active' : ''}`} onClick={() => setFilter('para-dose')}>Para Dose</button>
+        <button className={`filter-btn ${activeFilter === 'para-dose' ? 'active' : ''}`} onClick={() => setFilter('para-dose')}>bar à dose</button>
         <button className={`filter-btn ${activeFilter === 'soin-cheveux' ? 'active' : ''}`} onClick={() => setFilter('soin-cheveux')}>Soin Cheveux</button>
         <button className={`filter-btn ${activeFilter === 'new' ? 'active' : ''}`} onClick={() => setFilter('new')}>Nouveautés</button>
       </div>

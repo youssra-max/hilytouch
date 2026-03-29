@@ -18,7 +18,7 @@ const Footer = () => {
               <button className="newsletter-btn">Rejoindre <ArrowRight size={14} /></button>
             </div>
             <p className="newsletter-legal">
-              En cliquant sur «Rejoindre», vous acceptez de recevoir des e-mails marketing de hilytouch. 
+              En cliquant sur «Rejoindre», vous acceptez de recevoir des e-mails marketing de hilytouch.
               Vous pouvez vous désinscrire à tout moment. Consultez notre <a href="#">Politique de confidentialité</a> & <a href="#">Conditions d'utilisation</a>.
             </p>
             <div className="newsletter-form newsletter-form--mobile">
@@ -37,7 +37,7 @@ const Footer = () => {
                 <li><Link href="/category/maquillage">Maquillage</Link></li>
                 <li><Link href="/category/accessoires">Outils</Link></li>
                 <li><Link href="/category/nails">Nails</Link></li>
-                <li><Link href="/category/para-dose">Para Dose</Link></li>
+                <li><Link href="/category/para-dose">bar à dose</Link></li>
                 <li><Link href="/category/soin-cheveux">Soin Cheveux</Link></li>
                 <li><Link href="/shop?filter=new">Nouveautés</Link></li>
               </ul>

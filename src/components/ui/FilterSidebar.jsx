@@ -4,7 +4,7 @@ import './FilterSidebar.css';
 
 const FilterSection = ({ title, children, defaultOpen = false }) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
-  
+
   return (
     <div className="filter-section">
       <button className="filter-section-header" onClick={() => setIsOpen(!isOpen)}>
@@ -32,39 +32,39 @@ const PriceRangeSlider = ({ min = 0, max = 150 }) => {
     const value = Math.max(Number(e.target.value), minVal + 1);
     setMaxVal(value);
   };
-  
+
   return (
     <div className="price-range-container">
       <div className="price-labels">
         <div className="price-label">
-           <input type="text" value={`${minVal} €`} readOnly />
+          <input type="text" value={`${minVal} €`} readOnly />
         </div>
         <div className="price-label">
-           <input type="text" value={`${maxVal} €`} readOnly />
+          <input type="text" value={`${maxVal} €`} readOnly />
         </div>
       </div>
       <div className="price-slider-wrapper">
-         <div className="price-slider-track"></div>
-         <div 
-           className="price-slider-fill" 
-           style={{ left: `${(minVal / max) * 100}%`, right: `${100 - (maxVal / max) * 100}%` }}
-         ></div>
-         <input 
-           type="range" 
-           min={min} 
-           max={max} 
-           value={minVal} 
-           onChange={handleMinChange}
-           className="price-slider-input thumb-left"
-         />
-         <input 
-           type="range" 
-           min={min} 
-           max={max} 
-           value={maxVal} 
-           onChange={handleMaxChange}
-           className="price-slider-input thumb-right"
-         />
+        <div className="price-slider-track"></div>
+        <div
+          className="price-slider-fill"
+          style={{ left: `${(minVal / max) * 100}%`, right: `${100 - (maxVal / max) * 100}%` }}
+        ></div>
+        <input
+          type="range"
+          min={min}
+          max={max}
+          value={minVal}
+          onChange={handleMinChange}
+          className="price-slider-input thumb-left"
+        />
+        <input
+          type="range"
+          min={min}
+          max={max}
+          value={maxVal}
+          onChange={handleMaxChange}
+          className="price-slider-input thumb-right"
+        />
       </div>
     </div>
   );
@@ -77,7 +77,7 @@ const FilterSidebar = ({ onClose, activeCategory, onCategoryChange }) => {
     { id: 'soins-corps', label: 'Soins Corps' },
     { id: 'maquillage', label: 'Maquillage' },
     { id: 'nails', label: 'Nails' },
-    { id: 'para-dose', label: 'Para Dose' },
+    { id: 'para-dose', label: 'bar à dose' },
     { id: 'soin-cheveux', label: 'Soin Cheveux' }
   ];
 
@@ -94,7 +94,7 @@ const FilterSidebar = ({ onClose, activeCategory, onCategoryChange }) => {
           <ul className="filter-list">
             {categories.map((cat) => (
               <li key={cat.id}>
-                <button 
+                <button
                   className={`filter-item-btn ${activeCategory === cat.id ? 'active' : ''}`}
                   onClick={() => onCategoryChange(cat.id)}
                 >
@@ -125,11 +125,11 @@ const FilterSidebar = ({ onClose, activeCategory, onCategoryChange }) => {
 
         <FilterSection title="TEINTES">
           <ul className="filter-color-list">
-            <li><button className="color-swatch tooltip" style={{backgroundColor: '#e6c8b3'}} aria-label="Porcelaine"></button></li>
-            <li><button className="color-swatch tooltip" style={{backgroundColor: '#d6a383'}} aria-label="Sable"></button></li>
-            <li><button className="color-swatch tooltip" style={{backgroundColor: '#b97a57'}} aria-label="Doré"></button></li>
-            <li><button className="color-swatch tooltip" style={{backgroundColor: '#86503c'}} aria-label="Caramel"></button></li>
-            <li><button className="color-swatch tooltip" style={{backgroundColor: '#522b1c'}} aria-label="Cacao"></button></li>
+            <li><button className="color-swatch tooltip" style={{ backgroundColor: '#e6c8b3' }} aria-label="Porcelaine"></button></li>
+            <li><button className="color-swatch tooltip" style={{ backgroundColor: '#d6a383' }} aria-label="Sable"></button></li>
+            <li><button className="color-swatch tooltip" style={{ backgroundColor: '#b97a57' }} aria-label="Doré"></button></li>
+            <li><button className="color-swatch tooltip" style={{ backgroundColor: '#86503c' }} aria-label="Caramel"></button></li>
+            <li><button className="color-swatch tooltip" style={{ backgroundColor: '#522b1c' }} aria-label="Cacao"></button></li>
           </ul>
         </FilterSection>
       </div>

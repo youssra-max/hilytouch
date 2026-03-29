@@ -4,24 +4,51 @@
     "title": "Soins du Visage",
     "description": "Des soins d'exception formulés avec des actifs botaniques rares pour révéler l'éclat naturel de votre peau.",
     "image": "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=1974&auto=format&fit=crop",
-    "tags": ["ÉCLAT NATUREL", "HYDRATATION", "ANTI-ÂGE"],
-    "subcategories": ["SÉRUMS", "CRÈMES", "NETTOYANTS", "MASQUES"]
+    "tags": [
+      "ÉCLAT NATUREL",
+      "HYDRATATION",
+      "ANTI-ÂGE"
+    ],
+    "subcategories": [
+      "SÉRUMS",
+      "CRÈMES",
+      "NETTOYANTS",
+      "MASQUES"
+    ]
   },
   {
     "id": "maquillage",
     "title": "Maquillage",
     "description": "Une sélection premium de maquillage clean-beauty pour sublimer votre éclat naturel. Des formules pures, pigmentées et respectueuses.",
     "image": "https://images.unsplash.com/photo-1512496115851-a408e8cece11?q=80&w=1974&auto=format&fit=crop",
-    "tags": ["TEINT LUMINEUX", "LÈVRES VELOURS", "REGARD INTENSE"],
-    "subcategories": ["PALETTES", "LÈVRES", "TEINT", "YEUX"]
+    "tags": [
+      "TEINT LUMINEUX",
+      "LÈVRES VELOURS",
+      "REGARD INTENSE"
+    ],
+    "subcategories": [
+      "PALETTES",
+      "LÈVRES",
+      "TEINT",
+      "YEUX"
+    ]
   },
   {
     "id": "soins-corps",
     "title": "Soins du Corps",
     "description": "Des soins corporels luxueux aux textures fondantes pour une peau soyeuse et parfumée de la tête aux pieds.",
     "image": "https://images.unsplash.com/photo-1615397323758-6da8b3d6a9a0?q=80&w=1964&auto=format&fit=crop",
-    "tags": ["NUTRITION INTENSE", "EXFOLIATION", "HYDRATATION"],
-    "subcategories": ["BAUMES", "GOMMAGES", "HUILES", "LAITS"]
+    "tags": [
+      "NUTRITION INTENSE",
+      "EXFOLIATION",
+      "HYDRATATION"
+    ],
+    "subcategories": [
+      "BAUMES",
+      "GOMMAGES",
+      "HUILES",
+      "LAITS"
+    ]
   },
   {
     "id": "parfums",
@@ -29,39 +56,76 @@
     "subtitle": "Des essences rares capturées dans des flacons de haute parfumerie.",
     "description": "Des parfums d'exception composés par les plus grands nez. Chaque fragrance raconte une histoire unique et intime.",
     "image": "https://images.unsplash.com/photo-1594035910387-fea47794261f?q=80&w=1974&auto=format&fit=crop",
-    "tags": ["FLORAL", "BOISÉ", "ORIENTAL"],
-    "subcategories": ["EAU DE PARFUM", "EAU DE TOILETTE", "BRUMES"]
+    "tags": [
+      "FLORAL",
+      "BOISÉ",
+      "ORIENTAL"
+    ],
+    "subcategories": [
+      "EAU DE PARFUM",
+      "EAU DE TOILETTE",
+      "BRUMES"
+    ]
   },
   {
     "id": "accessoires",
     "title": "Accessoires",
     "description": "Des accessoires beauté de qualité professionnelle pour sublimer vos rituels de soins et de maquillage.",
     "image": "https://images.unsplash.com/photo-1627384113743-6bd5a479fffd?q=80&w=2070&auto=format&fit=crop",
-    "tags": ["PINCEAUX", "ÉPONGES", "MIROIRS"],
-    "subcategories": ["PINCEAUX", "ÉPONGES", "ACCESSOIRES SOIN"]
+    "tags": [
+      "PINCEAUX",
+      "ÉPONGES",
+      "MIROIRS"
+    ],
+    "subcategories": [
+      "PINCEAUX",
+      "ÉPONGES",
+      "ACCESSOIRES SOIN"
+    ]
   },
   {
     "id": "nails",
     "title": "Nails",
     "description": "Des produits de qualité pour des ongles parfaits et soignés.",
     "image": "https://images.unsplash.com/photo-1519014816548-bf5fe059e98b?q=80&w=2069&auto=format&fit=crop",
-    "tags": ["VERNIS", "SOINS ONGLES"],
-    "subcategories": ["VERNIS", "SOIN DES ONGLES"]
+    "tags": [
+      "VERNIS",
+      "SOINS ONGLES"
+    ],
+    "subcategories": [
+      "VERNIS",
+      "SOIN DES ONGLES"
+    ]
   },
   {
     "id": "para-dose",
-    "title": "Para Dose",
+    "title": "bar à dose",
     "description": "Des soins de parapharmacie pour le bien-être de votre peau.",
     "image": "https://images.unsplash.com/photo-1556228720-192b604b34b4?q=80&w=2070&auto=format&fit=crop",
-    "tags": ["DERMO", "SANTÉ", "PARAPHARMACIE"],
-    "subcategories": ["SOINS CIBLÉS", "TRAITEMENTS DERMATOLOGIQUES"]
+    "tags": [
+      "DERMO",
+      "SANTÉ",
+      "PARAPHARMACIE"
+    ],
+    "subcategories": [
+      "SOINS CIBLÉS",
+      "TRAITEMENTS DERMATOLOGIQUES"
+    ]
   },
   {
     "id": "soin-cheveux",
     "title": "Soin Cheveux",
     "description": "Tout pour des cheveux nourris, brillants et en pleine santé.",
     "image": "https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=2069&auto=format&fit=crop",
-    "tags": ["SHAMPOING", "MASQUE", "SÉRUM"],
-    "subcategories": ["SHAMPOINGS", "MASQUES", "SOINS CAPILLAIRES"]
+    "tags": [
+      "SHAMPOING",
+      "MASQUE",
+      "SÉRUM"
+    ],
+    "subcategories": [
+      "SHAMPOINGS",
+      "MASQUES",
+      "SOINS CAPILLAIRES"
+    ]
   }
 ]

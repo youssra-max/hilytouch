@@ -67,7 +67,7 @@ const CategoryDetail = () => {
           <p className="loading-text">Aucun produit dans cette catégorie.</p>
         ) : (
           products.map(prod => (
-            <ProductCard 
+            <ProductCard
               key={prod.id}
               id={prod.id}
               title={prod.title}
@@ -82,19 +82,19 @@ const CategoryDetail = () => {
 
       <div className="partners-banner">
         <div className="partners-header">
-           <p className="subtitle">UNIVERS</p>
-           <div className="partners-title-row">
-             <h2>Nos Marques <span className="highlight-text">Partenaires</span></h2>
-             <a href="#" className="view-all-partners">DÉCOUVRIR TOUTES LES MARQUES +</a>
-           </div>
+          <p className="subtitle">UNIVERS</p>
+          <div className="partners-title-row">
+            <h2>Nos Marques <span className="highlight-text">Partenaires</span></h2>
+            <a href="#" className="view-all-partners">DÉCOUVRIR TOUTES LES MARQUES +</a>
+          </div>
         </div>
         <div className="partners-logos">
-           <div className="partner-logo">LUMIÈRE</div>
-           <div className="partner-logo">ESSENCE</div>
-           <div className="partner-logo">BOTANIC</div>
-           <div className="partner-logo">PURE</div>
-           <div className="partner-logo">FLORE</div>
-           <div className="partner-logo">HILY</div>
+          <div className="partner-logo">LUMIÈRE</div>
+          <div className="partner-logo">ESSENCE</div>
+          <div className="partner-logo">BOTANIC</div>
+          <div className="partner-logo">PURE</div>
+          <div className="partner-logo">FLORE</div>
+          <div className="partner-logo">HILY</div>
         </div>
       </div>
     </div>
