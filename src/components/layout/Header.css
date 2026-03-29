@@ -89,3 +89,44 @@
   align-items: center;
   justify-content: center;
 }
+
+.header-categories {
+  padding-top: 1rem;
+  border-top: 1px solid rgba(176, 141, 87, 0.15);
+  margin-top: 1.4rem;
+}
+.filters {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.filters::-webkit-scrollbar {
+  display: none;
+}
+.filter-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  border-radius: 0;
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  transition: color 0.2s;
+  letter-spacing: 0.02em;
+}
+.filter-btn:hover {
+  color: var(--color-text-primary);
+}
+.filter-btn.active {
+  background: transparent;
+  color: var(--color-text-primary);
+  font-weight: 600;
+  border: none;
+}

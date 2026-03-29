@@ -1,13 +1,22 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import ProductCard from '../components/ui/ProductCard';
+import FilterSidebar from '../components/ui/FilterSidebar';
 import { fetchProducts } from '../lib/api';
+import { useSearchParams, useRouter } from 'next/navigation';
 import './Shop.css';
 
 const Shop = () => {
-  const [activeFilter, setActiveFilter] = useState('all');
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const activeFilter = searchParams ? (searchParams.get('filter') || 'all') : 'all';
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  const handleCategoryChange = (cat) => {
+    router.push(`/shop${cat === 'all' ? '' : `?filter=${cat}`}`);
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -32,24 +41,33 @@ const Shop = () => {
   return (
     <div className="shop-page container fade-in">
       <div className="shop-header">
-        <h1 className="page-title">La Boutique</h1>
+        <h1 className="page-title">Boutique</h1>
         <p className="page-desc">
           Découvrez notre collection exclusive de soins botaniques précieux, formulés avec conscience pour magnifier votre éclat naturel.
         </p>
       </div>
 
       <div className="shop-toolbar">
-        <div className="filters">
-          <button className={`filter-btn ${activeFilter === 'all' ? 'active' : ''}`} onClick={() => setActiveFilter('all')}>Tous les produits</button>
-          <button className={`filter-btn ${activeFilter === 'soins-visage' ? 'active' : ''}`} onClick={() => setActiveFilter('soins-visage')}>Soins Visage</button>
-          <button className={`filter-btn ${activeFilter === 'soins-corps' ? 'active' : ''}`} onClick={() => setActiveFilter('soins-corps')}>Soins Corps</button>
-          <button className={`filter-btn ${activeFilter === 'maquillage' ? 'active' : ''}`} onClick={() => setActiveFilter('maquillage')}>Maquillage</button>
-          <button className={`filter-btn ${activeFilter === 'new' ? 'active' : ''}`} onClick={() => setActiveFilter('new')}>Nouveautés</button>
+        <div>
+          {!isSidebarOpen && (
+            <button className="btn-show-filters" onClick={() => setIsSidebarOpen(true)}>
+              FILTRER ▾
+            </button>
+          )}
         </div>
         <div className="sort-by">
           <span>Trier par: <strong>Populaire ▾</strong></span>
         </div>
       </div>
+
+      <div className={`shop-content-wrapper ${!isSidebarOpen ? 'sidebar-closed' : ''}`}>
+        {isSidebarOpen && (
+          <FilterSidebar 
+            onClose={() => setIsSidebarOpen(false)} 
+            activeCategory={activeFilter}
+            onCategoryChange={handleCategoryChange}
+          />
+        )}
 
       <div className="product-grid">
         {loading ? (
@@ -58,17 +76,18 @@ const Shop = () => {
           <p className="loading-text">Aucun produit trouvé.</p>
         ) : (
           products.map(prod => (
-            <ProductCard 
+            <ProductCard
               key={prod.id}
               id={prod.id}
-              title={prod.title} 
-              category={prod.category} 
-              price={prod.priceFormatted} 
-              image={prod.image} 
+              title={prod.title}
+              category={prod.category}
+              price={prod.priceFormatted}
+              image={prod.image}
               isNew={prod.isNew}
             />
           ))
         )}
+        </div>
       </div>
 
       <div className="newsletter-banner">

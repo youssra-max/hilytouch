@@ -36,6 +36,9 @@ const Footer = () => {
                 <li><Link href="/category/soins-corps">Corps</Link></li>
                 <li><Link href="/category/maquillage">Maquillage</Link></li>
                 <li><Link href="/category/accessoires">Outils</Link></li>
+                <li><Link href="/category/nails">Nails</Link></li>
+                <li><Link href="/category/para-dose">Para Dose</Link></li>
+                <li><Link href="/category/soin-cheveux">Soin Cheveux</Link></li>
                 <li><Link href="/shop?filter=new">Nouveautés</Link></li>
               </ul>
             </div>

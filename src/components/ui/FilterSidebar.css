@@ -1,0 +1,204 @@
+.filter-sidebar {
+  width: 250px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-sidebar-top {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(60, 43, 37, 0.15);
+  margin-bottom: 0.5rem;
+}
+
+.btn-hide-filters {
+  background: transparent;
+  border: none;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--color-dark);
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  padding: 0;
+}
+
+.btn-hide-filters:hover {
+  opacity: 0.7;
+}
+
+/* Sections */
+.filter-section {
+  border-bottom: 1px solid rgba(60, 43, 37, 0.15);
+}
+
+.filter-section:last-child {
+  border-bottom: none;
+}
+
+.filter-section-header {
+  background: transparent;
+  border: none;
+  width: 100%;
+  padding: 1.2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: var(--color-dark);
+  letter-spacing: 0.1em;
+  cursor: pointer;
+}
+
+.filter-title {
+  pointer-events: none;
+}
+
+.filter-section-content {
+  padding-bottom: 1.5rem;
+}
+
+/* Lists inside sections */
+.filter-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin: 0;
+  padding: 0;
+}
+
+.filter-item-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: var(--color-text-secondary);
+  font-family: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.2s, font-weight 0.2s;
+}
+
+.filter-item-btn:hover {
+  color: var(--color-text-primary);
+}
+
+.filter-item-btn.active {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+/* Color Swatches Grid for Teintes */
+.filter-color-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin: 0;
+  padding: 0;
+}
+
+.color-swatch {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  padding: 0;
+}
+
+.color-swatch:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Price Range Slider */
+.price-range-container {
+  padding: 1rem 0;
+}
+.price-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+.price-label input {
+  width: 60px;
+  text-align: center;
+  border: none;
+  border-bottom: 1px solid var(--color-text-secondary);
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--color-dark);
+  padding: 0.3rem;
+  background: transparent;
+}
+.price-label input:focus {
+  outline: none;
+  border-bottom-color: var(--color-dark);
+}
+.price-slider-wrapper {
+  position: relative;
+  width: 100%;
+  height: 4px;
+}
+.price-slider-track {
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background: rgba(0,0,0,0.1);
+  border-radius: 2px;
+}
+.price-slider-fill {
+  position: absolute;
+  height: 4px;
+  background: var(--color-dark);
+  border-radius: 2px;
+}
+.price-slider-input {
+  position: absolute;
+  top: -8px;
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  background: none;
+  pointer-events: none;
+  margin: 0;
+}
+.price-slider-input::-webkit-slider-thumb {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--color-dark);
+  background: white;
+  -webkit-appearance: none;
+  appearance: none;
+  pointer-events: auto;
+  cursor: pointer;
+}
+.price-slider-input::-moz-range-thumb {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--color-dark);
+  background: white;
+  pointer-events: auto;
+  cursor: pointer;
+}
+/* Ensure handles are perfectly positioned */
+.price-slider-input.thumb-left::-webkit-slider-thumb {
+  transform: translateX(-2px);
+}
+.price-slider-input.thumb-right::-webkit-slider-thumb {
+  transform: translateX(2px);
+}
