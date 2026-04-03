@@ -2,7 +2,7 @@
 import React, { Suspense } from 'react';
 import Link from 'next/link';
 import { usePathname, useSearchParams, useRouter } from 'next/navigation';
-import { Search, Heart, ShoppingBag } from 'lucide-react';
+import { Search, Heart, ShoppingBag, User } from 'lucide-react';
 import './Header.css';
 
 const CategoriesNav = () => {
@@ -39,13 +39,20 @@ const Header = () => {
     <header className="header">
       <div className="container header-container">
         <Link href="/" className="logo">hilytouch</Link>
-        <nav className="main-nav">
-          <Link href="/" className="nav-link">Accueil</Link>
-          <Link href="/shop" className="nav-link">Boutique</Link>
-          <Link href="/blog" className="nav-link">Blog</Link>
-        </nav>
+        <form className="search-bar" onSubmit={(e) => { e.preventDefault(); }}>
+          <input 
+            type="text" 
+            placeholder="Rechercher un produit, une marque..." 
+            className="search-input"
+          />
+          <button type="submit" className="search-btn"><Search size={18} /></button>
+        </form>
         <div className="header-actions">
-          <button className="icon-btn"><Search size={20} /></button>
+          <Link href="/partner" className="nav-action-btn">Devenir partenaire</Link>
+          <Link href="/auth" className="nav-action-text with-icon">
+            <User size={20} />
+            <span>Se connecter</span>
+          </Link>
           <button className="icon-btn"><Heart size={20} /></button>
           <Link href="/cart" className="icon-btn">
             <ShoppingBag size={20} />

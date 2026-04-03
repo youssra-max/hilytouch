@@ -85,23 +85,12 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Section Video Promotionnelle */}
-      <section className="promo-video-section fade-in">
-        <video
-          className="promo-video"
-          autoPlay
-          loop
-          muted
-          playsInline
-          poster="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&q=80&w=2000"
-        >
-          <source src="/hilytouch-video.mp4" type="video/mp4" />
-          Votre navigateur ne le supporte pas.
-        </video>
-        <div className="promo-video-overlay">
+      {/* Section Promotionnelle */}
+      <section className="promo-image-section fade-in">
+        <div className="promo-image-overlay">
           <h2>L'expérience <em>Hilytouch</em></h2>
           <p>Découvrez l'harmonie parfaite entre les trésors botaniques et la science cosmétique, pour révéler l'éclat authentique de votre peau.</p>
-          <a href="/about" className="btn-video-outline">
+          <a href="/about" className="btn-outline-white">
             Découvrir notre histoire
           </a>
         </div>

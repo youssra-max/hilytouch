@@ -100,6 +100,13 @@ const About = () => {
             <h3>Amira Benali</h3>
             <p className="team-role">Directrice Marketing & Communication</p>
           </div>
+          <div className="team-card">
+            <div className="team-photo">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1976&auto=format&fit=crop" alt="Opérations" />
+            </div>
+            <h3>Emma Rousseau</h3>
+            <p className="team-role">Directrice Opérations & Logistique</p>
+          </div>
         </div>
       </section>
 

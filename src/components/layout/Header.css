@@ -24,36 +24,93 @@
   letter-spacing: 0.03em;
 }
 
-.main-nav {
+.search-bar {
+  flex: 1;
+  max-width: 500px;
+  margin: 0 2rem;
+  position: relative;
   display: flex;
-  gap: 3rem;
+  align-items: center;
 }
 
-.nav-link {
+.search-input {
+  width: 100%;
+  padding: 0.8rem 1.2rem;
+  padding-right: 3rem;
+  border: 1px solid rgba(176, 141, 87, 0.3);
+  border-radius: 30px;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
+  outline: none;
+  color: var(--color-dark);
+}
+
+.search-input::placeholder {
+  color: rgba(60, 60, 59, 0.5);
+}
+
+.search-input:focus {
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 2px rgba(176, 141, 87, 0.1);
+  background: rgba(255, 255, 255, 1);
+}
+
+.search-btn {
+  position: absolute;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  color: rgba(60, 60, 59, 0.5);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s;
+}
+
+.search-btn:hover {
+  color: var(--color-gold);
+}
+
+.nav-action-text {
   font-family: var(--font-sans);
   font-size: 0.85rem;
-  font-weight: 400;
+  font-weight: 500;
   color: var(--color-dark);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  text-decoration: none;
   transition: color 0.3s;
-  position: relative;
+  white-space: nowrap;
 }
 
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 1px;
-  background: var(--color-gold);
-  transition: width 0.3s;
+.nav-action-text.with-icon {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.nav-link:hover::after { width: 100%; }
-.nav-link:hover { color: var(--color-gold); }
+.nav-action-text:hover {
+  color: var(--color-gold);
+}
+
+.nav-action-btn {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.6rem 1.4rem;
+  border: 1px solid var(--color-gold);
+  border-radius: 25px;
+  color: var(--color-gold);
+  text-decoration: none;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.nav-action-btn:hover {
+  background-color: var(--color-gold);
+  color: white;
+}
 
 .header-actions {
   display: flex;
@@ -132,7 +189,11 @@
 }
 
 @media (max-width: 768px) {
-  .main-nav {
+  .search-bar {
+    display: none;
+  }
+  .nav-action-text,
+  .nav-action-btn {
     display: none;
   }
   .header-actions {
