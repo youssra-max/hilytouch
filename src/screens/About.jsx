@@ -80,31 +80,19 @@ const About = () => {
         </div>
         <div className="team-grid">
           <div className="team-card">
-            <div className="team-photo">
-              <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?q=80&w=1974&auto=format&fit=crop" alt="Fondatrice" />
-            </div>
-            <h3>Hily Amrani</h3>
+            <h3>Imene Guenfoud</h3>
             <p className="team-role">Fondatrice & Directrice Créative</p>
           </div>
           <div className="team-card">
-            <div className="team-photo">
-              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1976&auto=format&fit=crop" alt="R&D" />
-            </div>
-            <h3>Dr. Sarah Belloni</h3>
+            <h3>Dr. Hanane Belhadj</h3>
             <p className="team-role">Directrice Recherche & Développement</p>
           </div>
           <div className="team-card">
-            <div className="team-photo">
-              <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop" alt="Marketing" />
-            </div>
-            <h3>Amira Benali</h3>
+            <h3>Yousra Sedjlmaci</h3>
             <p className="team-role">Directrice Marketing & Communication</p>
           </div>
           <div className="team-card">
-            <div className="team-photo">
-              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1976&auto=format&fit=crop" alt="Opérations" />
-            </div>
-            <h3>Emma Rousseau</h3>
+            <h3>Lilya Taleb</h3>
             <p className="team-role">Directrice Opérations & Logistique</p>
           </div>
         </div>
