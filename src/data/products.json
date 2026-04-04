@@ -2,6 +2,7 @@
   {
     "id": 1,
     "title": "Sérum Éclat Floral",
+    "brand": "Naturelya",
     "category": "Soins Visage",
     "type": "soins-visage",
     "price": 6800,
@@ -23,6 +24,7 @@
   {
     "id": 2,
     "title": "Baume Botanique",
+    "brand": "Eryam",
     "category": "Soins Corps",
     "type": "soins-corps",
     "price": 5700,
@@ -44,6 +46,7 @@
   {
     "id": 3,
     "title": "Huile de Nuit Précieuse",
+    "brand": "Naturelya",
     "category": "Soins Visage",
     "type": "soins-visage",
     "price": 7800,
@@ -65,6 +68,7 @@
   {
     "id": 4,
     "title": "Palette Regard Divin",
+    "brand": "Mia Cosmetics",
     "category": "Maquillage",
     "type": "maquillage",
     "price": 12800,
@@ -86,6 +90,7 @@
   {
     "id": 5,
     "title": "Rouge à Lèvres Velours",
+    "brand": "Note",
     "category": "Maquillage",
     "type": "maquillage",
     "price": 6300,
@@ -107,6 +112,7 @@
   {
     "id": 6,
     "title": "Lait Nettoyant",
+    "brand": "Dermactive",
     "category": "Soins Visage",
     "type": "soins-visage",
     "price": 4200,
@@ -128,6 +134,7 @@
   {
     "id": 7,
     "title": "Crème de Jour",
+    "brand": "Dermactive",
     "category": "Soins Visage",
     "type": "soins-visage",
     "price": 6300,
@@ -149,6 +156,7 @@
   {
     "id": 8,
     "title": "Gommage Végétal",
+    "brand": "Vénus",
     "category": "Soins Corps",
     "type": "soins-corps",
     "price": 5300,
@@ -170,6 +178,7 @@
   {
     "id": 9,
     "title": "Fond de Teint Lumineux",
+    "brand": "Pastel",
     "category": "Maquillage",
     "type": "maquillage",
     "price": 9600,
@@ -191,6 +200,7 @@
   {
     "id": 10,
     "title": "Illuminateur Soyeux",
+    "brand": "Mia Cosmetics",
     "category": "Maquillage",
     "type": "maquillage",
     "price": 8300,
@@ -212,6 +222,7 @@
   {
     "id": 11,
     "title": "Mascara Volume Noir",
+    "brand": "Note",
     "category": "Maquillage",
     "type": "maquillage",
     "price": 5700,
@@ -233,6 +244,7 @@
   {
     "id": 12,
     "title": "Duo Blush Fraîcheur",
+    "brand": "Pastel",
     "category": "Maquillage",
     "type": "maquillage",
     "price": 7200,
@@ -254,6 +266,7 @@
   {
     "id": 13,
     "title": "Eyeliner Précision",
+    "brand": "Mia Cosmetics",
     "category": "Maquillage",
     "type": "maquillage",
     "price": 4800,
@@ -275,6 +288,7 @@
   {
     "id": 14,
     "title": "Brume Fixatrice Éclat",
+    "brand": "Floré",
     "category": "Soins Visage",
     "type": "soins-visage",
     "price": 6800,

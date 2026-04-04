@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
 import Link from 'next/link';
+import { Heart } from 'lucide-react';
 import './ProductCard.css';
 
 const ProductCard = ({ id = 1, image, title, category, price, isNew }) => {
@@ -10,7 +11,12 @@ const ProductCard = ({ id = 1, image, title, category, price, isNew }) => {
         {isNew && <span className="badge-new">Nouveau</span>}
         <img src={image} alt={title} className="product-image" />
         <div className="product-overlay">
-          <button className="btn-add-cart" onClick={(e) => e.preventDefault()}>Ajouter au panier</button>
+          <div className="overlay-actions">
+            <button className="btn-add-cart" onClick={(e) => e.preventDefault()}>Ajouter au panier</button>
+            <button className="btn-fav" onClick={(e) => e.preventDefault()} aria-label="Ajouter aux favoris">
+              <Heart size={18} />
+            </button>
+          </div>
         </div>
       </div>
       <div className="product-info">

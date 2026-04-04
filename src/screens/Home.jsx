@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import Button from '../components/ui/Button';
 import ProductCard from '../components/ui/ProductCard';
 import { Sparkles, ArrowRight, Star } from 'lucide-react';
-import heroDiagImg from '../assets/hero-diag.png';
+import heroDiagImg from '../assets/hero-diag.jpg';
 import { fetchProducts } from '../lib/api';
 import './Home.css';
 
@@ -47,15 +47,16 @@ const Home = () => {
           </div>
           <div className="hero-diag-visual">
             <div className="diag-image-main">
-              <img src={heroDiagImg} alt="Diagnostic beauté" />
+              <img src={heroDiagImg.src || heroDiagImg} alt="Diagnostic beauté" />
             </div>
-            <div className="diag-card-float">
-              <Star size={14} fill="currentColor" />
-              <span>10k+ diagnostics</span>
-            </div>
+
           </div>
         </div>
       </section>
+
+      <div className="container">
+        <hr className="layout-divider" />
+      </div>
 
       {/* Section 2: Les Incontournables — fetched from API */}
       <section className="incontournables container">
@@ -85,17 +86,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Section Promotionnelle */}
-      <section className="promo-image-section fade-in">
-        <div className="promo-image-overlay">
-          <h2>L'expérience <em>Hilytouch</em></h2>
-          <p>Découvrez l'harmonie parfaite entre les trésors botaniques et la science cosmétique, pour révéler l'éclat authentique de votre peau.</p>
-          <a href="/about" className="btn-outline-white">
-            Découvrir notre histoire
-          </a>
-        </div>
-      </section>
-
       {/* Section 3: Le Journal */}
       <section className="journal-section container">
         <div className="section-head centered">
@@ -122,6 +112,17 @@ const Home = () => {
               <a href="/blog/bienfaits-bio" className="link-rose">Lire l'article <ArrowRight size={14} /></a>
             </div>
           </article>
+        </div>
+      </section>
+
+      {/* Section Promotionnelle */}
+      <section className="promo-image-section fade-in">
+        <div className="promo-image-overlay">
+          <h2>L'expérience <em>Hilytouch</em></h2>
+          <p>Découvrez l'harmonie parfaite entre les trésors botaniques et la science cosmétique, pour révéler l'éclat authentique de votre peau.</p>
+          <a href="/about" className="btn-outline-white">
+            Découvrir notre histoire
+          </a>
         </div>
       </section>
 

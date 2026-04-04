@@ -2,7 +2,7 @@
 import React, { Suspense } from 'react';
 import Link from 'next/link';
 import { usePathname, useSearchParams, useRouter } from 'next/navigation';
-import { Search, Heart, ShoppingBag, User } from 'lucide-react';
+import { Search, Heart, ShoppingBag, User, Command } from 'lucide-react';
 import './Header.css';
 
 const CategoriesNav = () => {
@@ -38,7 +38,10 @@ const Header = () => {
   return (
     <header className="header">
       <div className="container header-container">
-        <Link href="/" className="logo">hilytouch</Link>
+        <Link href="/" className="logo">
+          <Command size={28} strokeWidth={1.5} />
+          hilytouch
+        </Link>
         <form className="search-bar" onSubmit={(e) => { e.preventDefault(); }}>
           <input 
             type="text" 
@@ -53,7 +56,10 @@ const Header = () => {
             <User size={20} />
             <span>Se connecter</span>
           </Link>
-          <button className="icon-btn"><Heart size={20} /></button>
+          <Link href="/favorites" className="icon-btn">
+            <Heart size={20} />
+            <span className="cart-badge">3</span>
+          </Link>
           <Link href="/cart" className="icon-btn">
             <ShoppingBag size={20} />
             <span className="cart-badge">2</span>
