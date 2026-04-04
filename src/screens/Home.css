@@ -7,7 +7,7 @@
 .home-page {
   display: flex;
   flex-direction: column;
-  gap: 7rem;
+  gap: 0;
   padding-bottom: 0;
 }
 
@@ -57,14 +57,14 @@
 .section-head:not(.centered) {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
 }
 
 /* =============================
    HERO / DIAGNOSTIQUE PEAU
    ============================= */
 .hero-diag {
-  padding: 6rem 0 7rem;
+  padding: 4rem 0 6rem;
 }
 
 .hero-diag-grid {
@@ -156,7 +156,7 @@
    LES INCONTOURNABLES
    ============================= */
 .incontournables {
-  padding: 0 0 6rem;
+  padding: 6rem 0;
 }
 
 .products-grid {
@@ -169,21 +169,42 @@
    SECTION IMAGE PROMO
    ============================= */
 .promo-image-section {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 6rem 2rem;
-  margin-bottom: 6rem;
-  background-color: var(--color-creme);
+  padding: 8rem 2rem;
+  margin-bottom: 0;
+  background-image: url('https://images.unsplash.com/photo-1615397323214-bbd493e8202d?q=80&w=2000&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: white;
+}
+
+.promo-image-section::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
 }
 
 .promo-image-overlay {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: var(--color-dark);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4rem 3rem;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  max-width: 750px;
 }
 
 .promo-image-overlay h2 {
@@ -191,7 +212,7 @@
   font-size: 3.5rem;
   margin-bottom: 1rem;
   font-weight: 500;
-  color: var(--color-dark);
+  color: #fff;
 }
 
 .promo-image-overlay h2 em {
@@ -204,7 +225,7 @@
   max-width: 600px;
   margin-bottom: 2.5rem;
   line-height: 1.7;
-  color: var(--color-text-secondary);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .btn-outline-white {
@@ -231,7 +252,7 @@
    LE JOURNAL
    ============================= */
 .journal-section {
-  padding: 0 0 8rem;
+  padding: 6rem 0 8rem;
 }
 
 .journal-grid {
