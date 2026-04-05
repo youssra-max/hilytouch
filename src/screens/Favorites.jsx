@@ -1,40 +1,46 @@
 "use client";
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Heart } from 'lucide-react';
+import { ArrowRight, Heart, Loader } from 'lucide-react';
 import Button from '../components/ui/Button';
 import ProductCard from '../components/ui/ProductCard';
+import { fetchWishlist, isAuthenticated } from '../lib/api';
 import './Favorites.css';
 
-const MOCK_FAVORITES = [
-  {
-    id: 1,
-    title: "Sérum Éclat Floral",
-    category: "Soins Visage",
-    price: "6 800 DA",
-    image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=800",
-    isNew: true
-  },
-  {
-    id: 3,
-    title: "Huile de Nuit Précieuse",
-    category: "Soins Visage",
-    price: "7 800 DA",
-    image: "https://images.unsplash.com/photo-1615397323214-bbd493e8202d?auto=format&fit=crop&q=80&w=800",
-    isNew: false
-  },
-  {
-    id: 4,
-    title: "Palette Regard Divin",
-    category: "Maquillage",
-    price: "12 800 DA",
-    image: "https://images.unsplash.com/photo-1512496115851-a1c8f13f56ce?auto=format&fit=crop&q=80&w=800",
-    isNew: true
-  }
-];
 
 const Favorites = () => {
-  const [favorites, setFavorites] = useState(MOCK_FAVORITES);
+  const [favorites, setFavorites] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  React.useEffect(() => {
+    if (!isAuthenticated()) {
+      window.location.href = '/auth';
+      return;
+    }
+
+    const loadFavorites = async () => {
+      try {
+        const data = await fetchWishlist();
+        setFavorites(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadFavorites();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="favorites-page container fade-in centered-loading">
+        <Loader className="spinner" />
+        <p>Chargement de vos favoris...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="favorites-page container fade-in">
@@ -55,15 +61,16 @@ const Favorites = () => {
         </div>
       ) : (
         <div className="favorites-grid">
-          {favorites.map(product => (
-            <div key={product.id} className="favorite-item-wrapper">
+          {favorites.map(item => (
+            <div key={item.id} className="favorite-item-wrapper">
                <ProductCard
-                 id={product.id}
-                 title={product.title}
-                 category={product.category}
-                 price={product.price}
-                 image={product.image}
-                 isNew={product.isNew}
+                 id={item.product.id}
+                 title={item.product.title}
+                 category={item.product.category_title}
+                 price={item.product.price}
+                 image={item.product.image}
+                 isNew={item.product.is_new}
+                 initialIsFav={true}
                />
             </div>
           ))}

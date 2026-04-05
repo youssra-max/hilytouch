@@ -2,7 +2,8 @@
 import React, { Suspense } from 'react';
 import Link from 'next/link';
 import { usePathname, useSearchParams, useRouter } from 'next/navigation';
-import { Search, Heart, ShoppingBag, User, Command } from 'lucide-react';
+import { Search, Heart, ShoppingBag, User, Command, LayoutDashboard } from 'lucide-react';
+import { isAuthenticated, fetchProfile } from '../../lib/api';
 import './Header.css';
 
 const CategoriesNav = () => {
@@ -35,6 +36,20 @@ const CategoriesNav = () => {
 };
 
 const Header = () => {
+  const [user, setUser] = React.useState(null);
+  const [isAuth, setIsAuth] = React.useState(false);
+
+  React.useEffect(() => {
+    const authStatus = isAuthenticated();
+    setIsAuth(authStatus);
+
+    if (authStatus) {
+      fetchProfile()
+        .then(data => setUser(data))
+        .catch(() => setIsAuth(false));
+    }
+  }, []);
+
   return (
     <header className="header">
       <div className="container header-container">
@@ -51,18 +66,34 @@ const Header = () => {
           <button type="submit" className="search-btn"><Search size={18} /></button>
         </form>
         <div className="header-actions">
-          <Link href="/partner" className="nav-action-btn">Devenir partenaire</Link>
-          <Link href="/auth" className="nav-action-text with-icon">
-            <User size={20} />
-            <span>Se connecter</span>
-          </Link>
+          {user?.is_partner ? (
+            <Link href="/partner/dashboard" className="nav-action-btn highlighted">
+              <LayoutDashboard size={16} />
+              <span>Dashboard Partenaire</span>
+            </Link>
+          ) : (
+            <Link href="/partner" className="nav-action-btn">Devenir partenaire</Link>
+          )}
+
+          {isAuth ? (
+            <Link href="/dashboard" className="nav-action-text with-icon">
+              <User size={20} />
+              <span>Mon Compte</span>
+            </Link>
+          ) : (
+            <Link href="/auth" className="nav-action-text with-icon">
+              <User size={20} />
+              <span>Se connecter</span>
+            </Link>
+          )}
+
           <Link href="/favorites" className="icon-btn">
             <Heart size={20} />
-            <span className="cart-badge">3</span>
+            <span className="cart-badge">0</span>
           </Link>
           <Link href="/cart" className="icon-btn">
             <ShoppingBag size={20} />
-            <span className="cart-badge">2</span>
+            <span className="cart-badge">0</span>
           </Link>
         </div>
       </div>

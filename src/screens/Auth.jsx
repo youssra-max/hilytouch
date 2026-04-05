@@ -2,11 +2,58 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Mail, Lock, User, ArrowRight } from 'lucide-react';
+import { loginUser, registerUser } from '../lib/api';
 import './Auth.css';
 
 const Auth = () => {
+  const router = useRouter();
   const [isLogin, setIsLogin] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [form, setForm] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    password2: '',
+  });
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+    setError('');
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+
+    try {
+      if (isLogin) {
+        await loginUser(form.email, form.password);
+      } else {
+        if (form.password !== form.password2) {
+          setError('Les mots de passe ne correspondent pas.');
+          setLoading(false);
+          return;
+        }
+        await registerUser({
+          firstName: form.firstName,
+          lastName: form.lastName,
+          email: form.email,
+          password: form.password,
+          password2: form.password2,
+        });
+      }
+      // Success — redirect to home
+      router.push('/');
+    } catch (err) {
+      setError(err.message || 'Une erreur est survenue.');
+    }
+    setLoading(false);
+  };
 
   return (
     <div className="auth-page">
@@ -39,33 +86,35 @@ const Auth = () => {
             <div className="auth-tabs">
               <button 
                 className={`auth-tab ${isLogin ? 'active' : ''}`}
-                onClick={() => setIsLogin(true)}
+                onClick={() => { setIsLogin(true); setError(''); }}
               >
                 Connexion
               </button>
               <button 
                 className={`auth-tab ${!isLogin ? 'active' : ''}`}
-                onClick={() => setIsLogin(false)}
+                onClick={() => { setIsLogin(false); setError(''); }}
               >
                 Inscription
               </button>
             </div>
 
-            <form className="auth-form" onSubmit={(e) => e.preventDefault()}>
+            {error && <p className="form-error" style={{ color: '#e74c3c', marginBottom: '1rem', fontSize: '0.9rem' }}>{error}</p>}
+
+            <form className="auth-form" onSubmit={handleSubmit}>
               {!isLogin && (
                 <div className="form-row">
                   <div className="input-group">
                     <label>Prénom</label>
                     <div className="input-with-icon">
                       <User size={18} className="input-icon" />
-                      <input type="text" placeholder="Votre prénom" />
+                      <input type="text" name="firstName" value={form.firstName} onChange={handleChange} placeholder="Votre prénom" required />
                     </div>
                   </div>
                   <div className="input-group">
                     <label>Nom</label>
                     <div className="input-with-icon">
                       <User size={18} className="input-icon" />
-                      <input type="text" placeholder="Votre nom" />
+                      <input type="text" name="lastName" value={form.lastName} onChange={handleChange} placeholder="Votre nom" required />
                     </div>
                   </div>
                 </div>
@@ -75,7 +124,7 @@ const Auth = () => {
                 <label>Email</label>
                 <div className="input-with-icon">
                   <Mail size={18} className="input-icon" />
-                  <input type="email" placeholder="votre@email.com" />
+                  <input type="email" name="email" value={form.email} onChange={handleChange} placeholder="votre@email.com" required />
                 </div>
               </div>
 
@@ -83,7 +132,7 @@ const Auth = () => {
                 <label>Mot de passe</label>
                 <div className="input-with-icon">
                   <Lock size={18} className="input-icon" />
-                  <input type="password" placeholder="••••••••" />
+                  <input type="password" name="password" value={form.password} onChange={handleChange} placeholder="••••••••" required />
                 </div>
                 {isLogin && (
                   <Link href="/auth/forgot-password" className="forgot-password-link">
@@ -97,14 +146,16 @@ const Auth = () => {
                   <label>Confirmer le mot de passe</label>
                   <div className="input-with-icon">
                     <Lock size={18} className="input-icon" />
-                    <input type="password" placeholder="••••••••" />
+                    <input type="password" name="password2" value={form.password2} onChange={handleChange} placeholder="••••••••" required />
                   </div>
                 </div>
               )}
 
-              <button className="auth-submit-btn">
-                {isLogin ? 'Se connecter' : 'Créer mon compte'}
-                <ArrowRight size={18} />
+              <button className="auth-submit-btn" disabled={loading}>
+                {loading
+                  ? 'Chargement...'
+                  : isLogin ? 'Se connecter' : 'Créer mon compte'}
+                {!loading && <ArrowRight size={18} />}
               </button>
             </form>
 
