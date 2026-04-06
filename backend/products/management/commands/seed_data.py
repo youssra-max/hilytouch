@@ -28,7 +28,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         if options['clear']:
-            self.stdout.write('🗑️  Clearing existing data...')
+            self.stdout.write('Clearing existing data...')
             Product.objects.all().delete()
             Category.objects.all().delete()
             BlogPost.objects.all().delete()
@@ -39,12 +39,12 @@ class Command(BaseCommand):
         self._seed_blog()
         self._seed_faq()
 
-        self.stdout.write(self.style.SUCCESS('\n✅ Database seeded successfully!'))
+        self.stdout.write(self.style.SUCCESS('\nDatabase seeded successfully!'))
 
     def _seed_categories(self):
         file_path = DATA_DIR / 'categories.json'
         if not file_path.exists():
-            self.stdout.write(self.style.WARNING(f'⚠️  {file_path} not found, skipping.'))
+            self.stdout.write(self.style.WARNING(f'Warning: {file_path} not found, skipping.'))
             return
 
         with open(file_path, 'r', encoding='utf-8') as f:
@@ -65,12 +65,12 @@ class Command(BaseCommand):
             if created:
                 count += 1
 
-        self.stdout.write(f'📁 Categories: {count} created, {len(data) - count} updated')
+        self.stdout.write(f'Categories: {count} created, {len(data) - count} updated')
 
     def _seed_products(self):
         file_path = DATA_DIR / 'products.json'
         if not file_path.exists():
-            self.stdout.write(self.style.WARNING(f'⚠️  {file_path} not found, skipping.'))
+            self.stdout.write(self.style.WARNING(f'Warning: {file_path} not found, skipping.'))
             return
 
         with open(file_path, 'r', encoding='utf-8') as f:
@@ -84,7 +84,7 @@ class Command(BaseCommand):
                 category = Category.objects.get(slug=category_slug)
             except Category.DoesNotExist:
                 self.stdout.write(
-                    self.style.WARNING(f'  ⚠️  Category "{category_slug}" not found for product "{item["title"]}"')
+                    self.style.WARNING(f'  Warning: Category "{category_slug}" not found for product "{item["title"]}"')
                 )
                 continue
 
@@ -109,12 +109,12 @@ class Command(BaseCommand):
             if created:
                 count += 1
 
-        self.stdout.write(f'🛍️  Products: {count} created, {len(data) - count} updated')
+        self.stdout.write(f'Products: {count} created, {len(data) - count} updated')
 
     def _seed_blog(self):
         file_path = DATA_DIR / 'blog.json'
         if not file_path.exists():
-            self.stdout.write(self.style.WARNING(f'⚠️  {file_path} not found, skipping.'))
+            self.stdout.write(self.style.WARNING(f'Warning: {file_path} not found, skipping.'))
             return
 
         with open(file_path, 'r', encoding='utf-8') as f:
@@ -138,12 +138,12 @@ class Command(BaseCommand):
             if created:
                 count += 1
 
-        self.stdout.write(f'📝 Blog posts: {count} created, {len(data) - count} updated')
+        self.stdout.write(f'Blog posts: {count} created, {len(data) - count} updated')
 
     def _seed_faq(self):
         file_path = DATA_DIR / 'faq.json'
         if not file_path.exists():
-            self.stdout.write(self.style.WARNING(f'⚠️  {file_path} not found, skipping.'))
+            self.stdout.write(self.style.WARNING(f'Warning: {file_path} not found, skipping.'))
             return
 
         with open(file_path, 'r', encoding='utf-8') as f:
@@ -163,4 +163,4 @@ class Command(BaseCommand):
             if created:
                 count += 1
 
-        self.stdout.write(f'❓ FAQs: {count} created, {len(data) - count} updated')
+        self.stdout.write(f'FAQs: {count} created, {len(data) - count} updated')

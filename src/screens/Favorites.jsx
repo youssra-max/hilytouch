@@ -11,15 +11,17 @@ import './Favorites.css';
 const Favorites = () => {
   const [favorites, setFavorites] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [error, setError] = useState(null);
 
   React.useEffect(() => {
-    if (!isAuthenticated()) {
-      window.location.href = '/auth';
-      return;
-    }
+    const checkAuth = async () => {
+      if (!isAuthenticated()) {
+        setIsLoggedIn(false);
+        setLoading(false);
+        return;
+      }
 
-    const loadFavorites = async () => {
       try {
         const data = await fetchWishlist();
         setFavorites(data);
@@ -30,7 +32,7 @@ const Favorites = () => {
       }
     };
 
-    loadFavorites();
+    checkAuth();
   }, []);
 
   if (loading) {
@@ -38,6 +40,21 @@ const Favorites = () => {
       <div className="favorites-page container fade-in centered-loading">
         <Loader className="spinner" />
         <p>Chargement de vos favoris...</p>
+      </div>
+    );
+  }
+
+  if (!isLoggedIn) {
+    return (
+      <div className="favorites-page container fade-in unauth-view">
+        <h1 className="favorites-title-unauth">Mes favoris</h1>
+        <div className="unauth-content">
+          <p className="unauth-text-bold">Commence à remplir votre liste des favoris !</p>
+          <p className="unauth-text">Connectez-vous pour enregistrer et partager vos produits et articles préférés.</p>
+          <Link href="/auth">
+            <Button className="btn-black mt-6">Me connecter</Button>
+          </Link>
+        </div>
       </div>
     );
   }

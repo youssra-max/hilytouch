@@ -33,7 +33,7 @@ def seed_wilayas():
         )
         if created:
             count += 1
-    print(f"✅ successfully seeded {count} wilayas!")
+    print(f"successfully seeded {count} wilayas!")
 
 if __name__ == '__main__':
     seed_wilayas()
