@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import Link from 'next/link';
-import { Heart, Check } from 'lucide-react';
+import { Heart, Check, ArrowLeftRight } from 'lucide-react';
 import { addToWishlist, removeFromWishlist, isAuthenticated } from '../../lib/api';
 import './ProductCard.css';
 
@@ -47,11 +47,25 @@ const ProductCard = ({ id = 1, image, title, category, price, isNew, initialIsFa
                 e.stopPropagation();
                 // To be wired with cart later
               }}>Ajouter au panier</button>
+              
+              <button 
+                className="btn-compare"
+                title="Comparer ce produit"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  window.location.href = '/compare';
+                }}
+              >
+                <ArrowLeftRight size={18} />
+              </button>
+
               <button 
                 className={`btn-fav ${isFav ? 'active' : ''}`} 
                 onClick={toggleWishlist}
                 disabled={loading}
                 aria-label="Ajouter aux favoris"
+                title="Ajouter aux favoris"
               >
                 <Heart size={18} fill={isFav ? "currentColor" : "none"} />
               </button>

@@ -7,6 +7,8 @@ import heroDiagImg from '../assets/hero-diag.jpg';
 import { fetchProducts } from '../lib/api';
 import './Home.css';
 
+import BeautyBot from '../components/ui/BeautyBot';
+
 const Home = () => {
   const [featuredProducts, setFeaturedProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -49,14 +51,48 @@ const Home = () => {
             <div className="diag-image-main">
               <img src={heroDiagImg.src || heroDiagImg} alt="Diagnostic beauté" />
             </div>
-
           </div>
         </div>
       </section>
 
+      <div className="container" style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem' }}>
+        <BeautyBot />
+      </div>
+
       <div className="container">
         <hr className="layout-divider" />
       </div>
+
+      {/* Infinite Marquee Marques Partenaires */}
+      <section className="partners-banner-home container">
+        <div className="partners-header">
+          <p className="subtitle">L'ÉLITE LOCALE</p>
+          <div className="partners-title-row">
+            <h2>Nos Marques <span className="highlight-text">Partenaires</span></h2>
+            <a href="/shop" className="view-all-partners">DÉCOUVRIR TOUTES LES MARQUES +</a>
+          </div>
+        </div>
+        <div className="marquee-wrapper">
+          <div className="marquee-content">
+            {/* Set 1 */}
+            <span className="partner-logo-marquee">LUMIÈRE</span>
+            <span className="partner-logo-marquee">ESSENCE</span>
+            <span className="partner-logo-marquee">DZBEAUTY</span>
+            <span className="partner-logo-marquee">PURE</span>
+            <span className="partner-logo-marquee">FLORE</span>
+            <span className="partner-logo-marquee">HILY</span>
+            <span className="partner-logo-marquee">SAHARA ROSE</span>
+            {/* Set 2 (Duplicate for continuous scroll effect) */}
+            <span className="partner-logo-marquee">LUMIÈRE</span>
+            <span className="partner-logo-marquee">ESSENCE</span>
+            <span className="partner-logo-marquee">DZBEAUTY</span>
+            <span className="partner-logo-marquee">PURE</span>
+            <span className="partner-logo-marquee">FLORE</span>
+            <span className="partner-logo-marquee">HILY</span>
+            <span className="partner-logo-marquee">SAHARA ROSE</span>
+          </div>
+        </div>
+      </section>
 
       {/* Section 2: Les Incontournables — fetched from API */}
       <section className="incontournables container">
@@ -104,12 +140,12 @@ const Home = () => {
           </article>
           <article className="journal-card journal-card--accent">
             <div className="journal-img">
-              <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2070&auto=format&fit=crop" alt="Naturel" />
+              <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2070&auto=format&fit=crop" alt="Maquillage" />
             </div>
             <div className="journal-body">
               <span className="journal-date">20 MARS 2026</span>
-              <h3>Pourquoi passer au bio est le meilleur cadeau pour votre peau</h3>
-              <a href="/blog/bienfaits-bio" className="link-rose">Lire l'article <ArrowRight size={14} /></a>
+              <h3>Les tendances maquillage indispensables de cette saison</h3>
+              <a href="/blog/tendances-maquillage" className="link-rose">Lire l'article <ArrowRight size={14} /></a>
             </div>
           </article>
         </div>
@@ -119,7 +155,7 @@ const Home = () => {
       <section className="promo-image-section fade-in">
         <div className="promo-image-overlay">
           <h2>L'expérience <em>Hilytouch</em></h2>
-          <p>Découvrez l'harmonie parfaite entre les trésors botaniques et la science cosmétique, pour révéler l'éclat authentique de votre peau.</p>
+          <p>Fondée par quatre cofondatrices passionnées, unies pour révéler l'excellence algérienne.</p>
           <a href="/about" className="btn-outline-white">
             Découvrir notre histoire
           </a>

@@ -26,7 +26,7 @@ const Blog = () => {
         <div className="page-header-simple">
           <p className="subtitle">LE JOURNAL</p>
           <h1>Notre Blog Beauté</h1>
-          <p className="page-desc">Conseils, rituels et inspirations pour sublimer votre beauté naturelle au quotidien.</p>
+          <p className="page-desc">Découvrez les dernières tendances, astuces et inspirations pour explorer toutes les facettes de votre beauté, des soins au quotidien jusqu'au maquillage audacieux.</p>
         </div>
 
         {/* Featured article */}

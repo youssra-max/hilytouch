@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import { Heart, Leaf, Globe, Award, Users, Sparkles } from 'lucide-react';
+import { Heart, Users, Sparkles, ShieldCheck } from 'lucide-react';
 import './About.css';
 
 const About = () => {
@@ -10,82 +10,67 @@ const About = () => {
       <section className="about-hero">
         <div className="container">
           <p className="subtitle">NOTRE HISTOIRE</p>
-          <h1>L'art de la beauté <em>naturelle</em></h1>
+          <h1>Quatre voix, une même <em>vision</em></h1>
           <p className="about-hero-desc">
-            Hilytouch est né d'une conviction profonde : la beauté authentique naît de l'harmonie entre la nature et le savoir-faire artisanal. Depuis notre création, nous façonnons des soins d'exception qui célèbrent la singularité de chaque peau.
+            Tout a commencé par une ambition partagée. Nous sommes quatre jeunes femmes algériennes, unies par une passion commune : mettre en lumière la véritable beauté de notre pays et le talent de ceux qui la subliment.
           </p>
         </div>
       </section>
 
-      {/* Mission */}
+      {/* Story Content */}
       <section className="about-mission container">
         <div className="mission-grid">
           <div className="mission-image">
-            <img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=1974&auto=format&fit=crop" alt="Notre mission" />
+            <img src="https://images.unsplash.com/photo-1522335789183-b1522032f32a?q=80&w=1974&auto=format&fit=crop" alt="L'équipe Hilytouch" />
           </div>
           <div className="mission-text">
-            <p className="subtitle">NOTRE MISSION</p>
-            <h2>Révéler votre éclat <em>unique</em></h2>
-            <p>Chez Hilytouch, nous croyons que chaque femme mérite des soins formulés avec intégrité. Nos formules associent les trésors botaniques les plus rares à la recherche scientifique de pointe, pour offrir des résultats visibles tout en respectant votre peau et notre planète.</p>
-            <p>Chaque produit est développé dans notre laboratoire français, testé dermatologiquement et certifié cruelty-free.</p>
+            <h2>L'écrin de l'excellence <em>algérienne</em></h2>
+            <p>
+              En observant notre marché, nous avons fait un constat simple. L'Algérie regorge de trésors naturels exceptionnels et de créateurs passionnés, mais il manquait un espace de confiance pour les réunir. Un écrin élégant, digne de leur savoir-faire, où les consommateurs pourraient faire leurs achats en toute sécurité.
+            </p>
+            <p>
+              C'est de cette volonté qu'est née <strong>Hilytouch</strong>.
+            </p>
+            <p>
+              Plus qu'une simple marketplace, Hilytouch est le fruit de notre engagement envers l'excellence locale. Nous avons imaginé un lieu unique, pensé par des femmes pour toutes les beautés, où se rencontrent les meilleures marques officielles et les artisans de la cosmétique naturelle et bio.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Values */}
+      {/* Detailed Story */}
       <section className="about-values container">
-        <div className="section-head centered">
-          <p className="subtitle">NOS VALEURS</p>
-          <h2>Ce qui nous guide</h2>
-        </div>
-        <div className="values-grid">
+        <div className="values-grid" style={{ gridTemplateColumns: '1fr 1fr' }}>
           <div className="value-card">
-            <Leaf size={32} />
-            <h3>Naturalité</h3>
-            <p>95% d'ingrédients d'origine naturelle minimum dans chacune de nos formules.</p>
-          </div>
-          <div className="value-card">
-            <Heart size={32} />
-            <h3>Éthique</h3>
-            <p>Cruelty-free, commerce équitable et sourcing responsable de nos matières premières.</p>
-          </div>
-          <div className="value-card">
-            <Globe size={32} />
-            <h3>Durabilité</h3>
-            <p>Emballages recyclables, production éco-responsable et bilan carbone neutre.</p>
-          </div>
-          <div className="value-card">
-            <Award size={32} />
-            <h3>Excellence</h3>
-            <p>Formules développées par des experts en cosmétologie et testées dermatologiquement.</p>
+            <ShieldCheck size={32} />
+            <h3>Notre Mission au Quotidien</h3>
+            <p>
+              Sélectionner avec la plus grande rigueur le meilleur du "Made in Algeria". Nous vérifions chaque partenaire pour vous offrir une transparence totale et des produits authentiques, sûrs et respectueux de votre peau.
+            </p>
           </div>
           <div className="value-card">
             <Users size={32} />
-            <h3>Inclusivité</h3>
-            <p>Des soins pour tous les types de peau, toutes les carnations, tous les âges.</p>
-          </div>
-          <div className="value-card">
-            <Sparkles size={32} />
-            <h3>Innovation</h3>
-            <p>R&D continue pour fusionner le meilleur de la nature avec la science cosmétique.</p>
+            <h3>Force Féminine</h3>
+            <p>
+              Derrière chaque produit que vous découvrez ici se cache le travail acharné d'un créateur local. Et derrière Hilytouch, il y a quatre femmes déterminées à faire rayonner ce talent.
+            </p>
           </div>
         </div>
       </section>
-
       {/* Team */}
-      <section className="about-team container">
+      <section className="about-team container" style={{ paddingBottom: '6rem' }}>
         <div className="section-head centered">
           <p className="subtitle">NOTRE ÉQUIPE</p>
-          <h2>Les visages derrière Hilytouch</h2>
+          <h2>Les visages derrière <em>Hilytouch</em></h2>
         </div>
         <div className="team-grid">
           <div className="team-card">
             <h3>Imene Guenfoud</h3>
-            <p className="team-role">Fondatrice & Directrice Créative</p>
+            <p className="team-role">Directrice Créative & Technique</p>
           </div>
           <div className="team-card">
             <h3>Dr. Hanane Belhadj</h3>
-            <p className="team-role">Directrice Recherche & Développement</p>
+            <p className="team-role">Directrice Financière & Stratégique</p>
           </div>
           <div className="team-card">
             <h3>Yousra Sedjlmaci</h3>
@@ -94,30 +79,6 @@ const About = () => {
           <div className="team-card">
             <h3>Lilya Taleb</h3>
             <p className="team-role">Directrice Opérations & Logistique</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Numbers */}
-      <section className="about-numbers">
-        <div className="container">
-          <div className="numbers-grid">
-            <div className="number-item">
-              <span className="number">10K+</span>
-              <p>Diagnostics réalisés</p>
-            </div>
-            <div className="number-item">
-              <span className="number">50+</span>
-              <p>Références produits</p>
-            </div>
-            <div className="number-item">
-              <span className="number">95%</span>
-              <p>Ingrédients naturels</p>
-            </div>
-            <div className="number-item">
-              <span className="number">4.8★</span>
-              <p>Note moyenne clients</p>
-            </div>
           </div>
         </div>
       </section>

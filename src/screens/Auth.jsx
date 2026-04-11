@@ -168,9 +168,9 @@ const Auth = () => {
                 <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google" />
                 Google
               </button>
-              <button className="social-btn apple-btn">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple" />
-                Apple
+              <button className="social-btn facebook-btn">
+                <img src="https://img.icons8.com/fluent/24/000000/facebook-new.png" alt="Facebook" />
+                Facebook
               </button>
             </div>
 

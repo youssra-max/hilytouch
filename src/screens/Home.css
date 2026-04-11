@@ -11,6 +11,80 @@
   padding-bottom: 0;
 }
 
+/* MARQUEE MARQUES PARTENAIRES */
+.partners-banner-home {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+.partners-banner-home .partners-header {
+  margin-bottom: 2rem;
+}
+.partners-banner-home .partners-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.partners-banner-home h2 {
+  font-size: 2.2rem;
+  margin: 0;
+}
+.partners-banner-home .highlight-text {
+  color: var(--color-accent);
+  font-style: italic;
+  font-weight: 400;
+  font-family: var(--font-serif);
+}
+.partners-banner-home .view-all-partners {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.marquee-wrapper {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  position: relative;
+  padding: 1rem 0;
+  /* Add subtle mask gradient for smooth fade at edges */
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee-content {
+  display: inline-block;
+  animation: scroll-marquee 20s linear infinite;
+}
+
+.marquee-content:hover {
+  animation-play-state: paused;
+}
+
+.partner-logo-marquee {
+  display: inline-block;
+  margin: 0 3rem;
+  font-size: 1.8rem;
+  font-weight: 800;
+  font-family: var(--font-sans);
+  color: var(--color-text-primary);
+  opacity: 0.3;
+  letter-spacing: 0.05em;
+  transition: opacity 0.3s, color 0.3s;
+  cursor: pointer;
+}
+
+.partner-logo-marquee:hover {
+  opacity: 1;
+  color: var(--color-accent);
+}
+
+@keyframes scroll-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* Scrolls exactly half the width (which is perfectly 1 set) */
+}
+
 /* == Shared == */
 .label-rose {
   display: inline-block;
@@ -216,12 +290,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(28, 20, 17, 0.85); /* Solid dark elegant background */
   padding: 4rem 3rem;
   border-radius: 12px;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--color-gold); /* Gold frame */
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
   max-width: 750px;
 }
 

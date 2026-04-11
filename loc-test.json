@@ -1,0 +1,122 @@
+{
+  "wilaya": {
+    "id": 1,
+    "code": "1",
+    "name": "Adrar",
+    "name_ar": "أدرار"
+  },
+  "communes": [
+    {
+      "id": 1,
+      "code": "01000",
+      "name": "Adrar",
+      "name_ar": "أدرار",
+      "daira_id": 1
+    },
+    {
+      "id": 2,
+      "code": "01023",
+      "name": "Bouda",
+      "name_ar": "بودة",
+      "daira_id": 1
+    },
+    {
+      "id": 3,
+      "code": "01025",
+      "name": "Ouled Ahmed Timmi",
+      "name_ar": "أولاد أحمد تيمي",
+      "daira_id": 1
+    },
+    {
+      "id": 4,
+      "code": "01003",
+      "name": "Aoulef",
+      "name_ar": "أولف",
+      "daira_id": 2
+    },
+    {
+      "id": 5,
+      "code": "01031",
+      "name": "Tit",
+      "name_ar": "تيت",
+      "daira_id": 2
+    },
+    {
+      "id": 6,
+      "code": "01041",
+      "name": "Timekten",
+      "name_ar": "تيمقتن",
+      "daira_id": 2
+    },
+    {
+      "id": 7,
+      "code": "01044",
+      "name": "Akabli",
+      "name_ar": "اقبلي",
+      "daira_id": 2
+    },
+    {
+      "id": 8,
+      "code": "01004",
+      "name": "Reggane",
+      "name_ar": "رقان",
+      "daira_id": 3
+    },
+    {
+      "id": 9,
+      "code": "01009",
+      "name": "Sali",
+      "name_ar": "سالي",
+      "daira_id": 3
+    },
+    {
+      "id": 10,
+      "code": "01007",
+      "name": "Zaouiet Kounta",
+      "name_ar": "زاوية كنتة",
+      "daira_id": 4
+    },
+    {
+      "id": 11,
+      "code": "01047",
+      "name": "In Zghmir",
+      "name_ar": "إن زغمير",
+      "daira_id": 4
+    },
+    {
+      "id": 12,
+      "code": "01008",
+      "name": "Fenoughil",
+      "name_ar": "فنوغيل",
+      "daira_id": 5
+    },
+    {
+      "id": 13,
+      "code": "01020",
+      "name": "Tamest",
+      "name_ar": "تامست",
+      "daira_id": 5
+    },
+    {
+      "id": 14,
+      "code": "01021",
+      "name": "Tamantit",
+      "name_ar": "تامنطيط",
+      "daira_id": 5
+    },
+    {
+      "id": 15,
+      "code": "01011",
+      "name": "Tsabit",
+      "name_ar": "تسابيت",
+      "daira_id": 6
+    },
+    {
+      "id": 16,
+      "code": "01022",
+      "name": "Sebaa",
+      "name_ar": "السبع",
+      "daira_id": 6
+    }
+  ]
+}

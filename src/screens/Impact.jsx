@@ -20,11 +20,11 @@ const Impact = () => {
         <div className="pillar">
           <div className="pillar-icon"><TreePine size={40} /></div>
           <div className="pillar-content">
-            <h2>Sourcing éthique</h2>
-            <p>Nos ingrédients sont sourcés auprès de communautés locales dans le respect du commerce équitable. Nous travaillons directement avec des coopératives au Maroc, au Burkina Faso et à Madagascar pour le karité, l'argan et la vanille.</p>
+            <h2>Sourcing 100% Local</h2>
+            <p>Notre place de marché est exclusivement dédiée aux créateurs et marques algériennes. Nous mettons en lumière le patrimoine botanique de notre pays, des huiles de figue de barbarie des hauts plateaux aux plantes médicinales du Sahara.</p>
             <div className="pillar-stat">
               <span className="stat-number">100%</span>
-              <span className="stat-label">de nos matières premières issues du commerce équitable</span>
+              <span className="stat-label">de nos marques et artisans sont Algériens</span>
             </div>
           </div>
         </div>
@@ -32,11 +32,11 @@ const Impact = () => {
         <div className="pillar pillar--reverse">
           <div className="pillar-icon"><Recycle size={40} /></div>
           <div className="pillar-content">
-            <h2>Zéro déchet en 2027</h2>
-            <p>Nous nous engageons vers un modèle zéro déchet. Nos emballages sont en verre recyclé et en carton FSC. Nous avons éliminé 90% du plastique de notre chaîne de production depuis 2024.</p>
+            <h2>Éco-responsabilité</h2>
+            <p>Nous encourageons nos partenaires locaux à utiliser des emballages recyclables et à adopter des circuits de livraison courts (de la Wilaya du producteur directement chez vous), afin de minimiser notre empreinte carbone nationale.</p>
             <div className="pillar-stat">
-              <span className="stat-number">90%</span>
-              <span className="stat-label">de réduction du plastique depuis 2024</span>
+              <span className="stat-number">Circuit Court</span>
+              <span className="stat-label">du producteur algérien au consommateur</span>
             </div>
           </div>
         </div>
@@ -44,11 +44,11 @@ const Impact = () => {
         <div className="pillar">
           <div className="pillar-icon"><Droplets size={40} /></div>
           <div className="pillar-content">
-            <h2>Préservation de l'eau</h2>
-            <p>Nos procédés de fabrication consomment 60% d'eau en moins que l'industrie cosmétique conventionnelle. Nous investissons dans des systèmes de recyclage d'eau en circuit fermé.</p>
+            <h2>Qualité Authentique</h2>
+            <p>Nous veillons à ce que chaque produit vendu sur Hilytouch soit issu de procédés respectueux et artisanaux, garantissant une pureté exceptionnelle sans produits chimiques agressifs.</p>
             <div className="pillar-stat">
-              <span className="stat-number">-60%</span>
-              <span className="stat-label">de consommation d'eau vs l'industrie</span>
+              <span className="stat-number">Pur</span>
+              <span className="stat-label">sans additifs industriels importés</span>
             </div>
           </div>
         </div>
@@ -56,43 +56,16 @@ const Impact = () => {
         <div className="pillar pillar--reverse">
           <div className="pillar-icon"><Heart size={40} /></div>
           <div className="pillar-content">
-            <h2>Engagement communautaire</h2>
-            <p>1% de notre chiffre d'affaires est reversé à des associations qui œuvrent pour l'éducation des femmes dans les régions productrices de nos matières premières.</p>
+            <h2>Promotion du Made in Algeria</h2>
+            <p>De la petite coopérative qui extrait l'huile de figue de barbarie au grand laboratoire algérien développant du maquillage certifié, Hilytouch s'engage à offrir une plateforme digitale puissante pour propulser toutes les marques de notre pays.</p>
             <div className="pillar-stat">
-              <span className="stat-number">1%</span>
-              <span className="stat-label">du CA reversé pour l'éducation des femmes</span>
+              <span className="stat-number">Digital</span>
+              <span className="stat-label">un tremplin pour le formidable potentiel des cosmétiques locaux</span>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="impact-certifications container">
-        <div className="section-head centered">
-          <h2>Nos certifications</h2>
-        </div>
-        <div className="certifications-grid">
-          <div className="cert-card">
-            <span className="cert-icon">🌿</span>
-            <h3>COSMOS Organic</h3>
-            <p>Certification bio européenne</p>
-          </div>
-          <div className="cert-card">
-            <span className="cert-icon">🐰</span>
-            <h3>Leaping Bunny</h3>
-            <p>Cruelty-free certifié</p>
-          </div>
-          <div className="cert-card">
-            <span className="cert-icon">♻️</span>
-            <h3>B Corp</h3>
-            <p>Entreprise à impact positif</p>
-          </div>
-          <div className="cert-card">
-            <span className="cert-icon">🌍</span>
-            <h3>1% for the Planet</h3>
-            <p>Membre depuis 2024</p>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };

@@ -2,7 +2,7 @@
 import React, { Suspense } from 'react';
 import Link from 'next/link';
 import { usePathname, useSearchParams, useRouter } from 'next/navigation';
-import { Search, Heart, ShoppingBag, User, Command, LayoutDashboard } from 'lucide-react';
+import { Search, Heart, ShoppingBag, User, Command, LayoutDashboard, ArrowLeftRight } from 'lucide-react';
 import { isAuthenticated, fetchProfile } from '../../lib/api';
 import './Header.css';
 
@@ -57,22 +57,34 @@ const Header = () => {
           <Command size={28} strokeWidth={1.5} />
           hilytouch
         </Link>
-        <form className="search-bar" onSubmit={(e) => { e.preventDefault(); }}>
+        <form className="search-bar" onSubmit={(e) => { 
+          e.preventDefault(); 
+          const query = e.target.search.value;
+          if (query.trim()) {
+            router.push(`/shop?search=${encodeURIComponent(query)}`);
+          }
+        }}>
           <input 
             type="text" 
+            name="search"
             placeholder="Rechercher un produit, une marque..." 
             className="search-input"
           />
           <button type="submit" className="search-btn"><Search size={18} /></button>
         </form>
         <div className="header-actions">
+          <Link href="/compare" className="nav-action-text with-icon" style={{ marginRight: '1rem', color: 'var(--color-gold)' }}>
+            <ArrowLeftRight size={18} />
+            <span>Comparer</span>
+          </Link>
+
           {user?.is_partner ? (
-            <Link href="/partner/dashboard" className="nav-action-btn highlighted">
+            <Link href="/seller/dashboard" className="nav-action-btn highlighted">
               <LayoutDashboard size={16} />
               <span>Dashboard Partenaire</span>
             </Link>
           ) : (
-            <Link href="/partner" className="nav-action-btn">Devenir partenaire</Link>
+            <Link href="/seller/register" className="nav-action-btn">Compte partenaire</Link>
           )}
 
           {isAuth ? (

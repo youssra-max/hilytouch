@@ -41,11 +41,6 @@ const CategoryDetail = () => {
         <div className="breadcrumbs">Accueil &gt; Catégories &gt; {category.title}</div>
         <div className="cat-title-row">
           <h1 className="page-title">{category.title}<span className="dot">.</span></h1>
-          <div className="cat-tags">
-            {category.tags.map((tag, i) => (
-              <span key={i} className="tag">{tag}</span>
-            ))}
-          </div>
         </div>
         <p className="page-desc">{category.description}</p>
       </div>
@@ -88,13 +83,25 @@ const CategoryDetail = () => {
             <a href="#" className="view-all-partners">DÉCOUVRIR TOUTES LES MARQUES +</a>
           </div>
         </div>
-        <div className="partners-logos">
-          <div className="partner-logo">LUMIÈRE</div>
-          <div className="partner-logo">ESSENCE</div>
-          <div className="partner-logo">BOTANIC</div>
-          <div className="partner-logo">PURE</div>
-          <div className="partner-logo">FLORE</div>
-          <div className="partner-logo">HILY</div>
+        <div className="marquee-wrapper">
+          <div className="marquee-content">
+            {/* Set 1 */}
+            <span className="partner-logo-marquee">LUMIÈRE</span>
+            <span className="partner-logo-marquee">ESSENCE</span>
+            <span className="partner-logo-marquee">DZBEAUTY</span>
+            <span className="partner-logo-marquee">PURE</span>
+            <span className="partner-logo-marquee">FLORE</span>
+            <span className="partner-logo-marquee">HILY</span>
+            <span className="partner-logo-marquee">SAHARA ROSE</span>
+            {/* Set 2 */}
+            <span className="partner-logo-marquee">LUMIÈRE</span>
+            <span className="partner-logo-marquee">ESSENCE</span>
+            <span className="partner-logo-marquee">DZBEAUTY</span>
+            <span className="partner-logo-marquee">PURE</span>
+            <span className="partner-logo-marquee">FLORE</span>
+            <span className="partner-logo-marquee">HILY</span>
+            <span className="partner-logo-marquee">SAHARA ROSE</span>
+          </div>
         </div>
       </div>
     </div>

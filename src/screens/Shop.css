@@ -2,12 +2,14 @@
   padding-top: 4rem;
   padding-bottom: 4rem;
 }
+
 .page-title {
   font-size: 3.5rem;
   margin-bottom: 1rem;
   color: var(--color-text-primary);
   letter-spacing: -0.02em;
 }
+
 .page-desc {
   font-size: 1.15rem;
   color: var(--color-text-secondary);
@@ -15,6 +17,7 @@
   line-height: 1.6;
   margin-bottom: 3rem;
 }
+
 .shop-toolbar {
   display: flex;
   justify-content: space-between;
@@ -36,6 +39,7 @@
   letter-spacing: 0.1em;
   padding: 0;
 }
+
 .btn-show-filters:hover {
   color: var(--color-gold);
 }
@@ -45,6 +49,7 @@
   color: var(--color-text-secondary);
   cursor: pointer;
 }
+
 .sort-by strong {
   color: var(--color-text-primary);
   margin-left: 0.2rem;
@@ -74,6 +79,7 @@
   cursor: pointer;
   transition: opacity 0.3s;
 }
+
 .clickable:hover {
   opacity: 0.8;
 }
@@ -165,6 +171,7 @@
     border-right: none;
     padding-right: 0;
   }
+
   .brand-section:nth-child(even) {
     padding-left: 0;
   }
@@ -215,18 +222,22 @@
   align-items: center;
   gap: 2rem;
 }
+
 .newsletter-banner h2 {
   font-size: 2rem;
   margin-bottom: 0.5rem;
 }
+
 .newsletter-banner p {
   color: var(--color-text-secondary);
   font-size: 1.05rem;
 }
+
 .newsletter-form-inline {
   display: flex;
   gap: 0.5rem;
 }
+
 .newsletter-form-inline input {
   padding: 0.8rem 1.5rem;
   border: none;
@@ -235,6 +246,7 @@
   font-size: 1rem;
   outline: none;
 }
+
 .newsletter-form-inline .btn {
   border-radius: 8px;
 }

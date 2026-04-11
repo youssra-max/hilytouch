@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChevronDown, ChevronUp, ChevronLeft } from 'lucide-react';
 import './FilterSidebar.css';
 
@@ -20,49 +20,67 @@ const FilterSection = ({ title, children, defaultOpen = false }) => {
   );
 };
 
-const PriceRangeSlider = ({ min = 0, max = 150 }) => {
-  const [minVal, setMinVal] = useState(0);
-  const [maxVal, setMaxVal] = useState(98);
+const PriceRangeSlider = ({ min = 0, max = 50000, value, onChange }) => {
+  const [minVal, setMinVal] = useState(value[0]);
+  const [maxVal, setMaxVal] = useState(value[1]);
+
+  useEffect(() => {
+    setMinVal(value[0]);
+    setMaxVal(value[1]);
+  }, [value]);
 
   const handleMinChange = (e) => {
-    const value = Math.min(Number(e.target.value), maxVal - 1);
-    setMinVal(value);
+    const v = Math.min(Number(e.target.value), maxVal - 100);
+    setMinVal(v);
   };
   const handleMaxChange = (e) => {
-    const value = Math.max(Number(e.target.value), minVal + 1);
-    setMaxVal(value);
+    const v = Math.max(Number(e.target.value), minVal + 100);
+    setMaxVal(v);
+  };
+
+  const triggerChange = () => {
+    onChange([minVal, maxVal]);
   };
 
   return (
     <div className="price-range-container">
       <div className="price-labels">
         <div className="price-label">
-          <input type="text" value={`${minVal} €`} readOnly />
+          <input type="text" value={`${minVal.toLocaleString()} DA`} readOnly />
         </div>
         <div className="price-label">
-          <input type="text" value={`${maxVal} €`} readOnly />
+          <input type="text" value={`${maxVal.toLocaleString()} DA`} readOnly />
         </div>
       </div>
       <div className="price-slider-wrapper">
         <div className="price-slider-track"></div>
         <div
           className="price-slider-fill"
-          style={{ left: `${(minVal / max) * 100}%`, right: `${100 - (maxVal / max) * 100}%` }}
+          style={{ 
+            left: `${(minVal / max) * 100}%`, 
+            right: `${100 - (maxVal / max) * 100}%` 
+          }}
         ></div>
         <input
           type="range"
           min={min}
           max={max}
+          step="100"
           value={minVal}
           onChange={handleMinChange}
+          onMouseUp={triggerChange}
+          onTouchEnd={triggerChange}
           className="price-slider-input thumb-left"
         />
         <input
           type="range"
           min={min}
           max={max}
+          step="100"
           value={maxVal}
           onChange={handleMaxChange}
+          onMouseUp={triggerChange}
+          onTouchEnd={triggerChange}
           className="price-slider-input thumb-right"
         />
       </div>
@@ -70,7 +88,7 @@ const PriceRangeSlider = ({ min = 0, max = 150 }) => {
   );
 };
 
-const FilterSidebar = ({ onClose, activeCategory, onCategoryChange }) => {
+const FilterSidebar = ({ onClose, activeCategory, onCategoryChange, priceRange, onPriceChange }) => {
   const categories = [
     { id: 'all', label: 'Tous les produits' },
     { id: 'soins-visage', label: 'Soins Visage' },
@@ -105,21 +123,18 @@ const FilterSidebar = ({ onClose, activeCategory, onCategoryChange }) => {
           </ul>
         </FilterSection>
 
-        <FilterSection title="PRIX">
-          <PriceRangeSlider min={0} max={150} />
+        <FilterSection title="PRIX" defaultOpen={true}>
+          <PriceRangeSlider 
+            min={0} 
+            max={50000} 
+            value={priceRange || [0, 50000]} 
+            onChange={onPriceChange} 
+          />
         </FilterSection>
 
         <FilterSection title="NOUVEAUTÉS & TENDANCES">
           <ul className="filter-list">
-            <li><button className="filter-item-btn">Nouveautés (Produits Récents)</button></li>
-            <li><button className="filter-item-btn">Bestsellers</button></li>
-          </ul>
-        </FilterSection>
-
-        <FilterSection title="NOTES">
-          <ul className="filter-list">
-            <li><button className="filter-item-btn">★★★★★</button></li>
-            <li><button className="filter-item-btn">★★★★☆ et plus</button></li>
+            <li><button className="filter-item-btn" onClick={() => onCategoryChange('new')}>Nouveautés</button></li>
           </ul>
         </FilterSection>
 
