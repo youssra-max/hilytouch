@@ -15,13 +15,21 @@ import {
   Trash2,
   AlertCircle,
   CheckCircle2,
-  Printer
+  Printer,
+  TrendingUp,
+  TrendingDown,
+  DollarSign,
+  PackageCheck,
+  AlertTriangle,
+  ArrowUpRight,
+  ArrowDownRight
 } from 'lucide-react';
 
 export default function SellerDashboard() {
   const [activeTab, setActiveTab] = useState('overview');
   const [vacationMode, setVacationMode] = useState(false);
   const [isAddingProduct, setIsAddingProduct] = useState(false);
+  const [statsPeriod, setStatsPeriod] = useState('mois');
 
   // MOCKS
   const products = [
@@ -32,9 +40,31 @@ export default function SellerDashboard() {
 
   const orders = [
     { id: "CMD-1042", client: "Amina B.", location: "16 - Alger (Hydra)", products: 2, total: "7700 DZD", status: "attente" },
-    { id: "CMD-1041", client: "Yasmine S.", location: "31 - Oran (Centre)", products: 1, total: "3200 DZD", status: "preparation" },
     { id: "CMD-1040", client: "Sarah M.", location: "06 - Béjaïa", products: 3, total: "10500 DZD", status: "expediee" },
   ];
+
+  const analyticsMock = {
+    revenue: "1 245 500 DZD",
+    avgCart: "8 450 DZD",
+    returnRate: "2.4%",
+    cancelRate: "1.8%",
+    stockValue: "4 250 000 DZD",
+    stockOutRate: "5%",
+    salesGrowth: "+15.4%",
+    topProducts: [
+      { id: 1, name: "Sérum Anti-Âge Global", sales: 142, revenue: "639 000", stock: 12 },
+      { id: 3, name: "Huile Scintillante Corps", sales: 89, revenue: "249 200", stock: 45 },
+      { id: 5, name: "Masque Argile Pure", sales: 76, revenue: "167 200", stock: 20 },
+      { id: 8, name: "Brume Hydratante", sales: 64, revenue: "140 800", stock: 8 },
+      { id: 10, name: "Savon Artisanal Olive", sales: 52, revenue: "41 600", stock: 100 }
+    ],
+    slowMovers: [
+      { id: 12, name: "Crème Mains Lavande", lastSale: "22 jours", stock: 65 },
+      { id: 15, name: "Baume Lèvres Coco", lastSale: "18 jours", stock: 120 },
+      { id: 22, name: "Gommage Pieds Menthe", lastSale: "45 jours", stock: 30 }
+    ],
+    chartData: [20, 35, 25, 45, 30, 55, 65, 50, 75, 80, 70, 90] // Simple points for SVG
+  };
 
   /* ------------ RENDER TABS ------------ */
 
@@ -275,32 +305,175 @@ export default function SellerDashboard() {
   const renderStats = () => (
     <div className="tab-content fade-in">
       <div className="dashboard-header">
-        <h2>Statistiques & Rapports</h2>
-        <select className="filter-select">
-          <option>Ce mois-ci</option>
-          <option>Cette année</option>
-          <option>Tout le temps</option>
-        </select>
-      </div>
-
-      <div className="chart-placeholder">
-        <BarChart3 size={48} color="var(--color-gold)" />
-        <p>Graphique d'évolution du CA (Intégration Recharts à venir)</p>
-      </div>
-
-      <div className="stats-grid">
-        <div className="stats-box">
-          <h3>Top 3 Produits les plus vendus</h3>
-          <ol className="top-list">
-            <li>1. Sérum Anti-Âge Global (142 ventes)</li>
-            <li>2. Huile Scintillante Corps (89 ventes)</li>
-            <li>3. Crème de Jour Aloe Vera (64 ventes)</li>
-          </ol>
+        <div className="title-stack">
+          <h2>Statistiques Analytiques</h2>
+          <p className="sub-text">Analysez vos performances pour optimiser votre boutique.</p>
         </div>
-        <div className="stats-box commissions">
-          <h3>Commissions Hilytouch</h3>
-          <p>Montant prélevé ce mois : <strong>21 825 DZD</strong> (15%)</p>
-          <a href="#" className="link-text">Voir le détail du reversement</a>
+        <div className="header-filters">
+          <select 
+            className="filter-select" 
+            value={statsPeriod} 
+            onChange={(e) => setStatsPeriod(e.target.value)}
+          >
+            <option value="jour">Aujourd'hui</option>
+            <option value="semaine">Cette Semaine</option>
+            <option value="mois">Ce Mois</option>
+            <option value="annee">Cette Année</option>
+          </select>
+        </div>
+      </div>
+
+      {/* Row 1: KPI Grid */}
+      <div className="analytics-kpi-grid">
+        <div className="stat-card">
+          <div className="stat-header">
+            <DollarSign size={20} className="icon-gold" />
+            <span>Chiffre d'Affaires</span>
+          </div>
+          <div className="stat-value">{analyticsMock.revenue}</div>
+          <div className="stat-trend positive">
+            <TrendingUp size={14} /> {analyticsMock.salesGrowth} vs période précédente
+          </div>
+        </div>
+        <div className="stat-card">
+          <div className="stat-header">
+            <ShoppingCart size={20} className="icon-blue" />
+            <span>Panier Moyen</span>
+          </div>
+          <div className="stat-value">{analyticsMock.avgCart}</div>
+          <div className="stat-trend neutral">Stable ce mois</div>
+        </div>
+        <div className="stat-card">
+          <div className="stat-header">
+            <ArrowUpRight size={20} className="icon-red" />
+            <span>Taux de retour</span>
+          </div>
+          <div className="stat-value">{analyticsMock.returnRate}</div>
+          <div className="stat-trend negative">
+            <ArrowUpRight size={14} /> +0.2% hausse légère
+          </div>
+        </div>
+        <div className="stat-card">
+          <div className="stat-header">
+            <AlertCircle size={20} className="icon-gray" />
+            <span>Taux d'annulation</span>
+          </div>
+          <div className="stat-value">{analyticsMock.cancelRate}</div>
+          <div className="stat-trend positive">
+            <ArrowDownRight size={14} /> -1.1% amélioration
+          </div>
+        </div>
+      </div>
+
+      {/* Row 2: Sales Chart */}
+      <div className="chart-container-large">
+        <div className="chart-header-row">
+          <h3>Évolution des ventes</h3>
+          <div className="chart-legend">
+            <span className="legend-item"><span className="dot current"></span> Ventes (DZD)</span>
+          </div>
+        </div>
+        <div className="custom-chart-wrapper">
+          <svg viewBox="0 0 1000 300" className="analytical-svg">
+            <defs>
+              <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="var(--color-gold)" stopOpacity="0.3" />
+                <stop offset="100%" stopColor="var(--color-gold)" stopOpacity="0" />
+              </linearGradient>
+            </defs>
+            {/* Grid Lines */}
+            <line x1="0" y1="50" x2="1000" y2="50" stroke="#f0f0f0" />
+            <line x1="0" y1="150" x2="1000" y2="150" stroke="#f0f0f0" />
+            <line x1="0" y1="250" x2="1000" y2="250" stroke="#f0f0f0" />
+            
+            {/* Area */}
+            <path 
+              d={`M 0 300 L ${analyticsMock.chartData.map((d, i) => `${i * 90} ${300 - d * 2.5}`).join(' L ')} L 1000 300 Z`} 
+              fill="url(#chartGradient)"
+            />
+            {/* Main Line */}
+            <path 
+              d={`M ${analyticsMock.chartData.map((d, i) => `${i * 90} ${300 - d * 2.5}`).join(' L ')}`} 
+              fill="none" 
+              stroke="var(--color-gold)" 
+              strokeWidth="4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            {/* Data Points */}
+            {analyticsMock.chartData.map((d, i) => (
+              <circle key={i} cx={i * 90} cy={300 - d * 2.5} r="6" fill="white" stroke="var(--color-gold)" strokeWidth="3" />
+            ))}
+          </svg>
+          <div className="chart-x-axis">
+            <span>Jan</span><span>Fév</span><span>Mar</span><span>Avr</span><span>Mai</span><span>Juin</span>
+            <span>Juil</span><span>Août</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Déc</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Row 3: Product Performance & Inventory */}
+      <div className="analytics-grid-secondary">
+        <div className="performance-box">
+          <div className="box-header">
+            <h3>Top des ventes</h3>
+            <span className="badge-outline">Unités vendues</span>
+          </div>
+          <div className="top-products-list">
+            {analyticsMock.topProducts.map((p, idx) => (
+              <div key={p.id} className="top-product-item">
+                <div className="p-rank">{idx + 1}</div>
+                <div className="p-info">
+                  <span className="p-name">{p.name}</span>
+                  <span className="p-rev">{p.revenue} DA de CA</span>
+                </div>
+                <div className="p-bar-container">
+                  <div className="p-bar" style={{ width: `${(p.sales / 150) * 100}%` }}></div>
+                </div>
+                <div className="p-count">{p.sales}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="inventory-analytics-stack">
+          <div className="stats-box inventory-box">
+            <div className="box-header">
+              <h3>Analyse des Stocks</h3>
+            </div>
+            <div className="inventory-metrics">
+              <div className="inv-metric-row">
+                <div className="inv-label">Valeur financière du stock</div>
+                <div className="inv-val">{analyticsMock.stockValue}</div>
+              </div>
+              <div className="inv-metric-row">
+                <div className="inv-label">Taux de rupture critique</div>
+                <div className="inv-val text-red">{analyticsMock.stockOutRate}</div>
+              </div>
+              <div className="inv-progress-bar">
+                <div className="progress-fill warning" style={{ width: analyticsMock.stockOutRate }}></div>
+              </div>
+              <p className="tiny-text mt-1 text-orange"><AlertTriangle size={12} /> 2 produits phares sont proches de la rupture.</p>
+            </div>
+          </div>
+
+          <div className="stats-box rotation-box">
+            <div className="box-header">
+              <h3>Rotation lente</h3>
+              <span className="tiny-text">Alerte liquidation</span>
+            </div>
+            <div className="slow-movers-list">
+              {analyticsMock.slowMovers.map(sm => (
+                <div key={sm.id} className="slow-mover-item">
+                  <div className="sm-info">
+                    <span className="sm-name">{sm.name}</span>
+                    <span className="sm-stock">{sm.stock} en stock</span>
+                  </div>
+                  <div className="sm-days">Dernière vente : {sm.lastSale}</div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>

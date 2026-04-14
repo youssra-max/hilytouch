@@ -138,15 +138,7 @@ const FilterSidebar = ({ onClose, activeCategory, onCategoryChange, priceRange, 
           </ul>
         </FilterSection>
 
-        <FilterSection title="TEINTES">
-          <ul className="filter-color-list">
-            <li><button className="color-swatch tooltip" style={{ backgroundColor: '#e6c8b3' }} aria-label="Porcelaine"></button></li>
-            <li><button className="color-swatch tooltip" style={{ backgroundColor: '#d6a383' }} aria-label="Sable"></button></li>
-            <li><button className="color-swatch tooltip" style={{ backgroundColor: '#b97a57' }} aria-label="Doré"></button></li>
-            <li><button className="color-swatch tooltip" style={{ backgroundColor: '#86503c' }} aria-label="Caramel"></button></li>
-            <li><button className="color-swatch tooltip" style={{ backgroundColor: '#522b1c' }} aria-label="Cacao"></button></li>
-          </ul>
-        </FilterSection>
+
       </div>
     </aside>
   );

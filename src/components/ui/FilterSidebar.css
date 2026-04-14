@@ -98,30 +98,7 @@
   font-weight: 600;
 }
 
-/* Color Swatches Grid for Teintes */
-.filter-color-list {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-  margin: 0;
-  padding: 0;
-}
 
-.color-swatch {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: 1px solid rgba(0,0,0,0.1);
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  padding: 0;
-}
-
-.color-swatch:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
 
 /* Price Range Slider */
 .price-range-container {

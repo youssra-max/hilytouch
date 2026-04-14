@@ -29,7 +29,7 @@ const Home = () => {
     <div className="home-page fade-in">
 
       {/* Section 1: Diagnostique Peau (Hero) */}
-      <section className="hero-diag">
+      <section className="framed-section-container hero-diag">
         <div className="container hero-diag-grid">
           <div className="hero-diag-text">
             <span className="label-rose">Nouveau</span>
@@ -64,90 +64,96 @@ const Home = () => {
       </div>
 
       {/* Infinite Marquee Marques Partenaires */}
-      <section className="partners-banner-home container">
-        <div className="partners-header">
-          <p className="subtitle">L'ÉLITE LOCALE</p>
-          <div className="partners-title-row">
-            <h2>Nos Marques <span className="highlight-text">Partenaires</span></h2>
-            <a href="/shop" className="view-all-partners">DÉCOUVRIR TOUTES LES MARQUES +</a>
+      <section className="framed-section-container partners-banner-home">
+        <div className="container">
+          <div className="partners-header">
+            <p className="subtitle">L'ÉLITE LOCALE</p>
+            <div className="partners-title-row">
+              <h2>Nos Marques <span className="highlight-text">Partenaires</span></h2>
+              <a href="/shop" className="view-all-partners">DÉCOUVRIR TOUTES LES MARQUES +</a>
+            </div>
           </div>
-        </div>
-        <div className="marquee-wrapper">
-          <div className="marquee-content">
-            {/* Set 1 */}
-            <span className="partner-logo-marquee">LUMIÈRE</span>
-            <span className="partner-logo-marquee">ESSENCE</span>
-            <span className="partner-logo-marquee">DZBEAUTY</span>
-            <span className="partner-logo-marquee">PURE</span>
-            <span className="partner-logo-marquee">FLORE</span>
-            <span className="partner-logo-marquee">HILY</span>
-            <span className="partner-logo-marquee">SAHARA ROSE</span>
-            {/* Set 2 (Duplicate for continuous scroll effect) */}
-            <span className="partner-logo-marquee">LUMIÈRE</span>
-            <span className="partner-logo-marquee">ESSENCE</span>
-            <span className="partner-logo-marquee">DZBEAUTY</span>
-            <span className="partner-logo-marquee">PURE</span>
-            <span className="partner-logo-marquee">FLORE</span>
-            <span className="partner-logo-marquee">HILY</span>
-            <span className="partner-logo-marquee">SAHARA ROSE</span>
+          <div className="marquee-wrapper">
+            <div className="marquee-content">
+              {/* Set 1 */}
+              <span className="partner-logo-marquee">LUMIÈRE</span>
+              <span className="partner-logo-marquee">ESSENCE</span>
+              <span className="partner-logo-marquee">DZBEAUTY</span>
+              <span className="partner-logo-marquee">PURE</span>
+              <span className="partner-logo-marquee">FLORE</span>
+              <span className="partner-logo-marquee">HILY</span>
+              <span className="partner-logo-marquee">SAHARA ROSE</span>
+              {/* Set 2 (Duplicate for continuous scroll effect) */}
+              <span className="partner-logo-marquee">LUMIÈRE</span>
+              <span className="partner-logo-marquee">ESSENCE</span>
+              <span className="partner-logo-marquee">DZBEAUTY</span>
+              <span className="partner-logo-marquee">PURE</span>
+              <span className="partner-logo-marquee">FLORE</span>
+              <span className="partner-logo-marquee">HILY</span>
+              <span className="partner-logo-marquee">SAHARA ROSE</span>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Section 2: Les Incontournables — fetched from API */}
-      <section className="incontournables container">
-        <div className="section-head">
-          <div>
-            <h2>Les incontournables</h2>
-            <p>La sélection plébiscitée par notre communauté.</p>
+      <section className="framed-section-container incontournables">
+        <div className="container">
+          <div className="section-head">
+            <div>
+              <h2>Les incontournables</h2>
+              <p>La sélection plébiscitée par notre communauté.</p>
+            </div>
+            <a href="/shop" className="link-rose">Voir tout <ArrowRight size={14} /></a>
           </div>
-          <a href="/shop" className="link-rose">Voir tout <ArrowRight size={14} /></a>
-        </div>
-        <div className="products-grid">
-          {loading ? (
-            <p className="loading-text">Chargement des produits...</p>
-          ) : (
-            featuredProducts.map(prod => (
-              <ProductCard
-                key={prod.id}
-                id={prod.id}
-                title={prod.title}
-                category={prod.category}
-                price={prod.priceFormatted}
-                image={prod.image}
-                isNew={prod.isNew}
-              />
-            ))
-          )}
+          <div className="products-grid">
+            {loading ? (
+              <p className="loading-text">Chargement des produits...</p>
+            ) : (
+              featuredProducts.map(prod => (
+                <ProductCard
+                  key={prod.id}
+                  id={prod.id}
+                  title={prod.title}
+                  category={prod.category}
+                  price={prod.priceFormatted}
+                  image={prod.image}
+                  isNew={prod.isNew}
+                />
+              ))
+            )}
+          </div>
         </div>
       </section>
 
       {/* Section 3: Le Journal */}
-      <section className="journal-section container">
-        <div className="section-head centered">
-          <h2>Le Journal</h2>
-        </div>
-        <div className="journal-grid">
-          <article className="journal-card">
-            <div className="journal-img">
-              <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?q=80&w=1974&auto=format&fit=crop" alt="Routine Matin" />
-            </div>
-            <div className="journal-body">
-              <span className="journal-date">24 MARS 2026</span>
-              <h3>Les 5 rituels pour un réveil lumineux</h3>
-              <a href="/blog/rituels-matin" className="link-rose">Lire l'article <ArrowRight size={14} /></a>
-            </div>
-          </article>
-          <article className="journal-card journal-card--accent">
-            <div className="journal-img">
-              <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2070&auto=format&fit=crop" alt="Maquillage" />
-            </div>
-            <div className="journal-body">
-              <span className="journal-date">20 MARS 2026</span>
-              <h3>Les tendances maquillage indispensables de cette saison</h3>
-              <a href="/blog/tendances-maquillage" className="link-rose">Lire l'article <ArrowRight size={14} /></a>
-            </div>
-          </article>
+      <section className="framed-section-container journal-section">
+        <div className="container">
+          <div className="section-head centered">
+            <h2>Le Journal</h2>
+          </div>
+          <div className="journal-grid">
+            <article className="journal-card">
+              <div className="journal-img">
+                <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?q=80&w=1974&auto=format&fit=crop" alt="Routine Matin" />
+              </div>
+              <div className="journal-body">
+                <span className="journal-date">24 MARS 2026</span>
+                <h3>Les 5 rituels pour un réveil lumineux</h3>
+                <a href="/blog/rituels-matin" className="link-rose">Lire l'article <ArrowRight size={14} /></a>
+              </div>
+            </article>
+            <article className="journal-card journal-card--accent">
+              <div className="journal-img">
+                <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2070&auto=format&fit=crop" alt="Maquillage" />
+              </div>
+              <div className="journal-body">
+                <span className="journal-date">20 MARS 2026</span>
+                <h3>Les tendances maquillage indispensables de cette saison</h3>
+                <a href="/blog/tendances-maquillage" className="link-rose">Lire l'article <ArrowRight size={14} /></a>
+              </div>
+            </article>
+          </div>
         </div>
       </section>
 

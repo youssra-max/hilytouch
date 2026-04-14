@@ -27,6 +27,7 @@
 .partners-banner-home h2 {
   font-size: 2.2rem;
   margin: 0;
+  color: var(--color-dark); /* Ensure contrast on white */
 }
 .partners-banner-home .highlight-text {
   color: var(--color-accent);
@@ -395,4 +396,60 @@
   margin: 0.5rem 0 1rem;
   font-weight: 500;
   font-style: italic;
+}
+
+/* =============================
+   FRAMED WHITE SECTIONS
+   ============================= */
+.framed-section-container {
+  background: #ffffff;
+  padding: 5rem 0; /* Vertical padding inside the white block */
+  margin: 4rem auto;
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(176, 141, 87, 0.1);
+}
+
+/* Diagonal Shine (Reflet) Effect */
+.framed-section-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0) 30%,
+    rgba(255, 255, 255, 0.8) 50%,
+    rgba(255, 255, 255, 0) 70%,
+    transparent 100%
+  );
+  transform: skewX(-25deg);
+  z-index: 5;
+  pointer-events: none;
+  animation: surfaceShine 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes surfaceShine {
+  0% { left: -150%; }
+  15% { left: 150%; }
+  100% { left: 150%; }
+}
+
+/* Adjustments for containers inside framing */
+.framed-section-container .container {
+  max-width: 1100px; /* Slightly tighter inside the frame for elegance */
+}
+
+/* Smooth transition when hovering a section */
+.framed-section-container {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.framed-section-container:hover {
+  box-shadow: 0 25px 80px rgba(176, 141, 87, 0.08);
 }

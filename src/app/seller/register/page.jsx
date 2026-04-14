@@ -17,7 +17,6 @@ export default function SellerRegisterPage() {
     passwordConfirm: '',
     wilaya_id: '',
     wilaya_name: '',
-    commune: '',
     address: '',
     legalNumber: '',
     nif: '',
@@ -33,9 +32,7 @@ export default function SellerRegisterPage() {
   // Get Wilayas dynamically
   const wilayas = getWilayas();
   
-  // Get Communes based on selected Wilaya ID
-  const rawCommunes = formData.wilaya_id ? getCommunesByWilayaId(parseInt(formData.wilaya_id)) : [];
-  const communes = rawCommunes || [];
+
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -46,8 +43,7 @@ export default function SellerRegisterPage() {
       setFormData({
         ...formData,
         wilaya_id: value,
-        wilaya_name: selectedWilaya ? `${selectedWilaya.code} - ${selectedWilaya.name}` : '',
-        commune: '' // Reset commune because wilaya changed
+        wilaya_name: selectedWilaya ? `${selectedWilaya.code} - ${selectedWilaya.name}` : ''
       });
       return;
     }
@@ -181,13 +177,7 @@ export default function SellerRegisterPage() {
                 {wilayas.map(w => <option key={w.id} value={w.id}>{w.code} - {w.name}</option>)}
               </select>
             </div>
-            <div className="form-group">
-              <label>Commune *</label>
-              <select name="commune" value={formData.commune} onChange={handleChange} required disabled={!formData.wilaya_id}>
-                <option value="">Sélectionner une commune</option>
-                {communes.map(c => <option key={c.id} value={c.name}>{c.name}</option>)}
-              </select>
-            </div>
+
           </div>
 
           <div className="form-group">

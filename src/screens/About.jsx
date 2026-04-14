@@ -69,11 +69,11 @@ const About = () => {
             <p className="team-role">Directrice Créative & Technique</p>
           </div>
           <div className="team-card">
-            <h3>Dr. Hanane Belhadj</h3>
+            <h3>Hanane Belhadj</h3>
             <p className="team-role">Directrice Financière & Stratégique</p>
           </div>
           <div className="team-card">
-            <h3>Yousra Sedjlmaci</h3>
+            <h3>Youssra Sedjelmaci</h3>
             <p className="team-role">Directrice Marketing & Communication</p>
           </div>
           <div className="team-card">

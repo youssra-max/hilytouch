@@ -9,20 +9,28 @@ import {
   Headset, 
   Landmark, 
   LayoutDashboard, 
-  BarChart, 
-  CheckCircle, 
-  XCircle, 
-  ShieldBan,
   Search,
   Eye,
   Edit,
   LogOut,
   CreditCard,
-  UserPlus
+  UserPlus,
+  TrendingUp,
+  TrendingDown,
+  DollarSign,
+  Activity,
+  PieChart,
+  ShoppingBag,
+  ArrowUpRight,
+  BarChart3,
+  ShieldBan,
+  CheckCircle,
+  XCircle
 } from 'lucide-react';
 
 export default function AdminDashboard() {
-  const [activeTab, setActiveTab] = useState('users');
+  const [activeTab, setActiveTab] = useState('stats');
+  const [statsPeriod, setStatsPeriod] = useState('mois');
 
   // MOCK DATA
   const [users, setUsers] = useState([
@@ -49,6 +57,35 @@ export default function AdminDashboard() {
     { seller: "Maison de Beauté Bio", pendingAmount: "45000 DZD", commission: "7940 DZD", status: "due" },
     { seller: "Naturel dz", pendingAmount: "12800 DZD", commission: "2250 DZD", status: "paid" },
   ];
+
+  const adminStatsMock = {
+    gmv: "14 850 000 DZD",
+    totalOrders: "1 245",
+    convRate: "3.2%",
+    activeSellers: 42,
+    newSellers: "+8",
+    totalCommissions: "2 227 500 DZD",
+    pendingPayouts: "3 450 000 DZD",
+    topSellers: [
+      { id: 1, name: "Maison de Beauté Bio", sales: 450, gmv: "2 150 000", disputeRate: "0.5%" },
+      { id: 2, name: "Luxe Cosmétiques", sales: 380, gmv: "1 840 000", disputeRate: "2.1%" },
+      { id: 3, name: "Naturel dz", sales: 310, gmv: "1 280 000", disputeRate: "1.2%" },
+      { id: 4, name: "Artisanal Care", sales: 245, gmv: "980 000", disputeRate: "0.0%" },
+      { id: 5, name: "BioSina", sales: 190, gmv: "840 000", disputeRate: "1.5%" }
+    ],
+    categories: [
+      { name: "Visage", percentage: 45, color: "#b08d57" },
+      { name: "Corps", percentage: 30, color: "#2c3e50" },
+      { name: "Cheveux", percentage: 15, color: "#8e44ad" },
+      { name: "Maquillage", percentage: 10, color: "#e74c3c" }
+    ],
+    topProducts: [
+      { name: "Sérum Anti-Âge Global", seller: "Maison de Beauté Bio", sales: 210 },
+      { name: "Huile Scintillante Corps", seller: "Naturel dz", sales: 185 },
+      { name: "Crème Hydratante Nuit", seller: "Luxe Cosmétiques", sales: 154 }
+    ],
+    revenueChart: [30, 45, 40, 65, 55, 80, 75, 95, 85, 110, 100, 130] // Points for SVG
+  };
 
   const handleRoleChange = (userId, newRole) => {
     setUsers(users.map(u => u.id === userId ? { ...u, role: newRole } : u));
@@ -372,6 +409,194 @@ export default function AdminDashboard() {
     </div>
   );
 
+  const renderStats = () => (
+    <div className="tab-content fade-in">
+      <div className="admin-header">
+        <div className="title-stack">
+          <h2>Tableau de Bord Stratégique</h2>
+          <p className="sub-text">Vision globale de la performance de la marketplace.</p>
+        </div>
+        <div className="header-filters">
+          <select 
+            className="filter-select" 
+            value={statsPeriod} 
+            onChange={(e) => setStatsPeriod(e.target.value)}
+          >
+            <option value="jour">Aujourd'hui</option>
+            <option value="semaine">Cette Semaine</option>
+            <option value="mois">Ce Mois</option>
+            <option value="annee">Cette Année</option>
+          </select>
+        </div>
+      </div>
+
+      {/* Row 1: Global Platform KPIs */}
+      <div className="admin-stats-kpi-grid">
+        <div className="admin-stat-card gmv">
+          <div className="as-header">
+            <Activity size={20} />
+            <span>Volume d'Affaires Global (GMV)</span>
+          </div>
+          <div className="as-value">{adminStatsMock.gmv}</div>
+          <div className="as-trend positive">
+            <TrendingUp size={14} /> +12.5% vs mois dernier
+          </div>
+        </div>
+        <div className="admin-stat-card orders">
+          <div className="as-header">
+            <ShoppingBag size={20} />
+            <span>Commandes Totales</span>
+          </div>
+          <div className="as-value">{adminStatsMock.totalOrders}</div>
+          <div className="as-trend positive">
+            <TrendingUp size={14} /> +5.2% croissance
+          </div>
+        </div>
+        <div className="admin-stat-card conv">
+          <div className="as-header">
+            <ArrowUpRight size={20} />
+            <span>Taux de conversion</span>
+          </div>
+          <div className="as-value">{adminStatsMock.convRate}</div>
+          <div className="as-trend neutral">Stable</div>
+        </div>
+        <div className="admin-stat-card sellers">
+          <div className="as-header">
+            <Users size={20} />
+            <span>Vendeurs Actifs</span>
+          </div>
+          <div className="as-value">{adminStatsMock.activeSellers}</div>
+          <div className="as-trend positive">
+            <TrendingUp size={14} /> {adminStatsMock.newSellers} ce mois
+          </div>
+        </div>
+      </div>
+
+      {/* Row 2: Financial Evolution & Categories */}
+      <div className="admin-stats-main-grid">
+        <div className="admin-chart-box">
+          <div className="box-header">
+            <h3>Évolution des Revenus Plateforme (Commissions)</h3>
+            <div className="as-revenue-val">{adminStatsMock.totalCommissions}</div>
+          </div>
+          <div className="as-chart-wrapper">
+             <svg viewBox="0 0 1000 300" className="admin-analytical-svg">
+              <defs>
+                <linearGradient id="adminChartGradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="var(--color-burgundy)" stopOpacity="0.2" />
+                  <stop offset="100%" stopColor="var(--color-burgundy)" stopOpacity="0" />
+                </linearGradient>
+              </defs>
+              <line x1="0" y1="50" x2="1000" y2="50" stroke="#f0f0f0" />
+              <line x1="0" y1="150" x2="1000" y2="150" stroke="#f0f0f0" />
+              <line x1="0" y1="250" x2="1000" y2="250" stroke="#f0f0f0" />
+              <path 
+                d={`M 0 300 L ${adminStatsMock.revenueChart.map((d, i) => `${i * 90} ${300 - d * 2}`).join(' L ')} L 1000 300 Z`} 
+                fill="url(#adminChartGradient)"
+              />
+              <path 
+                d={`M ${adminStatsMock.revenueChart.map((d, i) => `${i * 90} ${300 - d * 2}`).join(' L ')}`} 
+                fill="none" 
+                stroke="var(--color-burgundy)" 
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              {adminStatsMock.revenueChart.map((d, i) => (
+                <circle key={i} cx={i * 90} cy={300 - d * 2} r="5" fill="white" stroke="var(--color-burgundy)" strokeWidth="3" />
+              ))}
+            </svg>
+            <div className="as-chart-labels">
+              <span>J</span><span>F</span><span>M</span><span>A</span><span>M</span><span>J</span>
+              <span>J</span><span>A</span><span>S</span><span>O</span><span>N</span><span>D</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="admin-stats-box category-distribution">
+          <h3>Popularité des Catégories</h3>
+          <div className="as-pie-chart-sim">
+            <svg viewBox="0 0 100 100" className="as-svg-pie">
+              <circle cx="50" cy="50" r="40" fill="transparent" stroke="#b08d57" strokeWidth="20" strokeDasharray="45 100" strokeDashoffset="0" />
+              <circle cx="50" cy="50" r="40" fill="transparent" stroke="#2c3e50" strokeWidth="20" strokeDasharray="30 100" strokeDashoffset="-45" />
+              <circle cx="50" cy="50" r="40" fill="transparent" stroke="#8e44ad" strokeWidth="20" strokeDasharray="15 100" strokeDashoffset="-75" />
+              <circle cx="50" cy="50" r="40" fill="transparent" stroke="#e74c3c" strokeWidth="20" strokeDasharray="10 100" strokeDashoffset="-90" />
+            </svg>
+            <div className="as-pie-legend">
+              {adminStatsMock.categories.map(cat => (
+                <div key={cat.name} className="as-legend-item">
+                  <span className="dot" style={{ backgroundColor: cat.color }}></span>
+                  <span className="name">{cat.name}</span>
+                  <span className="percent">{cat.percentage}%</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Row 3: Seller Benchmarks & Global Products */}
+      <div className="admin-stats-grid-bottom">
+        <div className="admin-table-stat-box sellers-benchmark">
+          <div className="box-header-row">
+            <h3>Performances des Vendeurs</h3>
+            <span className="badge-gold">Top Performers</span>
+          </div>
+          <table className="as-table">
+            <thead>
+              <tr>
+                <th>Vendeur</th>
+                <th>Ventes</th>
+                <th>GMV (DA)</th>
+                <th>Taux Litiges</th>
+              </tr>
+            </thead>
+            <tbody>
+              {adminStatsMock.topSellers.map(s => (
+                <tr key={s.id}>
+                  <td><strong>{s.name}</strong></td>
+                  <td>{s.sales}</td>
+                  <td className="text-gold">{s.gmv}</td>
+                  <td>
+                    <span className={`as-litige-badge ${parseFloat(s.disputeRate) > 1.5 ? 'high' : 'low'}`}>
+                      {s.disputeRate}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div className="admin-table-stat-box global-products">
+          <div className="box-header-row">
+            <h3>Top Produits Global</h3>
+            <span className="badge-burgundy">Toutes boutiques</span>
+          </div>
+          <div className="as-global-products-list">
+            {adminStatsMock.topProducts.map((p, i) => (
+              <div key={i} className="as-global-product-item">
+                <div className="gp-rank">#{i + 1}</div>
+                <div className="gp-info">
+                  <span className="gp-name">{p.name}</span>
+                  <span className="gp-seller">{p.seller}</span>
+                </div>
+                <div className="gp-sales">{p.sales} v.</div>
+              </div>
+            ))}
+          </div>
+          <div className="payout-overview mt-4">
+             <div className="as-payout-card">
+                <div className="payout-label">Reversements en attente</div>
+                <div className="payout-val">{adminStatsMock.pendingPayouts}</div>
+                <button className="as-payout-btn">Gérer les paiements</button>
+             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <div className="admin-dashboard layout">
       {/* SIDEBAR SUPER ADMIN */}
@@ -381,6 +606,9 @@ export default function AdminDashboard() {
         </div>
         
         <nav className="sidebar-nav">
+          <button className={activeTab === 'stats' ? 'active' : ''} onClick={() => setActiveTab('stats')}>
+            <BarChart3 size={20} /> Statistiques
+          </button>
           <button className={activeTab === 'users' ? 'active' : ''} onClick={() => setActiveTab('users')}>
             <ShieldCheck size={20} /> Rôles & Équipe
           </button>
@@ -410,6 +638,7 @@ export default function AdminDashboard() {
 
       {/* MAIN CONTENT AREA */}
       <main className="dashboard-main admin-main-content">
+        {activeTab === 'stats' && renderStats()}
         {activeTab === 'users' && renderUsers()}
         {activeTab === 'sellers' && renderSellers()}
         {activeTab === 'products' && renderProducts()}

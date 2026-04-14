@@ -27,8 +27,8 @@ const Dashboard = () => {
   ];
 
   const mockAddresses = [
-    { id: 1, title: "Domicile", name: "Amina B.", phone: "0555 12 34 56", wilaya: "16 - Alger", commune: "Hydra", address: "Résidence Chaabani, Bâtiment C" },
-    { id: 2, title: "Bureau", name: "Amina B.", phone: "0770 98 76 54", wilaya: "31 - Oran", commune: "Oran Centre", address: "Rue Larbi Ben M'hidi, 2ème étage" },
+    { id: 1, title: "Domicile", name: "Amina B.", phone: "0555 12 34 56", wilaya: "16 - Alger", address: "Résidence Chaabani, Bâtiment C" },
+    { id: 2, title: "Bureau", name: "Amina B.", phone: "0770 98 76 54", wilaya: "31 - Oran", address: "Rue Larbi Ben M'hidi, 2ème étage" },
   ];
 
   const mockWishlist = [
@@ -91,7 +91,7 @@ const Dashboard = () => {
             <p><strong>{addr.name}</strong></p>
             <p>{addr.phone}</p>
             <p>{addr.address}</p>
-            <p>{addr.commune}, {addr.wilaya}</p>
+            <p>{addr.wilaya}</p>
             
             <div className="address-actions mt-2">
               <button className="btn-secondary small"><Edit2 size={16} /> Modifier</button>
