@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Dashboard.css';
 import { 
   LayoutDashboard, 
@@ -27,21 +27,70 @@ import {
 
 export default function SellerDashboard() {
   const [activeTab, setActiveTab] = useState('overview');
+  const [activeOrderTab, setActiveOrderTab] = useState('to_process');
+  const [searchQuery, setSearchQuery] = useState('');
   const [vacationMode, setVacationMode] = useState(false);
-  const [isAddingProduct, setIsAddingProduct] = useState(false);
-  const [statsPeriod, setStatsPeriod] = useState('mois');
-
-  // MOCKS
-  const products = [
-    { id: 1, name: "Sérum Anti-Âge Global", category: "Visage", price: "4500", stock: 12, badges: ["100% Naturel", "Vegan"] },
-    { id: 2, name: "Crème Hydratante Nuit", category: "Visage", price: "3200", stock: 0, badges: ["Vegan"] },
-    { id: 3, name: "Huile Scintillante Corps", category: "Corps", price: "2800", stock: 45, badges: ["100% Naturel", "Fait main"] },
+  
+  // Orders State
+  const initialOrders = [
+    { id: "1042", client: "Amina B.", seller: "Maison de Beauté Bio", location: "16 - Alger (Hydra)", products: 2, total: "7 700 DA", status: "attente", date: "11/04/2026" },
+    { id: "1040", client: "Sarah M.", seller: "Luxe Cosmétiques", location: "06 - Béjaïa", products: 3, total: "10 500 DA", status: "attente", date: "09/04/2026" },
+    { id: "1038", client: "Karim L.", seller: "BioSina", location: "31 - Oran", products: 1, total: "3 200 DA", status: "attente", date: "08/04/2026" },
+    { id: "1035", client: "Yasmine K.", seller: "Naturel dz", location: "25 - Constantine", products: 4, total: "14 200 DA", status: "attente", date: "07/04/2026" },
+    { id: "1032", client: "Omar T.", seller: "Artisanal Care", location: "16 - Alger", products: 2, total: "6 400 DA", status: "attente", date: "06/04/2026" },
+    { id: "1028", client: "Lila S.", seller: "Maison de Beauté Bio", location: "09 - Blida", products: 2, total: "8 900 DA", status: "preparation", date: "05/04/2026" },
+    { id: "1025", client: "Mehdi R.", seller: "Luxe Cosmétiques", location: "16 - Alger", products: 1, total: "4 500 DA", status: "prete", date: "04/04/2026" },
+    { id: "1020", client: "Sofia G.", seller: "Naturel dz", location: "31 - Oran", products: 3, total: "12 800 DA", status: "expediee", date: "03/04/2026" },
   ];
 
-  const orders = [
-    { id: "CMD-1042", client: "Amina B.", location: "16 - Alger (Hydra)", products: 2, total: "7700 DZD", status: "attente" },
-    { id: "CMD-1040", client: "Sarah M.", location: "06 - Béjaïa", products: 3, total: "10500 DZD", status: "expediee" },
-  ];
+  const [ordersList, setOrdersList] = useState([]);
+
+  // Load from Storage on Mount
+  useEffect(() => {
+    const savedOrders = localStorage.getItem('hilytouch_orders');
+    if (savedOrders) {
+      setOrdersList(JSON.parse(savedOrders));
+    } else {
+      setOrdersList(initialOrders);
+      localStorage.setItem('hilytouch_orders', JSON.stringify(initialOrders));
+    }
+
+    // Sync across tabs
+    const handleStorageChange = (e) => {
+      if (e.key === 'hilytouch_orders') {
+        setOrdersList(JSON.parse(e.newValue));
+      }
+    };
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, []);
+
+  const handleStatusChange = (orderId, newStatus) => {
+    const updated = ordersList.map(order => 
+      order.id === orderId ? { ...order, status: newStatus } : order
+    );
+    setOrdersList(updated);
+    localStorage.setItem('hilytouch_orders', JSON.stringify(updated));
+  };
+
+  const filteredOrders = ordersList.filter(order => {
+    // 1. Tab Filtering
+    const matchesTab = (() => {
+      if (activeOrderTab === 'to_process') return order.status === 'attente';
+      if (activeOrderTab === 'preparation') return order.status === 'preparation';
+      if (activeOrderTab === 'ready') return order.status === 'prete';
+      if (activeOrderTab === 'delivered') return order.status === 'expediee';
+      if (activeOrderTab === 'returns') return order.status === 'annulee';
+      return true;
+    })();
+
+    // 2. Search Filtering (ID or Client Name)
+    const matchesSearch = 
+      order.id.toLowerCase().includes(searchQuery.toLowerCase()) || 
+      order.client.toLowerCase().includes(searchQuery.toLowerCase());
+
+    return matchesTab && matchesSearch;
+  });
 
   const analyticsMock = {
     revenue: "1 245 500 DZD",
@@ -252,11 +301,51 @@ export default function SellerDashboard() {
 
   const renderOrders = () => (
     <div className="tab-content fade-in">
-      <div className="dashboard-header">
-        <h2>Mes Commandes</h2>
-        <div className="search-bar">
+      <div className="orders-page-header">
+        <h1 className="elegant-title">Mes Commandes</h1>
+        <p className="subtitle">Gérez et suivez le flux de vos ventes en temps réel.</p>
+      </div>
+
+      <div className="internal-nav">
+        <button 
+          className={activeOrderTab === 'to_process' ? 'active' : ''} 
+          onClick={() => setActiveOrderTab('to_process')}
+        >
+          À traiter <span className="tab-count">{ordersList.filter(o => o.status === 'attente').length}</span>
+        </button>
+        <button 
+          className={activeOrderTab === 'preparation' ? 'active' : ''} 
+          onClick={() => setActiveOrderTab('preparation')}
+        >
+          En préparation
+        </button>
+        <button 
+          className={activeOrderTab === 'ready' ? 'active' : ''} 
+          onClick={() => setActiveOrderTab('ready')}
+        >
+          Prêtes (Yalidine)
+        </button>
+        <button 
+          className={activeOrderTab === 'delivered' ? 'active' : ''} 
+          onClick={() => setActiveOrderTab('delivered')}
+        >
+          Livrées
+        </button>
+        <button 
+          className={activeOrderTab === 'returns' ? 'active' : ''} 
+          onClick={() => setActiveOrderTab('returns')}
+        >
+          Retours
+        </button>
+
+        <div className="nav-search">
           <Search size={18} />
-          <input type="text" placeholder="Rechercher une commande..." />
+          <input 
+            type="text" 
+            placeholder="Rechercher par ID ou client..." 
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
         </div>
       </div>
 
@@ -264,40 +353,54 @@ export default function SellerDashboard() {
         <table className="data-table">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Client / Lieu</th>
+              <th>ID Commande</th>
+              <th>Client / Destination</th>
+              <th>Articles</th>
               <th>Total</th>
               <th>Statut</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {orders.map(o => (
+            {filteredOrders.map(o => (
               <tr key={o.id}>
-                <td>{o.id}</td>
+                <td><span className="order-id">#{o.id}</span></td>
                 <td>
                   <strong>{o.client}</strong><br/>
                   <span className="sub-text">{o.location}</span>
                 </td>
-                <td>{o.total}</td>
+                <td>{o.products} articles</td>
+                <td><span className="amount">{o.total}</span></td>
                 <td>
-                  <select className={`status-select ${o.status}`} defaultValue={o.status}>
-                    <option value="attente">En attente</option>
+                  <select 
+                    className={`status-select-pill ${o.status}`}
+                    value={o.status}
+                    onChange={(e) => handleStatusChange(o.id, e.target.value)}
+                  >
+                    <option value="attente">À traiter</option>
                     <option value="preparation">En préparation</option>
-                    <option value="prete">Prête pour expédition</option>
-                    <option value="expediee">Expédiée</option>
+                    <option value="prete">Prête (Yalidine)</option>
+                    <option value="expediee">Livrée</option>
                     <option value="annulee">Annulée</option>
                   </select>
                 </td>
                 <td>
-                  <button className="btn-secondary small">
-                    <Printer size={16} /> Bon de livraison
-                  </button>
+                  <div className="actions-cell">
+                    <button className="icon-btn-view" title="Voir détails"><Edit2 size={16} /></button>
+                    <button className="icon-btn-print" title="Imprimer bon"><Printer size={16} /></button>
+                  </div>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
+        
+        {filteredOrders.length === 0 && (
+          <div className="empty-state">
+            <ShoppingCart size={40} />
+            <p>Aucune commande dans cette catégorie pour le moment.</p>
+          </div>
+        )}
       </div>
     </div>
   );

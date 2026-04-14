@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../seller/dashboard/Dashboard.css';
 import './Admin.css';
 import { 
@@ -47,11 +47,31 @@ export default function AdminDashboard() {
     { id: 2, name: "Luxe Cosmétiques", contact: "Karim B.", type: "Marque", doc: "registre-commerce.pdf", date: "Hier" },
   ];
 
-  const allOrders = [
-    { id: "CMD-1042", client: "Amina B.", seller: "Maison de Beauté Bio", total: "7700 DZD", status: "attente", date: "11/04/2026" },
-    { id: "CMD-1041", client: "Yasmine S.", seller: "Naturel dz", total: "3200 DZD", status: "preparation", date: "10/04/2026" },
-    { id: "CMD-1040", client: "Sarah M.", seller: "Luxe Cosmétiques", total: "10500 DZD", status: "expediee", date: "09/04/2026" },
-  ];
+  const [ordersList, setOrdersList] = useState([]);
+  
+  // Load from Storage on Mount
+  useEffect(() => {
+    const savedOrders = localStorage.getItem('hilytouch_orders');
+    if (savedOrders) {
+      setOrdersList(JSON.parse(savedOrders));
+    } else {
+      // If none, the Seller side will initialize it, 
+      // but let's provide a fallback here too
+      const initialOrders = [
+        { id: "1042", client: "Amina B.", seller: "Maison de Beauté Bio", location: "16 - Alger (Hydra)", products: 2, total: "7 700 DA", status: "attente", date: "11/04/2026" },
+        { id: "1040", client: "Sarah M.", seller: "Luxe Cosmétiques", location: "06 - Béjaïa", products: 3, total: "10 500 DA", status: "expediee", date: "09/04/2026" },
+      ];
+      setOrdersList(initialOrders);
+    }
+
+    const handleStorageChange = (e) => {
+      if (e.key === 'hilytouch_orders' && e.newValue) {
+        setOrdersList(JSON.parse(e.newValue));
+      }
+    };
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, []);
 
   const finances = [
     { seller: "Maison de Beauté Bio", pendingAmount: "45000 DZD", commission: "7940 DZD", status: "due" },
@@ -325,15 +345,20 @@ export default function AdminDashboard() {
             </tr>
           </thead>
           <tbody>
-            {allOrders.map(o => (
+            {ordersList.map(o => (
               <tr key={o.id}>
-                <td><strong>{o.id}</strong></td>
+                <td><strong>#{o.id}</strong></td>
                 <td>{o.client}</td>
                 <td>{o.seller}</td>
                 <td>{o.date}</td>
                 <td>{o.total}</td>
                 <td>
-                  <span className={`status-badge ${o.status !== 'annulee' ? 'success' : 'error'}`}>{o.status}</span>
+                  <span className={`status-badge ${o.status !== 'annulee' ? 'success' : 'error'}`}>
+                    {o.status === 'attente' ? 'À traiter' : 
+                     o.status === 'preparation' ? 'En préparation' :
+                     o.status === 'prete' ? 'Prête (Yalidine)' :
+                     o.status === 'expediee' ? 'Livrée' : 'Annulée'}
+                  </span>
                 </td>
                 <td className="actions-cell">
                   <button className="btn-secondary small">Détails / Gérer</button>
