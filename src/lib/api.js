@@ -3,6 +3,23 @@
 
 const DJANGO_API = 'http://localhost:8000/api';
 
+// ─── Helper: base fetch with error handling ────────
+async function apiFetch(url, options = {}) {
+  try {
+    return await fetch(url, options);
+  } catch (err) {
+    // If it's a network error (server down, CORS, etc.)
+    if (err instanceof TypeError || err.name === 'TypeError') {
+      console.error('Network Error:', err);
+      throw new Error(
+        'Impossible de contacter le serveur backend (http://localhost:8000/api). ' +
+        'Assurez-vous que le serveur Django est lancé.'
+      );
+    }
+    throw err;
+  }
+}
+
 // ─── Helper: get auth header ───────────────────────
 function getAuthHeaders() {
   const token = typeof window !== 'undefined' ? localStorage.getItem('access_token') : null;
@@ -75,7 +92,7 @@ export async function fetchProducts(filters = {}) {
   if (filters.minPrice) params.set('price__gte', filters.minPrice);
   if (filters.maxPrice) params.set('price__lte', filters.maxPrice);
 
-  const res = await fetch(`${DJANGO_API}/products/?${params.toString()}`);
+  const res = await apiFetch(`${DJANGO_API}/products/?${params.toString()}`);
   if (!res.ok) throw new Error('Erreur lors du chargement des produits');
   const data = await res.json();
 
@@ -85,14 +102,14 @@ export async function fetchProducts(filters = {}) {
 }
 
 export async function fetchProduct(id) {
-  const res = await fetch(`${DJANGO_API}/products/${id}/`);
+  const res = await apiFetch(`${DJANGO_API}/products/${id}/`);
   if (!res.ok) throw new Error('Produit non trouvé');
   const product = await res.json();
 
   // Also fetch related products (same category)
   let related = [];
   try {
-    const relRes = await fetch(
+    const relRes = await apiFetch(
       `${DJANGO_API}/products/?category=${product.category_id}&page_size=5`
     );
     if (relRes.ok) {
@@ -112,14 +129,14 @@ export async function fetchProduct(id) {
 
 // ─── Categories ────────────────────────────────────
 export async function fetchCategories() {
-  const res = await fetch(`${DJANGO_API}/categories/`);
+  const res = await apiFetch(`${DJANGO_API}/categories/`);
   if (!res.ok) throw new Error('Erreur lors du chargement des catégories');
   const data = await res.json();
   return data.map(normalizeCategory);
 }
 
 export async function fetchCategory(id) {
-  const res = await fetch(`${DJANGO_API}/categories/${id}/`);
+  const res = await apiFetch(`${DJANGO_API}/categories/${id}/`);
   if (!res.ok) throw new Error('Catégorie non trouvée');
   const data = await res.json();
   return {
@@ -130,7 +147,7 @@ export async function fetchCategory(id) {
 
 // ─── Blog ──────────────────────────────────────────
 export async function fetchBlogArticles() {
-  const res = await fetch(`${DJANGO_API}/blog/`);
+  const res = await apiFetch(`${DJANGO_API}/blog/`);
   if (!res.ok) throw new Error('Erreur lors du chargement des articles');
   const data = await res.json();
   const results = data.results || data;
@@ -138,7 +155,7 @@ export async function fetchBlogArticles() {
 }
 
 export async function fetchBlogArticle(slug) {
-  const res = await fetch(`${DJANGO_API}/blog/${slug}/`);
+  const res = await apiFetch(`${DJANGO_API}/blog/${slug}/`);
   if (!res.ok) throw new Error('Article non trouvé');
   const data = await res.json();
   return normalizeBlogPost(data);
@@ -147,7 +164,7 @@ export async function fetchBlogArticle(slug) {
 // ─── FAQ ───────────────────────────────────────────
 export async function fetchFAQ(category = null) {
   const params = category ? `?category=${encodeURIComponent(category)}` : '';
-  const res = await fetch(`${DJANGO_API}/faq/${params}`);
+  const res = await apiFetch(`${DJANGO_API}/faq/${params}`);
   if (!res.ok) throw new Error('Erreur lors du chargement de la FAQ');
   const data = await res.json();
 
@@ -159,7 +176,7 @@ export async function fetchFAQ(category = null) {
 
 // ─── Contact ───────────────────────────────────────
 export async function submitContact({ name, email, subject, message }) {
-  const res = await fetch(`${DJANGO_API}/contact/`, {
+  const res = await apiFetch(`${DJANGO_API}/contact/`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ name, email, subject, message }),
@@ -169,7 +186,7 @@ export async function submitContact({ name, email, subject, message }) {
 
 // ─── Order Tracking ────────────────────────────────
 export async function trackOrder({ orderNumber, email }) {
-  const res = await fetch(`${DJANGO_API}/tracking/`, {
+  const res = await apiFetch(`${DJANGO_API}/tracking/`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ order_number: orderNumber, email }),
@@ -179,7 +196,7 @@ export async function trackOrder({ orderNumber, email }) {
 
 // ─── Skin Diagnostic ───────────────────────────────
 export async function submitDiagnostic({ skinType, concerns, age, routine }) {
-  const res = await fetch(`${DJANGO_API}/diagnostic/`, {
+  const res = await apiFetch(`${DJANGO_API}/diagnostic/`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ skin_type: skinType, concerns, age, routine }),
@@ -189,7 +206,7 @@ export async function submitDiagnostic({ skinType, concerns, age, routine }) {
 
 // ─── Authentication ────────────────────────────────
 export async function loginUser(email, password) {
-  const res = await fetch(`${DJANGO_API}/auth/login/`, {
+  const res = await apiFetch(`${DJANGO_API}/auth/login/`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password }),
@@ -206,7 +223,7 @@ export async function loginUser(email, password) {
 }
 
 export async function registerUser({ firstName, lastName, email, password, password2 }) {
-  const res = await fetch(`${DJANGO_API}/auth/register/`, {
+  const res = await apiFetch(`${DJANGO_API}/auth/register/`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -233,7 +250,7 @@ export async function registerUser({ firstName, lastName, email, password, passw
 }
 
 export async function fetchProfile() {
-  const res = await fetch(`${DJANGO_API}/auth/profile/`, {
+  const res = await apiFetch(`${DJANGO_API}/auth/profile/`, {
     headers: getAuthHeaders(),
   });
   if (!res.ok) throw new Error('Non authentifié');
@@ -251,7 +268,7 @@ export function isAuthenticated() {
 
 // ─── Cart (authenticated) ──────────────────────────
 export async function fetchCart() {
-  const res = await fetch(`${DJANGO_API}/cart/`, {
+  const res = await apiFetch(`${DJANGO_API}/cart/`, {
     headers: getAuthHeaders(),
   });
   if (!res.ok) throw new Error('Erreur panier');
@@ -305,7 +322,7 @@ export async function createOrder({ shippingAddress, wilaya, phone, paymentMetho
 }
 
 export async function fetchOrders() {
-  const res = await fetch(`${DJANGO_API}/orders/`, {
+  const res = await apiFetch(`${DJANGO_API}/orders/`, {
     headers: getAuthHeaders(),
   });
   if (!res.ok) throw new Error('Erreur chargement commandes');
@@ -314,7 +331,7 @@ export async function fetchOrders() {
 
 // ─── Wishlist (authenticated) ──────────────────────
 export async function fetchWishlist() {
-  const res = await fetch(`${DJANGO_API}/wishlist/`, {
+  const res = await apiFetch(`${DJANGO_API}/wishlist/`, {
     headers: getAuthHeaders(),
   });
   if (!res.ok) throw new Error('Erreur liste de souhaits');

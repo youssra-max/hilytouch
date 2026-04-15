@@ -3,9 +3,11 @@ import React from 'react';
 import Link from 'next/link';
 import { Heart, Check, ArrowLeftRight } from 'lucide-react';
 import { addToWishlist, removeFromWishlist, isAuthenticated } from '../../lib/api';
+import { useLanguage } from '../../context/LanguageContext';
 import './ProductCard.css';
 
 const ProductCard = ({ id = 1, image, title, category, price, isNew, initialIsFav = false }) => {
+  const { t } = useLanguage();
   const [isFav, setIsFav] = React.useState(initialIsFav);
   const [loading, setLoading] = React.useState(false);
 
@@ -38,7 +40,7 @@ const ProductCard = ({ id = 1, image, title, category, price, isNew, initialIsFa
     <div className="product-card fade-in">
       <Link href={`/product/${id}`} className="product-card-link">
         <div className="product-image-container">
-          {isNew && <span className="badge-new">Nouveau</span>}
+          {isNew && <span className="badge-new">{t('badge_new')}</span>}
           <img src={image} alt={title} className="product-image" />
           <div className="product-overlay">
             <div className="overlay-actions">
@@ -46,11 +48,11 @@ const ProductCard = ({ id = 1, image, title, category, price, isNew, initialIsFa
                 e.preventDefault();
                 e.stopPropagation();
                 // To be wired with cart later
-              }}>Ajouter au panier</button>
+              }}>{t('add_to_cart')}</button>
               
               <button 
                 className="btn-compare"
-                title="Comparer ce produit"
+                title={t('compare_title')}
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
@@ -64,8 +66,8 @@ const ProductCard = ({ id = 1, image, title, category, price, isNew, initialIsFa
                 className={`btn-fav ${isFav ? 'active' : ''}`} 
                 onClick={toggleWishlist}
                 disabled={loading}
-                aria-label="Ajouter aux favoris"
-                title="Ajouter aux favoris"
+                aria-label={t('fav_title')}
+                title={t('fav_title')}
               >
                 <Heart size={18} fill={isFav ? "currentColor" : "none"} />
               </button>

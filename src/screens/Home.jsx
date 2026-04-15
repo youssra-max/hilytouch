@@ -4,12 +4,16 @@ import Button from '../components/ui/Button';
 import ProductCard from '../components/ui/ProductCard';
 import { Sparkles, ArrowRight, Star } from 'lucide-react';
 import heroDiagImg from '../assets/hero-diag.jpg';
+import triptyque1 from '../assets/triptych-1.png';
+import triptyque2 from '../assets/triptych-2.png';
 import { fetchProducts } from '../lib/api';
 import './Home.css';
 
+import { useLanguage } from '../context/LanguageContext';
 import BeautyBot from '../components/ui/BeautyBot';
 
 const Home = () => {
+  const { t } = useLanguage();
   const [featuredProducts, setFeaturedProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -32,24 +36,57 @@ const Home = () => {
       <section className="framed-section-container hero-diag">
         <div className="container hero-diag-grid">
           <div className="hero-diag-text">
-            <span className="label-rose">Nouveau</span>
-            <h1>Diagnostique<br /><em>de peau</em></h1>
+            <span className="label-rose">{t('hero_label')}</span>
+            <h1>{t('hero_title_1')}<br /><em>{t('hero_title_2')}</em></h1>
             <p>
-              Découvrez votre type de peau grâce à notre intelligence artificielle.
-              Une analyse précise pour une routine 100% personnalisée.
+              {t('hero_desc')}
             </p>
             <div className="hero-diag-actions">
               <Button variant="primary">
-                Commencer mon diagnostic <Sparkles size={16} />
+                {t('hero_cta')} <Sparkles size={16} />
               </Button>
               <a href="/shop" className="link-rose">
-                Explorer la boutique <ArrowRight size={14} />
+                {t('hero_shop_cta')} <ArrowRight size={14} />
               </a>
             </div>
           </div>
           <div className="hero-diag-visual">
             <div className="diag-image-main">
               <img src={heroDiagImg.src || heroDiagImg} alt="Diagnostic beauté" />
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Section : Tryptique Visuel (Framed) */}
+      <section className="framed-section-container triptych-home-wrapper fade-in">
+        <div className="container">
+          <div className="triptych-grid-refined">
+            <div className="triptych-card vibrant">
+              <img src={triptyque1.src || triptyque1} alt={t('triptych_essential')} className="triptych-img" />
+              <div className="card-overlay">
+                <span>{t('triptych_essential')}</span>
+              </div>
+            </div>
+            <div className="triptych-card minimalist">
+              <img src={triptyque2.src || triptyque2} alt={t('triptych_essence')} className="triptych-img" />
+              <div className="card-overlay">
+                <span>{t('triptych_essence')}</span>
+              </div>
+            </div>
+            <div className="triptych-card lifestyle-reel">
+              <video 
+                autoPlay 
+                muted 
+                loop 
+                playsInline 
+                className="triptych-video"
+                poster={triptyque2.src}
+              >
+                <source src="https://player.vimeo.com/external/517088497.hd.mp4?s=d405232d3265efc27242cedb6d3b41d2f8e1a1b1&profile_id=174" type="video/mp4" />
+                Votre navigateur ne supporte pas la lecture de vidéos.
+              </video>
+              <div className="reel-tag">Reel</div>
             </div>
           </div>
         </div>
@@ -67,10 +104,10 @@ const Home = () => {
       <section className="framed-section-container partners-banner-home">
         <div className="container">
           <div className="partners-header">
-            <p className="subtitle">L'ÉLITE LOCALE</p>
+            <p className="subtitle">{t('partners_subtitle')}</p>
             <div className="partners-title-row">
-              <h2>Nos Marques <span className="highlight-text">Partenaires</span></h2>
-              <a href="/shop" className="view-all-partners">DÉCOUVRIR TOUTES LES MARQUES +</a>
+              <h2>{t('partners_title')} <span className="highlight-text">{t('partners_highlight')}</span></h2>
+              <a href="/shop" className="view-all-partners">{t('partners_view_all')}</a>
             </div>
           </div>
           <div className="marquee-wrapper">
@@ -101,14 +138,14 @@ const Home = () => {
         <div className="container">
           <div className="section-head">
             <div>
-              <h2>Les incontournables</h2>
-              <p>La sélection plébiscitée par notre communauté.</p>
+              <h2>{t('featured_title')}</h2>
+              <p>{t('featured_desc')}</p>
             </div>
-            <a href="/shop" className="link-rose">Voir tout <ArrowRight size={14} /></a>
+            <a href="/shop" className="link-rose">{t('featured_view_all')} <ArrowRight size={14} /></a>
           </div>
           <div className="products-grid">
             {loading ? (
-              <p className="loading-text">Chargement des produits...</p>
+              <p className="loading-text">{t('loading')}</p>
             ) : (
               featuredProducts.map(prod => (
                 <ProductCard
@@ -130,7 +167,7 @@ const Home = () => {
       <section className="framed-section-container journal-section">
         <div className="container">
           <div className="section-head centered">
-            <h2>Le Journal</h2>
+            <h2>{t('journal_title')}</h2>
           </div>
           <div className="journal-grid">
             <article className="journal-card">
@@ -160,10 +197,10 @@ const Home = () => {
       {/* Section Promotionnelle */}
       <section className="promo-image-section fade-in">
         <div className="promo-image-overlay">
-          <h2>L'expérience <em>Hilytouch</em></h2>
-          <p>Fondée par quatre cofondatrices passionnées, unies pour révéler l'excellence algérienne.</p>
+          <h2>{t('promo_title')} <em>{t('promo_highlight')}</em></h2>
+          <p>{t('promo_desc')}</p>
           <a href="/about" className="btn-outline-white">
-            Découvrir notre histoire
+            {t('promo_cta')}
           </a>
         </div>
       </section>

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 :root {
   /* Classic & Chic — Gold + Burgundy */
   --color-gold: #b08d57;
@@ -14,8 +16,9 @@
   --color-text-secondary: #8a7e76;
   --color-accent: var(--color-gold);
 
-  --font-serif: 'Cormorant Garamond', serif;
-  --font-sans: 'Jost', sans-serif;
+  /* Fonts */
+  --font-sans: 'Outfit', 'IBM Plex Sans Arabic', sans-serif;
+  --font-serif: 'Playfair Display', 'Amiri', serif;
   --font-family-base: var(--font-sans);
 }
 
@@ -48,6 +51,43 @@ img { display: block; max-width: 100%; }
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
+}
+
+/* RTL Universal Support */
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="rtl"] .hero-diag-grid,
+[dir="rtl"] .hero-diag-actions,
+[dir="rtl"] .section-head,
+[dir="rtl"] .journal-grid {
+  direction: rtl;
+}
+
+[dir="rtl"] .hero-diag-actions {
+  flex-direction: row; /* Flex items naturally follow direction */
+}
+
+/* Fix for icons in RTL */
+[dir="rtl"] .lucide {
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .diag-image-main {
+  border-radius: 40% 60% 70% 30% / 60% 50% 50% 40%;
+}
+
+[dir="rtl"] .diag-card-float {
+  left: auto;
+  right: -8%;
+}
+
+[dir="rtl"] .label-rose {
+  border-left: none;
+  border-right: 2px solid var(--color-gold);
+  padding-left: 0;
+  padding-right: 0.8rem;
 }
 
 .fade-in {
