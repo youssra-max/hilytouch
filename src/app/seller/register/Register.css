@@ -98,7 +98,9 @@
   font-family: var(--font-sans);
   font-size: 1rem;
   color: var(--color-text-primary);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .form-group input:focus,
@@ -120,7 +122,8 @@
   gap: 2rem;
 }
 
-.radio-label, .checkbox-label {
+.radio-label,
+.checkbox-label {
   display: flex;
   align-items: center;
   gap: 0.6rem;
@@ -197,7 +200,9 @@
   font-weight: 500;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
   font-family: var(--font-sans);
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -252,15 +257,15 @@
     flex-direction: column;
     gap: 0;
   }
-  
+
   .register-form {
     padding: 1.5rem;
   }
-  
+
   .register-container {
     padding: 2rem 1rem;
   }
-  
+
   .vendor-type-group {
     flex-direction: column;
     gap: 1rem;

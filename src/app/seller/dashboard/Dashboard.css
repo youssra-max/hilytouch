@@ -62,7 +62,8 @@
   transition: all 0.3s ease;
 }
 
-.sidebar-nav button:hover, .sidebar-nav button.active {
+.sidebar-nav button:hover,
+.sidebar-nav button.active {
   background-color: rgba(176, 141, 87, 0.15); /* Gold tint */
   color: var(--color-gold-light);
 }
@@ -168,7 +169,7 @@
 }
 
 .internal-nav button.active::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -0.6rem;
   left: 0;
@@ -261,17 +262,33 @@
   transform: translateY(-1px);
 }
 
-.status-select-pill.attente { background-color: #fff8e1; color: #f39c12; }
-.status-select-pill.preparation { background-color: #e3f2fd; color: #1976d2; }
-.status-select-pill.prete { background-color: #e8f5e9; color: #2e7d32; }
-.status-select-pill.expediee { background-color: #f3e5f5; color: #9c27b0; }
-.status-select-pill.annulee { background-color: #ffebee; color: #c62828; }
+.status-select-pill.attente {
+  background-color: #fff8e1;
+  color: #f39c12;
+}
+.status-select-pill.preparation {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+.status-select-pill.prete {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+.status-select-pill.expediee {
+  background-color: #f3e5f5;
+  color: #9c27b0;
+}
+.status-select-pill.annulee {
+  background-color: #ffebee;
+  color: #c62828;
+}
 
 .status-select-pill:focus {
   box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
 }
 
-.icon-btn-view, .icon-btn-print {
+.icon-btn-view,
+.icon-btn-print {
   background: none;
   border: none;
   padding: 0.5rem;
@@ -281,8 +298,14 @@
   color: var(--color-text-secondary);
 }
 
-.icon-btn-view:hover { background-color: #f1f2f6; color: var(--color-burgundy); }
-.icon-btn-print:hover { background-color: #f1f2f6; color: var(--color-gold); }
+.icon-btn-view:hover {
+  background-color: #f1f2f6;
+  color: var(--color-burgundy);
+}
+.icon-btn-print:hover {
+  background-color: #f1f2f6;
+  color: var(--color-gold);
+}
 
 .empty-state {
   display: flex;
@@ -351,9 +374,15 @@
   font-weight: 500;
 }
 
-.kpi-trend.positive { color: #2ecc71; }
-.kpi-trend.neutral { color: #f39c12; }
-.kpi-trend.negative { color: #e74c3c; }
+.kpi-trend.positive {
+  color: #2ecc71;
+}
+.kpi-trend.neutral {
+  color: #f39c12;
+}
+.kpi-trend.negative {
+  color: #e74c3c;
+}
 
 /* Alerts */
 .alerts-section {
@@ -404,7 +433,8 @@
   border-collapse: collapse;
 }
 
-.data-table th, .data-table td {
+.data-table th,
+.data-table td {
   padding: 1.2rem;
   text-align: left;
   border-bottom: 1px solid #f1f2f6;
@@ -425,8 +455,14 @@
   font-weight: 600;
 }
 
-.status-badge.success { background-color: #e8f8f5; color: #1abc9c; }
-.status-badge.error { background-color: #fdedec; color: #e74c3c; }
+.status-badge.success {
+  background-color: #e8f8f5;
+  color: #1abc9c;
+}
+.status-badge.error {
+  background-color: #fdedec;
+  color: #e74c3c;
+}
 
 .badges-list {
   display: flex;
@@ -456,10 +492,18 @@
   transition: background-color 0.2s;
 }
 
-.action-btn.edit { color: #3498db; }
-.action-btn.edit:hover { background-color: #ebf5fb; }
-.action-btn.delete { color: #e74c3c; }
-.action-btn.delete:hover { background-color: #fdedec; }
+.action-btn.edit {
+  color: #3498db;
+}
+.action-btn.edit:hover {
+  background-color: #ebf5fb;
+}
+.action-btn.delete {
+  color: #e74c3c;
+}
+.action-btn.delete:hover {
+  background-color: #fdedec;
+}
 
 /* Status Select */
 .status-select {
@@ -533,8 +577,8 @@
   color: #2c3e50;
 }
 
-.form-group input, 
-.form-group select, 
+.form-group input,
+.form-group select,
 .form-group textarea {
   width: 100%;
   padding: 0.8rem;
@@ -613,7 +657,7 @@
   background-color: #ccc;
   border-radius: 34px;
   position: relative;
-  transition: .4s;
+  transition: 0.4s;
 }
 
 .slider:before {
@@ -625,7 +669,7 @@
   bottom: 4px;
   background-color: white;
   border-radius: 50%;
-  transition: .4s;
+  transition: 0.4s;
 }
 
 input:checked + .slider {
@@ -689,15 +733,29 @@ input:checked + .slider:before {
   font-weight: 600;
 }
 
-.stat-trend.positive { color: #2ecc71; }
-.stat-trend.negative { color: #e74c3c; }
-.stat-trend.neutral { color: #95a5a6; }
+.stat-trend.positive {
+  color: #2ecc71;
+}
+.stat-trend.negative {
+  color: #e74c3c;
+}
+.stat-trend.neutral {
+  color: #95a5a6;
+}
 
 /* Icons Colors */
-.icon-gold { color: var(--color-gold); }
-.icon-blue { color: #3498db; }
-.icon-red { color: #e74c3c; }
-.icon-gray { color: #7f8c8d; }
+.icon-gold {
+  color: var(--color-gold);
+}
+.icon-blue {
+  color: #3498db;
+}
+.icon-red {
+  color: #e74c3c;
+}
+.icon-gray {
+  color: #7f8c8d;
+}
 
 /* Large Chart Container */
 .chart-container-large {
@@ -739,7 +797,9 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-.dot.current { background-color: var(--color-gold); }
+.dot.current {
+  background-color: var(--color-gold);
+}
 
 .custom-chart-wrapper {
   width: 100%;
@@ -767,7 +827,8 @@ input:checked + .slider:before {
   gap: 2rem;
 }
 
-.performance-box, .stats-box {
+.performance-box,
+.stats-box {
   background-color: white;
   padding: 2rem;
   border-radius: 12px;
@@ -820,9 +881,18 @@ input:checked + .slider:before {
   font-size: 0.9rem;
 }
 
-.top-product-item:nth-child(1) .p-rank { background-color: #fff9e6; color: var(--color-gold); }
-.top-product-item:nth-child(2) .p-rank { background-color: #f0f4f8; color: #34495e; }
-.top-product-item:nth-child(3) .p-rank { background-color: #fdf2f0; color: #e67e22; }
+.top-product-item:nth-child(1) .p-rank {
+  background-color: #fff9e6;
+  color: var(--color-gold);
+}
+.top-product-item:nth-child(2) .p-rank {
+  background-color: #f0f4f8;
+  color: #34495e;
+}
+.top-product-item:nth-child(3) .p-rank {
+  background-color: #fdf2f0;
+  color: #e67e22;
+}
 
 .p-info {
   flex: 1;
@@ -892,7 +962,9 @@ input:checked + .slider:before {
   color: var(--color-dark);
 }
 
-.inv-val.text-red { color: #e74c3c; }
+.inv-val.text-red {
+  color: #e74c3c;
+}
 
 .inv-progress-bar {
   width: 100%;
@@ -901,11 +973,20 @@ input:checked + .slider:before {
   border-radius: 3px;
 }
 
-.progress-fill { height: 100%; border-radius: 3px; }
-.progress-fill.warning { background-color: #e74c3c; }
+.progress-fill {
+  height: 100%;
+  border-radius: 3px;
+}
+.progress-fill.warning {
+  background-color: #e74c3c;
+}
 
-.text-orange { color: #f39c12; }
-.mt-1 { margin-top: 0.5rem; }
+.text-orange {
+  color: #f39c12;
+}
+.mt-1 {
+  margin-top: 0.5rem;
+}
 
 /* Slow Movers List */
 .slow-movers-list {

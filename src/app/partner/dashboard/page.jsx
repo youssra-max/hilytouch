@@ -1,4 +1,4 @@
-import PartnerDashboard from '../../../screens/PartnerDashboard';
+import PartnerDashboard from "../../../screens/PartnerDashboard";
 
 export default function Page() {
   return <PartnerDashboard />;

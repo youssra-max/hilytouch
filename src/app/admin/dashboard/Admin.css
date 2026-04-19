@@ -7,7 +7,9 @@
 
 /* Sidebar overrides for Super Admin */
 .super-admin-sidebar {
-  background-color: var(--color-burgundy); /* Matches the Super Admin badge red */
+  background-color: var(
+    --color-burgundy
+  ); /* Matches the Super Admin badge red */
 }
 
 .admin-brand {
@@ -19,7 +21,7 @@
   background-color: var(--color-burgundy); /* Site burgundy */
 }
 
-.super-admin-sidebar .sidebar-nav button:hover, 
+.super-admin-sidebar .sidebar-nav button:hover,
 .super-admin-sidebar .sidebar-nav button.active {
   background-color: rgba(176, 141, 87, 0.15); /* Gold tint */
   color: var(--color-gold-light);
@@ -54,8 +56,12 @@
   gap: 1rem;
 }
 
-.mt-2 { margin-top: 1rem; }
-.mt-4 { margin-top: 2.5rem; }
+.mt-2 {
+  margin-top: 1rem;
+}
+.mt-4 {
+  margin-top: 2.5rem;
+}
 
 /* Admin Sections */
 .admin-section {
@@ -74,7 +80,9 @@
 }
 
 /* Specific Buttons */
-.btn-approve, .btn-reject, .btn-pay {
+.btn-approve,
+.btn-reject,
+.btn-pay {
   display: flex;
   align-items: center;
   gap: 0.4rem;
@@ -92,7 +100,9 @@
   color: white;
 }
 
-.btn-approve:hover { background-color: var(--color-gold-dark); }
+.btn-approve:hover {
+  background-color: var(--color-gold-dark);
+}
 
 .btn-reject {
   background-color: transparent;
@@ -100,14 +110,18 @@
   border: 1px solid var(--color-burgundy);
 }
 
-.btn-reject:hover { background-color: #fdedec; }
+.btn-reject:hover {
+  background-color: #fdedec;
+}
 
 .btn-pay {
   background-color: var(--color-gold);
   color: white;
 }
 
-.btn-pay:hover { background-color: var(--color-gold-dark); }
+.btn-pay:hover {
+  background-color: var(--color-gold-dark);
+}
 
 .btn-icon {
   background: none;
@@ -118,9 +132,15 @@
   color: #7f8c8d;
 }
 
-.btn-icon:hover { background-color: #f1f2f6; }
-.btn-icon.danger { color: var(--color-burgundy); }
-.btn-icon.danger:hover { background-color: #fdedec; }
+.btn-icon:hover {
+  background-color: #f1f2f6;
+}
+.btn-icon.danger {
+  color: var(--color-burgundy);
+}
+.btn-icon.danger:hover {
+  background-color: #fdedec;
+}
 
 .btn-link {
   background: none;
@@ -132,7 +152,10 @@
   cursor: pointer;
 }
 
-.btn-link:hover { text-decoration: underline; color: var(--color-gold-dark); }
+.btn-link:hover {
+  text-decoration: underline;
+  color: var(--color-gold-dark);
+}
 
 /* Tables Overrides */
 .admin-table {
@@ -176,9 +199,15 @@
 }
 
 /* Finances KPI */
-.financial-total { border-left-color: var(--color-dark); }
-.financial-commissions { border-left-color: var(--color-gold); }
-.financial-due { border-left-color: var(--color-burgundy); }
+.financial-total {
+  border-left-color: var(--color-dark);
+}
+.financial-commissions {
+  border-left-color: var(--color-gold);
+}
+.financial-due {
+  border-left-color: var(--color-burgundy);
+}
 
 /* CMS section */
 .upload-zone {
@@ -290,10 +319,18 @@
   border-bottom: 3px solid transparent;
 }
 
-.admin-stat-card.gmv { border-bottom-color: var(--color-gold); }
-.admin-stat-card.orders { border-bottom-color: var(--color-burgundy); }
-.admin-stat-card.conv { border-bottom-color: #2c3e50; }
-.admin-stat-card.sellers { border-bottom-color: #8e44ad; }
+.admin-stat-card.gmv {
+  border-bottom-color: var(--color-gold);
+}
+.admin-stat-card.orders {
+  border-bottom-color: var(--color-burgundy);
+}
+.admin-stat-card.conv {
+  border-bottom-color: #2c3e50;
+}
+.admin-stat-card.sellers {
+  border-bottom-color: #8e44ad;
+}
 
 .as-header {
   display: flex;
@@ -320,8 +357,12 @@
   font-weight: 600;
 }
 
-.as-trend.positive { color: #27ae60; }
-.as-trend.neutral { color: #95a5a6; }
+.as-trend.positive {
+  color: #27ae60;
+}
+.as-trend.neutral {
+  color: #95a5a6;
+}
 
 /* Main Grid */
 .admin-stats-main-grid {
@@ -331,7 +372,8 @@
   margin-bottom: 2rem;
 }
 
-.admin-chart-box, .admin-stats-box {
+.admin-chart-box,
+.admin-stats-box {
   background: white;
   padding: 1.5rem;
   border-radius: 12px;
@@ -399,8 +441,14 @@
   margin-right: 0.8rem;
 }
 
-.as-legend-item .name { flex: 1; color: #7f8c8d; }
-.as-legend-item .percent { font-weight: 700; color: var(--color-dark); }
+.as-legend-item .name {
+  flex: 1;
+  color: #7f8c8d;
+}
+.as-legend-item .percent {
+  font-weight: 700;
+  color: var(--color-dark);
+}
 
 /* Bottom Grid */
 .admin-stats-grid-bottom {
@@ -449,11 +497,31 @@
   font-weight: 700;
 }
 
-.as-litige-badge.low { background: #e8f8f5; color: #27ae60; }
-.as-litige-badge.high { background: #fdf2f2; color: #e74c3c; }
+.as-litige-badge.low {
+  background: #e8f8f5;
+  color: #27ae60;
+}
+.as-litige-badge.high {
+  background: #fdf2f2;
+  color: #e74c3c;
+}
 
-.badge-gold { background: var(--color-cream); color: var(--color-gold-dark); padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700; }
-.badge-burgundy { background: #fee2e2; color: var(--color-burgundy); padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700; }
+.badge-gold {
+  background: var(--color-cream);
+  color: var(--color-gold-dark);
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.badge-burgundy {
+  background: #fee2e2;
+  color: var(--color-burgundy);
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
 
 .as-global-products-list {
   display: flex;
@@ -483,10 +551,24 @@
   font-size: 0.8rem;
 }
 
-.gp-info { flex: 1; display: flex; flex-direction: column; }
-.gp-name { font-weight: 600; color: var(--color-dark); font-size: 0.9rem; }
-.gp-seller { font-size: 0.75rem; color: #95a5a6; }
-.gp-sales { font-weight: 700; color: var(--color-burgundy); }
+.gp-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.gp-name {
+  font-weight: 600;
+  color: var(--color-dark);
+  font-size: 0.9rem;
+}
+.gp-seller {
+  font-size: 0.75rem;
+  color: #95a5a6;
+}
+.gp-sales {
+  font-weight: 700;
+  color: var(--color-burgundy);
+}
 
 /* Payout Card */
 .as-payout-card {
@@ -496,8 +578,16 @@
   color: white;
 }
 
-.payout-label { font-size: 0.8rem; opacity: 0.8; margin-bottom: 0.5rem; }
-.payout-val { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; }
+.payout-label {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  margin-bottom: 0.5rem;
+}
+.payout-val {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
 .as-payout-btn {
   width: 100%;
   padding: 0.8rem;
@@ -510,10 +600,13 @@
   transition: all 0.2s;
 }
 
-.as-payout-btn:hover { background: rgba(255, 255, 255, 0.2); }
+.as-payout-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
 
 @media (max-width: 1200px) {
-  .admin-stats-main-grid, .admin-stats-grid-bottom {
+  .admin-stats-main-grid,
+  .admin-stats-grid-bottom {
     grid-template-columns: 1fr;
   }
 }

@@ -1,11 +1,11 @@
 "use client";
-import React, { useState } from 'react';
-import { Package, Search, Truck, Check, Circle } from 'lucide-react';
-import { trackOrder } from '../lib/api';
-import './Tracking.css';
+import React, { useState } from "react";
+import { Package, Search, Truck, Check, Circle } from "lucide-react";
+import { trackOrder } from "../lib/api";
+import "./Tracking.css";
 
 const Tracking = () => {
-  const [form, setForm] = useState({ orderNumber: '', email: '' });
+  const [form, setForm] = useState({ orderNumber: "", email: "" });
   const [tracking, setTracking] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -22,7 +22,7 @@ const Tracking = () => {
         setTracking(res);
       }
     } catch {
-      setError('Erreur lors de la recherche.');
+      setError("Erreur lors de la recherche.");
     }
     setLoading(false);
   };
@@ -32,7 +32,10 @@ const Tracking = () => {
       <div className="page-header-simple">
         <p className="subtitle">SERVICE CLIENT</p>
         <h1>Suivi de commande</h1>
-        <p className="page-desc">Retrouvez l'état de votre commande en renseignant vos informations ci-dessous.</p>
+        <p className="page-desc">
+          Retrouvez l'état de votre commande en renseignant vos informations
+          ci-dessous.
+        </p>
       </div>
 
       {!tracking ? (
@@ -40,24 +43,44 @@ const Tracking = () => {
           <form className="tracking-form" onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="orderNumber">Numéro de commande *</label>
-              <input 
-                type="text" id="orderNumber" name="orderNumber" 
-                value={form.orderNumber} 
-                onChange={(e) => setForm({ ...form, orderNumber: e.target.value })}
-                placeholder="Ex: HT-2026-00123" required 
+              <input
+                type="text"
+                id="orderNumber"
+                name="orderNumber"
+                value={form.orderNumber}
+                onChange={(e) =>
+                  setForm({ ...form, orderNumber: e.target.value })
+                }
+                placeholder="Ex: HT-2026-00123"
+                required
               />
             </div>
             <div className="form-group">
-              <label htmlFor="trackEmail">Email utilisé lors de la commande *</label>
-              <input 
-                type="email" id="trackEmail" name="email" 
-                value={form.email} 
+              <label htmlFor="trackEmail">
+                Email utilisé lors de la commande *
+              </label>
+              <input
+                type="email"
+                id="trackEmail"
+                name="email"
+                value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
-                placeholder="votre@email.com" required 
+                placeholder="votre@email.com"
+                required
               />
             </div>
-            <button type="submit" className="btn btn-primary btn-submit" disabled={loading}>
-              {loading ? 'Recherche...' : <><Search size={16} /> Suivre ma commande</>}
+            <button
+              type="submit"
+              className="btn btn-primary btn-submit"
+              disabled={loading}
+            >
+              {loading ? (
+                "Recherche..."
+              ) : (
+                <>
+                  <Search size={16} /> Suivre ma commande
+                </>
+              )}
             </button>
             {error && <p className="form-error">{error}</p>}
           </form>
@@ -67,7 +90,9 @@ const Tracking = () => {
           <div className="tracking-header">
             <div>
               <h2>Commande {tracking.orderNumber}</h2>
-              <p className="tracking-status"><Truck size={16} /> {tracking.status}</p>
+              <p className="tracking-status">
+                <Truck size={16} /> {tracking.status}
+              </p>
             </div>
             <div className="tracking-delivery">
               <span>Livraison estimée</span>
@@ -77,7 +102,10 @@ const Tracking = () => {
 
           <div className="tracking-timeline">
             {tracking.steps.map((step, i) => (
-              <div key={i} className={`timeline-step ${step.completed ? 'completed' : ''}`}>
+              <div
+                key={i}
+                className={`timeline-step ${step.completed ? "completed" : ""}`}
+              >
                 <div className="timeline-dot">
                   {step.completed ? <Check size={14} /> : <Circle size={14} />}
                 </div>
@@ -100,7 +128,13 @@ const Tracking = () => {
             </div>
           </div>
 
-          <button className="btn-back" onClick={() => { setTracking(null); setForm({ orderNumber: '', email: '' }); }}>
+          <button
+            className="btn-back"
+            onClick={() => {
+              setTracking(null);
+              setForm({ orderNumber: "", email: "" });
+            }}
+          >
             ← Nouvelle recherche
           </button>
         </div>

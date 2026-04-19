@@ -64,7 +64,9 @@
   overflow: hidden;
   cursor: pointer;
   opacity: 0.6;
-  transition: opacity 0.2s, border 0.2s;
+  transition:
+    opacity 0.2s,
+    border 0.2s;
   border: 2px solid transparent;
 }
 
@@ -303,4 +305,36 @@
 .related-price {
   color: var(--color-accent);
   font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .product-main {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .product-title-large {
+    font-size: 2rem;
+  }
+
+  .product-perks {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .purchase-actions {
+    flex-direction: column;
+  }
+
+  .related-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .related-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
 }

@@ -1,11 +1,63 @@
-.partners-page { padding: 4rem 0; }
-.partners-showcase { display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 4rem; }
-.partner-card-large { display: grid; grid-template-columns: 100px 1fr; gap: 2rem; padding: 2.5rem; background: white; border-radius: 12px; border: 1px solid rgba(176,141,87,0.12); align-items: center; transition: all 0.3s; }
-.partner-card-large:hover { transform: translateX(4px); box-shadow: 0 8px 30px rgba(176,141,87,0.08); border-color: var(--color-gold-light); }
-.partner-logo-large { width: 80px; height: 80px; border-radius: 50%; background: rgba(176,141,87,0.06); display: flex; align-items: center; justify-content: center; font-size: 2rem; }
-.partner-info h2 { font-size: 1.4rem; margin-bottom: 0.5rem; }
-.partner-info p { font-size: 0.9rem; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 0.8rem; }
+.partners-page {
+  padding: 4rem 0;
+}
+.partners-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+.partner-card-large {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 2rem;
+  padding: 2.5rem;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid rgba(176, 141, 87, 0.12);
+  align-items: center;
+  transition: all 0.3s;
+}
+.partner-card-large:hover {
+  transform: translateX(4px);
+  box-shadow: 0 8px 30px rgba(176, 141, 87, 0.08);
+  border-color: var(--color-gold-light);
+}
+.partner-logo-large {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(176, 141, 87, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+.partner-info h2 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+.partner-info p {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 0.8rem;
+}
 
-.partner-cta { text-align: center; padding: 4rem; background: rgba(92,26,42,0.03); border-radius: 16px; border: 1px solid rgba(176,141,87,0.1); }
-.partner-cta h2 { font-size: 1.8rem; margin-bottom: 1rem; }
-.partner-cta p { color: var(--color-text-secondary); max-width: 500px; margin: 0 auto 2rem; line-height: 1.7; }
+.partner-cta {
+  text-align: center;
+  padding: 4rem;
+  background: rgba(92, 26, 42, 0.03);
+  border-radius: 16px;
+  border: 1px solid rgba(176, 141, 87, 0.1);
+}
+.partner-cta h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+.partner-cta p {
+  color: var(--color-text-secondary);
+  max-width: 500px;
+  margin: 0 auto 2rem;
+  line-height: 1.7;
+}

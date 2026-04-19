@@ -1,2 +1,4 @@
-import About from '../../screens/About';
-export default function Page() { return <About />; }
+import About from "../../screens/About";
+export default function Page() {
+  return <About />;
+}

@@ -1,34 +1,51 @@
 "use client";
-import React, { Suspense } from 'react';
-import Link from 'next/link';
-import { usePathname, useSearchParams, useRouter } from 'next/navigation';
-import { Search, Heart, ShoppingBag, User, Command, LayoutDashboard, ArrowLeftRight, Globe, ChevronDown } from 'lucide-react';
-import { isAuthenticated, fetchProfile } from '../../lib/api';
-import { useLanguage } from '../../context/LanguageContext';
-import './Header.css';
+import React, { Suspense } from "react";
+import Link from "next/link";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
+import {
+  Search,
+  Heart,
+  ShoppingBag,
+  User,
+  Command,
+  LayoutDashboard,
+  ArrowLeftRight,
+  Globe,
+  ChevronDown,
+  Menu,
+  X,
+} from "lucide-react";
+import { isAuthenticated, fetchProfile } from "../../lib/api";
+import { useLanguage } from "../../context/LanguageContext";
+import "./Header.css";
 
 const LanguageSwitcher = () => {
   const { locale, setLocale } = useLanguage();
   const [isOpen, setIsOpen] = React.useState(false);
 
   const languages = [
-    { code: 'fr', label: 'Français' },
-    { code: 'ar', label: 'العربية' },
-    { code: 'en', label: 'English' }
+    { code: "fr", label: "Français" },
+    { code: "ar", label: "العربية" },
+    { code: "en", label: "English" },
   ];
 
   return (
     <div className="language-selector">
       <button className="lang-btn" onClick={() => setIsOpen(!isOpen)}>
         <Globe size={20} strokeWidth={1.5} />
-        <span>{languages.find(l => l.code === locale)?.label.substring(0, 2).toUpperCase()}</span>
+        <span>
+          {languages
+            .find((l) => l.code === locale)
+            ?.label.substring(0, 2)
+            .toUpperCase()}
+        </span>
       </button>
       {isOpen && (
         <div className="lang-dropdown">
-          {languages.map(lang => (
-            <button 
-              key={lang.code} 
-              className={`lang-option ${locale === lang.code ? 'active' : ''}`}
+          {languages.map((lang) => (
+            <button
+              key={lang.code}
+              className={`lang-option ${locale === lang.code ? "active" : ""}`}
               onClick={() => {
                 setLocale(lang.code);
                 setIsOpen(false);
@@ -49,25 +66,65 @@ const CategoriesNav = () => {
   const router = useRouter();
   const { t } = useLanguage();
 
-  if (pathname !== '/shop') return null;
+  if (pathname !== "/shop") return null;
 
-  const activeFilter = searchParams.get('filter') || 'all';
+  const activeFilter = searchParams.get("filter") || "all";
 
   const setFilter = (filter) => {
-    router.push(`/shop${filter === 'all' ? '' : `?filter=${filter}`}`);
+    router.push(`/shop${filter === "all" ? "" : `?filter=${filter}`}`);
   };
 
   return (
     <div className="container header-categories">
       <div className="filters">
-        <button className={`filter-btn ${activeFilter === 'all' ? 'active' : ''}`} onClick={() => setFilter('all')}>{t('nav_all')}</button>
-        <button className={`filter-btn ${activeFilter === 'soins-visage' ? 'active' : ''}`} onClick={() => setFilter('soins-visage')}>{t('nav_face')}</button>
-        <button className={`filter-btn ${activeFilter === 'soins-corps' ? 'active' : ''}`} onClick={() => setFilter('soins-corps')}>{t('nav_body')}</button>
-        <button className={`filter-btn ${activeFilter === 'maquillage' ? 'active' : ''}`} onClick={() => setFilter('maquillage')}>{t('nav_makeup')}</button>
-        <button className={`filter-btn ${activeFilter === 'nails' ? 'active' : ''}`} onClick={() => setFilter('nails')}>{t('nav_nails')}</button>
-        <button className={`filter-btn ${activeFilter === 'para-dose' ? 'active' : ''}`} onClick={() => setFilter('para-dose')}>{t('nav_bar')}</button>
-        <button className={`filter-btn ${activeFilter === 'soin-cheveux' ? 'active' : ''}`} onClick={() => setFilter('soin-cheveux')}>{t('nav_hair')}</button>
-        <button className={`filter-btn ${activeFilter === 'new' ? 'active' : ''}`} onClick={() => setFilter('new')}>{t('nav_news')}</button>
+        <button
+          className={`filter-btn ${activeFilter === "all" ? "active" : ""}`}
+          onClick={() => setFilter("all")}
+        >
+          {t("nav_all")}
+        </button>
+        <button
+          className={`filter-btn ${activeFilter === "soins-visage" ? "active" : ""}`}
+          onClick={() => setFilter("soins-visage")}
+        >
+          {t("nav_face")}
+        </button>
+        <button
+          className={`filter-btn ${activeFilter === "soins-corps" ? "active" : ""}`}
+          onClick={() => setFilter("soins-corps")}
+        >
+          {t("nav_body")}
+        </button>
+        <button
+          className={`filter-btn ${activeFilter === "maquillage" ? "active" : ""}`}
+          onClick={() => setFilter("maquillage")}
+        >
+          {t("nav_makeup")}
+        </button>
+        <button
+          className={`filter-btn ${activeFilter === "nails" ? "active" : ""}`}
+          onClick={() => setFilter("nails")}
+        >
+          {t("nav_nails")}
+        </button>
+        <button
+          className={`filter-btn ${activeFilter === "para-dose" ? "active" : ""}`}
+          onClick={() => setFilter("para-dose")}
+        >
+          {t("nav_bar")}
+        </button>
+        <button
+          className={`filter-btn ${activeFilter === "soin-cheveux" ? "active" : ""}`}
+          onClick={() => setFilter("soin-cheveux")}
+        >
+          {t("nav_hair")}
+        </button>
+        <button
+          className={`filter-btn ${activeFilter === "new" ? "active" : ""}`}
+          onClick={() => setFilter("new")}
+        >
+          {t("nav_news")}
+        </button>
       </div>
     </div>
   );
@@ -78,6 +135,7 @@ const Header = () => {
   const [isAuth, setIsAuth] = React.useState(false);
   const { t } = useLanguage();
   const router = useRouter();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
   React.useEffect(() => {
     const authStatus = isAuthenticated();
@@ -85,7 +143,7 @@ const Header = () => {
 
     if (authStatus) {
       fetchProfile()
-        .then(data => setUser(data))
+        .then((data) => setUser(data))
         .catch(() => setIsAuth(false));
     }
   }, []);
@@ -93,65 +151,195 @@ const Header = () => {
   return (
     <header className="header">
       <div className="container header-container">
+        <button
+          className="icon-btn mobile-menu-toggle"
+          onClick={() => setIsMobileMenuOpen(true)}
+        >
+          <Menu size={24} />
+        </button>
         <Link href="/" className="logo">
           <Command size={28} strokeWidth={1.5} />
           hilytouch
         </Link>
-        <form className="search-bar" onSubmit={(e) => { 
-          e.preventDefault(); 
-          const query = e.target.search.value;
-          if (query.trim()) {
-            router.push(`/shop?search=${encodeURIComponent(query)}`);
-          }
-        }}>
-          <input 
-            type="text" 
+        <form
+          className="search-bar"
+          onSubmit={(e) => {
+            e.preventDefault();
+            const query = e.target.search.value;
+            if (query.trim()) {
+              router.push(`/shop?search=${encodeURIComponent(query)}`);
+            }
+          }}
+        >
+          <input
+            type="text"
             name="search"
-            placeholder={t('search_placeholder')} 
+            placeholder={t("search_placeholder")}
             className="search-input"
           />
-          <button type="submit" className="search-btn"><Search size={18} /></button>
+          <button type="submit" className="search-btn">
+            <Search size={18} />
+          </button>
         </form>
         <div className="header-actions">
-          <Link href="/compare" className="nav-action-text with-icon" style={{ color: 'var(--color-gold)' }}>
+          <Link
+            href="/compare"
+            className="nav-action-text with-icon"
+            style={{ color: "var(--color-gold)" }}
+          >
             <ArrowLeftRight size={18} />
-            <span>{t('compare')}</span>
+            <span>{t("compare")}</span>
           </Link>
 
           {user?.is_partner ? (
-            <Link href="/seller/dashboard" className="nav-action-btn highlighted">
+            <Link
+              href="/seller/dashboard"
+              className="nav-action-btn highlighted"
+            >
               <LayoutDashboard size={16} />
-              <span>{t('partner_dashboard')}</span>
+              <span>{t("partner_dashboard")}</span>
             </Link>
           ) : (
-            <Link href="/seller/register" className="nav-action-btn">{t('partner_account')}</Link>
+            <Link href="/seller/register" className="nav-action-btn">
+              {t("partner_account")}
+            </Link>
           )}
 
           {isAuth ? (
             <Link href="/dashboard" className="nav-action-text with-icon">
               <User size={20} />
-              <span>{t('my_account')}</span>
+              <span>{t("my_account")}</span>
             </Link>
           ) : (
             <Link href="/auth" className="nav-action-text with-icon">
               <User size={20} />
-              <span>{t('login')}</span>
+              <span>{t("login")}</span>
             </Link>
           )}
 
-          <Link href="/favorites" className="icon-btn">
+          <Link href="/favorites" className="icon-btn favorites-btn">
             <Heart size={20} />
             <span className="cart-badge">0</span>
           </Link>
 
-          <Link href="/cart" className="icon-btn">
+          <Link href="/cart" className="icon-btn cart-action-btn">
             <ShoppingBag size={20} />
             <span className="cart-badge">0</span>
           </Link>
 
-          <LanguageSwitcher />
+          <div className="lang-switcher-wrapper">
+            <LanguageSwitcher />
+          </div>
         </div>
       </div>
+
+      {/* Mobile Menu Drawer */}
+      <div
+        className={`mobile-menu-overlay ${isMobileMenuOpen ? "open" : ""}`}
+        onClick={() => setIsMobileMenuOpen(false)}
+      ></div>
+      <div className={`mobile-menu-drawer ${isMobileMenuOpen ? "open" : ""}`}>
+        <div className="mobile-menu-header">
+          <Link
+            href="/"
+            className="logo"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            <Command size={24} strokeWidth={1.5} />
+            hilytouch
+          </Link>
+          <button
+            className="icon-btn"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            <X size={24} />
+          </button>
+        </div>
+
+        <div className="mobile-menu-content">
+          <form
+            className="mobile-search-bar"
+            onSubmit={(e) => {
+              e.preventDefault();
+              const query = e.target.search.value;
+              if (query.trim()) {
+                router.push(`/shop?search=${encodeURIComponent(query)}`);
+                setIsMobileMenuOpen(false);
+              }
+            }}
+          >
+            <input
+              type="text"
+              name="search"
+              placeholder={t("search_placeholder")}
+              className="search-input"
+            />
+            <button type="submit" className="search-btn">
+              <Search size={18} />
+            </button>
+          </form>
+
+          <div className="mobile-menu-links">
+            {user?.is_partner ? (
+              <Link
+                href="/seller/dashboard"
+                className="mobile-menu-link highlighted"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <LayoutDashboard size={18} />
+                <span>{t("partner_dashboard")}</span>
+              </Link>
+            ) : (
+              <Link
+                href="/seller/register"
+                className="mobile-menu-link highlighted"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span>{t("partner_account")}</span>
+              </Link>
+            )}
+
+            {isAuth ? (
+              <Link
+                href="/dashboard"
+                className="mobile-menu-link"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <User size={18} />
+                <span>{t("my_account")}</span>
+              </Link>
+            ) : (
+              <Link
+                href="/auth"
+                className="mobile-menu-link"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <User size={18} />
+                <span>{t("login")}</span>
+              </Link>
+            )}
+
+            <Link
+              href="/compare"
+              className="mobile-menu-link"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <ArrowLeftRight size={18} />
+              <span>{t("compare")}</span>
+            </Link>
+
+            <Link
+              href="/favorites"
+              className="mobile-menu-link"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <Heart size={18} />
+              <span>{t("favorites") || "Favorites"}</span>
+            </Link>
+          </div>
+        </div>
+      </div>
+
       <Suspense fallback={null}>
         <CategoriesNav />
       </Suspense>

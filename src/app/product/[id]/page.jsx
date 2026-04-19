@@ -1,4 +1,4 @@
-import Product from '../../../screens/Product';
+import Product from "../../../screens/Product";
 
 export default function Page() {
   return <Product />;

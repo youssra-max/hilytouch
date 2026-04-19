@@ -1,2 +1,4 @@
-import BlogArticle from '../../../screens/BlogArticle';
-export default function Page() { return <BlogArticle />; }
+import BlogArticle from "../../../screens/BlogArticle";
+export default function Page() {
+  return <BlogArticle />;
+}

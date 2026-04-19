@@ -1,15 +1,21 @@
 "use client";
-import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Clock } from 'lucide-react';
-import { submitContact } from '../lib/api';
-import './Contact.css';
+import React, { useState } from "react";
+import { Mail, Phone, MapPin, Send, Clock } from "lucide-react";
+import { submitContact } from "../lib/api";
+import "./Contact.css";
 
 const Contact = () => {
-  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
   const [status, setStatus] = useState(null); // 'success' | 'error' | null
   const [sending, setSending] = useState(false);
 
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+  const handleChange = (e) =>
+    setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,13 +23,13 @@ const Contact = () => {
     try {
       const res = await submitContact(form);
       if (res.success) {
-        setStatus('success');
-        setForm({ name: '', email: '', subject: '', message: '' });
+        setStatus("success");
+        setForm({ name: "", email: "", subject: "", message: "" });
       } else {
-        setStatus('error');
+        setStatus("error");
       }
     } catch {
-      setStatus('error');
+      setStatus("error");
     }
     setSending(false);
   };
@@ -33,7 +39,10 @@ const Contact = () => {
       <div className="page-header-simple">
         <p className="subtitle">SERVICE CLIENT</p>
         <h1>Contactez-nous</h1>
-        <p className="page-desc">Notre équipe est à votre écoute pour toute question, suggestion ou demande d'assistance.</p>
+        <p className="page-desc">
+          Notre équipe est à votre écoute pour toute question, suggestion ou
+          demande d'assistance.
+        </p>
       </div>
 
       <div className="contact-grid">
@@ -56,14 +65,22 @@ const Contact = () => {
             <MapPin size={22} />
             <div>
               <h3>Adresse</h3>
-              <p>05 Rue Didouche Mourad<br/>16000 Alger, Algérie</p>
+              <p>
+                05 Rue Didouche Mourad
+                <br />
+                16000 Alger, Algérie
+              </p>
             </div>
           </div>
           <div className="contact-info-card">
             <Clock size={22} />
             <div>
               <h3>Horaires</h3>
-              <p>Lun-Ven : 9h-18h<br/>Sam : 10h-16h</p>
+              <p>
+                Lun-Ven : 9h-18h
+                <br />
+                Sam : 10h-16h
+              </p>
             </div>
           </div>
         </div>
@@ -72,16 +89,37 @@ const Contact = () => {
           <div className="form-row">
             <div className="form-group">
               <label htmlFor="name">Nom complet *</label>
-              <input type="text" id="name" name="name" value={form.name} onChange={handleChange} required placeholder="Votre nom" />
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={form.name}
+                onChange={handleChange}
+                required
+                placeholder="Votre nom"
+              />
             </div>
             <div className="form-group">
               <label htmlFor="email">Email *</label>
-              <input type="email" id="email" name="email" value={form.email} onChange={handleChange} required placeholder="votre@email.com" />
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={form.email}
+                onChange={handleChange}
+                required
+                placeholder="votre@email.com"
+              />
             </div>
           </div>
           <div className="form-group">
             <label htmlFor="subject">Sujet</label>
-            <select id="subject" name="subject" value={form.subject} onChange={handleChange}>
+            <select
+              id="subject"
+              name="subject"
+              value={form.subject}
+              onChange={handleChange}
+            >
               <option value="">Choisir un sujet</option>
               <option value="commande">Question sur une commande</option>
               <option value="produit">Renseignement produit</option>
@@ -92,13 +130,40 @@ const Contact = () => {
           </div>
           <div className="form-group">
             <label htmlFor="message">Message *</label>
-            <textarea id="message" name="message" value={form.message} onChange={handleChange} required placeholder="Votre message..." rows={6} />
+            <textarea
+              id="message"
+              name="message"
+              value={form.message}
+              onChange={handleChange}
+              required
+              placeholder="Votre message..."
+              rows={6}
+            />
           </div>
-          <button type="submit" className="btn btn-primary btn-submit" disabled={sending}>
-            {sending ? 'Envoi en cours...' : <><Send size={16} /> Envoyer le message</>}
+          <button
+            type="submit"
+            className="btn btn-primary btn-submit"
+            disabled={sending}
+          >
+            {sending ? (
+              "Envoi en cours..."
+            ) : (
+              <>
+                <Send size={16} /> Envoyer le message
+              </>
+            )}
           </button>
-          {status === 'success' && <p className="form-success">✅ Votre message a été envoyé avec succès ! Nous vous répondrons sous 48h.</p>}
-          {status === 'error' && <p className="form-error">❌ Erreur lors de l'envoi. Veuillez réessayer.</p>}
+          {status === "success" && (
+            <p className="form-success">
+              ✅ Votre message a été envoyé avec succès ! Nous vous répondrons
+              sous 48h.
+            </p>
+          )}
+          {status === "error" && (
+            <p className="form-error">
+              ❌ Erreur lors de l'envoi. Veuillez réessayer.
+            </p>
+          )}
         </form>
       </div>
     </div>

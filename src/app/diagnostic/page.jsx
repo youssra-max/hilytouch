@@ -1,2 +1,4 @@
-import Diagnostic from '../../screens/Diagnostic';
-export default function Page() { return <Diagnostic />; }
+import Diagnostic from "../../screens/Diagnostic";
+export default function Page() {
+  return <Diagnostic />;
+}

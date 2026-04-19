@@ -175,3 +175,34 @@
 .legal-links a:hover {
   color: var(--color-gold);
 }
+
+/* =============================
+   RESPONSIVE FOOTER
+   ============================= */
+@media (max-width: 768px) {
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .footer-links-row {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .footer-legal-bottom {
+    text-align: center;
+  }
+
+  .legal-links {
+    justify-content: center;
+  }
+}

@@ -1,4 +1,4 @@
-import Cart from '../../screens/Cart';
+import Cart from "../../screens/Cart";
 
 export default function Page() {
   return <Cart />;

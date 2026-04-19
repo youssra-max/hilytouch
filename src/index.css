@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 :root {
   /* Classic & Chic — Gold + Burgundy */
@@ -17,17 +17,21 @@
   --color-accent: var(--color-gold);
 
   /* Fonts */
-  --font-sans: 'Outfit', 'IBM Plex Sans Arabic', sans-serif;
-  --font-serif: 'Playfair Display', 'Amiri', serif;
+  --font-sans: "Outfit", "IBM Plex Sans Arabic", sans-serif;
+  --font-serif: "Playfair Display", "Amiri", serif;
   --font-family-base: var(--font-sans);
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
   font-family: var(--font-family-base);
   background-color: var(--color-cream);
-  background-image: url('./assets/bg-embossed.png');
+  background-image: url("./assets/bg-embossed.png");
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
@@ -35,17 +39,34 @@ body {
   color: var(--color-text-primary);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  max-width: 100%;
+  overflow-x: hidden !important;
 }
 
-h1, h2, h3, h4, h5, h6 {
+html {
+  max-width: 100vw;
+  overflow-x: hidden !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-serif);
   font-weight: 600;
   letter-spacing: 0.02em;
 }
 
-a { color: inherit; text-decoration: none; }
-img { display: block; max-width: 100%; }
+a {
+  color: inherit;
+  text-decoration: none;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
 
 .container {
   max-width: 1200px;
@@ -95,6 +116,36 @@ img { display: block; max-width: 100%; }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===============================
+   GLOBAL RESPONSIVE ADJUSTMENTS
+   =============================== */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.2rem;
+  }
+
+  h1 {
+    font-size: 2.5rem !important;
+  }
+  h2 {
+    font-size: 2rem !important;
+  }
+  h3 {
+    font-size: 1.5rem !important;
+  }
+
+  body {
+    background-size: cover;
+    background-attachment: scroll; /* Performs better on mobile */
+  }
 }

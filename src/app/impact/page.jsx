@@ -1,2 +1,4 @@
-import Impact from '../../screens/Impact';
-export default function Page() { return <Impact />; }
+import Impact from "../../screens/Impact";
+export default function Page() {
+  return <Impact />;
+}

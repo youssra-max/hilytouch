@@ -1,12 +1,24 @@
 "use client";
-import React from 'react';
-import Link from 'next/link';
-import { Heart, Check, ArrowLeftRight } from 'lucide-react';
-import { addToWishlist, removeFromWishlist, isAuthenticated } from '../../lib/api';
-import { useLanguage } from '../../context/LanguageContext';
-import './ProductCard.css';
+import React from "react";
+import Link from "next/link";
+import { Heart, Check, ArrowLeftRight } from "lucide-react";
+import {
+  addToWishlist,
+  removeFromWishlist,
+  isAuthenticated,
+} from "../../lib/api";
+import { useLanguage } from "../../context/LanguageContext";
+import "./ProductCard.css";
 
-const ProductCard = ({ id = 1, image, title, category, price, isNew, initialIsFav = false }) => {
+const ProductCard = ({
+  id = 1,
+  image,
+  title,
+  category,
+  price,
+  isNew,
+  initialIsFav = false,
+}) => {
   const { t } = useLanguage();
   const [isFav, setIsFav] = React.useState(initialIsFav);
   const [loading, setLoading] = React.useState(false);
@@ -14,9 +26,9 @@ const ProductCard = ({ id = 1, image, title, category, price, isNew, initialIsFa
   const toggleWishlist = async (e) => {
     e.preventDefault();
     e.stopPropagation();
-    
+
     if (!isAuthenticated()) {
-      window.location.href = '/auth';
+      window.location.href = "/auth";
       return;
     }
 
@@ -40,44 +52,33 @@ const ProductCard = ({ id = 1, image, title, category, price, isNew, initialIsFa
     <div className="product-card fade-in">
       <Link href={`/product/${id}`} className="product-card-link">
         <div className="product-image-container">
-          {isNew && <span className="badge-new">{t('badge_new')}</span>}
+          {isNew && <span className="badge-new">{t("badge_new")}</span>}
           <img src={image} alt={title} className="product-image" />
-          <div className="product-overlay">
-            <div className="overlay-actions">
-              <button className="btn-add-cart" onClick={(e) => { 
-                e.preventDefault();
-                e.stopPropagation();
-                // To be wired with cart later
-              }}>{t('add_to_cart')}</button>
-              
-              <button 
-                className="btn-compare"
-                title={t('compare_title')}
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  window.location.href = '/compare';
-                }}
-              >
-                <ArrowLeftRight size={18} />
-              </button>
-
-              <button 
-                className={`btn-fav ${isFav ? 'active' : ''}`} 
-                onClick={toggleWishlist}
-                disabled={loading}
-                aria-label={t('fav_title')}
-                title={t('fav_title')}
-              >
-                <Heart size={18} fill={isFav ? "currentColor" : "none"} />
-              </button>
+        </div>
+        <div className="product-info-wrapper">
+          <div className="product-info-left">
+            <h3 className="product-brand">{title.split(" ")[0]}</h3>
+            <h4 className="product-title">{title}</h4>
+            {category && <p className="product-category">{category}</p>}
+            <p className="product-price">
+              {typeof price === "number"
+                ? `${price.toLocaleString()} DA`
+                : price}
+            </p>
+            <div className="product-rating">
+              <span className="stars">★★★★☆</span>
+              <span className="rating-count">124</span>
             </div>
           </div>
-        </div>
-        <div className="product-info">
-          <h3 className="product-title">{title}</h3>
-          {category && <p className="product-category">{category}</p>}
-          <p className="product-price">{typeof price === 'number' ? `${price.toLocaleString()} DA` : price}</p>
+          <button
+            className={`product-btn-fav ${isFav ? "active" : ""}`}
+            onClick={toggleWishlist}
+            disabled={loading}
+            aria-label={t("fav_title")}
+            title={t("fav_title")}
+          >
+            <Heart size={20} fill={isFav ? "currentColor" : "none"} />
+          </button>
         </div>
       </Link>
     </div>

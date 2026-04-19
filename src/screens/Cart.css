@@ -19,8 +19,12 @@
 }
 
 @keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .cart-summary h2 {
@@ -165,5 +169,23 @@
 @media (max-width: 600px) {
   .promo-input-group {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .cart-layout {
+    flex-direction: column;
+    display: flex;
+    gap: 1.5rem;
+  }
+  .cart-items {
+    width: 100%;
+  }
+  .item-header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .cart-summary {
+    width: 100%;
   }
 }

@@ -63,7 +63,7 @@
   border-radius: 16px;
   top: 10%;
   left: 10%;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 .sg-img-2 {
   position: absolute;
@@ -73,6 +73,6 @@
   border-radius: 16px;
   bottom: 10%;
   right: 15%;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   transform: rotate(5deg);
 }

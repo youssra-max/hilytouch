@@ -1,17 +1,76 @@
-.accessibility-page { padding: 4rem 0; }
-.page-header-simple { text-align: center; margin-bottom: 4rem; }
-.page-header-simple h1 { font-size: 2.8rem; margin-bottom: 1rem; }
-.page-header-simple .page-desc { max-width: 600px; margin: 0 auto; color: var(--color-text-secondary); line-height: 1.8; }
+.accessibility-page {
+  padding: 4rem 0;
+}
+.page-header-simple {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.page-header-simple h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+}
+.page-header-simple .page-desc {
+  max-width: 600px;
+  margin: 0 auto;
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+}
 
-.access-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 4rem; }
-.access-card { padding: 2.5rem 2rem; background: white; border-radius: 12px; border: 1px solid rgba(176,141,87,0.12); transition: all 0.3s; }
-.access-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(176,141,87,0.08); }
-.access-card svg { color: var(--color-gold); margin-bottom: 1rem; }
-.access-card h3 { font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 0.8rem; }
-.access-card p { font-size: 0.9rem; color: var(--color-text-secondary); line-height: 1.7; }
-.access-card:nth-child(4), .access-card:nth-child(5) { grid-column: span 1; }
+.access-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+.access-card {
+  padding: 2.5rem 2rem;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid rgba(176, 141, 87, 0.12);
+  transition: all 0.3s;
+}
+.access-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(176, 141, 87, 0.08);
+}
+.access-card svg {
+  color: var(--color-gold);
+  margin-bottom: 1rem;
+}
+.access-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+}
+.access-card p {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+.access-card:nth-child(4),
+.access-card:nth-child(5) {
+  grid-column: span 1;
+}
 
-.access-commitment { max-width: 700px; margin: 0 auto; text-align: center; padding: 3rem; background: rgba(176,141,87,0.05); border-radius: 16px; border: 1px solid rgba(176,141,87,0.1); }
-.access-commitment h2 { font-size: 1.6rem; margin-bottom: 1.5rem; }
-.access-commitment p { color: var(--color-text-secondary); line-height: 1.8; margin-bottom: 1rem; }
-.access-commitment a { color: var(--color-gold); text-decoration: underline; }
+.access-commitment {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 3rem;
+  background: rgba(176, 141, 87, 0.05);
+  border-radius: 16px;
+  border: 1px solid rgba(176, 141, 87, 0.1);
+}
+.access-commitment h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+}
+.access-commitment p {
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+.access-commitment a {
+  color: var(--color-gold);
+  text-decoration: underline;
+}

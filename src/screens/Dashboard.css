@@ -50,7 +50,7 @@
   color: #2c3e50;
 }
 
-.customer-sidebar .sidebar-nav button:hover, 
+.customer-sidebar .sidebar-nav button:hover,
 .customer-sidebar .sidebar-nav button.active {
   background-color: var(--color-cream);
   color: var(--color-gold-dark);
@@ -126,9 +126,18 @@
   font-size: 0.8rem;
   font-weight: 600;
 }
-.status-warning { background-color: #fff8e1; color: #f39c12; }
-.status-info { background-color: #e3f2fd; color: #2980b9; }
-.status-success { background-color: #e8f8f5; color: #27ae60; }
+.status-warning {
+  background-color: #fff8e1;
+  color: #f39c12;
+}
+.status-info {
+  background-color: #e3f2fd;
+  color: #2980b9;
+}
+.status-success {
+  background-color: #e8f8f5;
+  color: #27ae60;
+}
 
 /* Address Grid */
 .address-grid {
@@ -213,4 +222,18 @@
 
 .full-width {
   width: 100%;
+}
+
+@media (max-width: 768px) {
+  .customer-dashboard {
+    flex-direction: column;
+  }
+  .customer-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #e1e3e8;
+  }
+  .dashboard-main {
+    padding: 1.5rem;
+  }
 }

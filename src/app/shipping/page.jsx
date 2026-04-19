@@ -1,2 +1,4 @@
-import Shipping from '../../screens/Shipping';
-export default function Page() { return <Shipping />; }
+import Shipping from "../../screens/Shipping";
+export default function Page() {
+  return <Shipping />;
+}

@@ -1,12 +1,12 @@
 "use client";
-import React, { useState, useEffect } from 'react';
-import './Dashboard.css';
-import { 
-  LayoutDashboard, 
-  Package, 
-  ShoppingCart, 
-  BarChart3, 
-  Settings, 
+import React, { useState, useEffect } from "react";
+import "./Dashboard.css";
+import {
+  LayoutDashboard,
+  Package,
+  ShoppingCart,
+  BarChart3,
+  Settings,
   LogOut,
   Bell,
   Search,
@@ -22,71 +22,144 @@ import {
   PackageCheck,
   AlertTriangle,
   ArrowUpRight,
-  ArrowDownRight
-} from 'lucide-react';
+  ArrowDownRight,
+} from "lucide-react";
 
 export default function SellerDashboard() {
-  const [activeTab, setActiveTab] = useState('overview');
-  const [activeOrderTab, setActiveOrderTab] = useState('to_process');
-  const [searchQuery, setSearchQuery] = useState('');
+  const [activeTab, setActiveTab] = useState("overview");
+  const [activeOrderTab, setActiveOrderTab] = useState("to_process");
+  const [searchQuery, setSearchQuery] = useState("");
   const [vacationMode, setVacationMode] = useState(false);
-  
+
   // Orders State
   const initialOrders = [
-    { id: "1042", client: "Amina B.", seller: "Maison de Beauté Bio", location: "16 - Alger (Hydra)", products: 2, total: "7 700 DA", status: "attente", date: "11/04/2026" },
-    { id: "1040", client: "Sarah M.", seller: "Luxe Cosmétiques", location: "06 - Béjaïa", products: 3, total: "10 500 DA", status: "attente", date: "09/04/2026" },
-    { id: "1038", client: "Karim L.", seller: "BioSina", location: "31 - Oran", products: 1, total: "3 200 DA", status: "attente", date: "08/04/2026" },
-    { id: "1035", client: "Yasmine K.", seller: "Naturel dz", location: "25 - Constantine", products: 4, total: "14 200 DA", status: "attente", date: "07/04/2026" },
-    { id: "1032", client: "Omar T.", seller: "Artisanal Care", location: "16 - Alger", products: 2, total: "6 400 DA", status: "attente", date: "06/04/2026" },
-    { id: "1028", client: "Lila S.", seller: "Maison de Beauté Bio", location: "09 - Blida", products: 2, total: "8 900 DA", status: "preparation", date: "05/04/2026" },
-    { id: "1025", client: "Mehdi R.", seller: "Luxe Cosmétiques", location: "16 - Alger", products: 1, total: "4 500 DA", status: "prete", date: "04/04/2026" },
-    { id: "1020", client: "Sofia G.", seller: "Naturel dz", location: "31 - Oran", products: 3, total: "12 800 DA", status: "expediee", date: "03/04/2026" },
+    {
+      id: "1042",
+      client: "Amina B.",
+      seller: "Maison de Beauté Bio",
+      location: "16 - Alger (Hydra)",
+      products: 2,
+      total: "7 700 DA",
+      status: "attente",
+      date: "11/04/2026",
+    },
+    {
+      id: "1040",
+      client: "Sarah M.",
+      seller: "Luxe Cosmétiques",
+      location: "06 - Béjaïa",
+      products: 3,
+      total: "10 500 DA",
+      status: "attente",
+      date: "09/04/2026",
+    },
+    {
+      id: "1038",
+      client: "Karim L.",
+      seller: "BioSina",
+      location: "31 - Oran",
+      products: 1,
+      total: "3 200 DA",
+      status: "attente",
+      date: "08/04/2026",
+    },
+    {
+      id: "1035",
+      client: "Yasmine K.",
+      seller: "Naturel dz",
+      location: "25 - Constantine",
+      products: 4,
+      total: "14 200 DA",
+      status: "attente",
+      date: "07/04/2026",
+    },
+    {
+      id: "1032",
+      client: "Omar T.",
+      seller: "Artisanal Care",
+      location: "16 - Alger",
+      products: 2,
+      total: "6 400 DA",
+      status: "attente",
+      date: "06/04/2026",
+    },
+    {
+      id: "1028",
+      client: "Lila S.",
+      seller: "Maison de Beauté Bio",
+      location: "09 - Blida",
+      products: 2,
+      total: "8 900 DA",
+      status: "preparation",
+      date: "05/04/2026",
+    },
+    {
+      id: "1025",
+      client: "Mehdi R.",
+      seller: "Luxe Cosmétiques",
+      location: "16 - Alger",
+      products: 1,
+      total: "4 500 DA",
+      status: "prete",
+      date: "04/04/2026",
+    },
+    {
+      id: "1020",
+      client: "Sofia G.",
+      seller: "Naturel dz",
+      location: "31 - Oran",
+      products: 3,
+      total: "12 800 DA",
+      status: "expediee",
+      date: "03/04/2026",
+    },
   ];
 
   const [ordersList, setOrdersList] = useState([]);
 
   // Load from Storage on Mount
   useEffect(() => {
-    const savedOrders = localStorage.getItem('hilytouch_orders');
+    const savedOrders = localStorage.getItem("hilytouch_orders");
     if (savedOrders) {
       setOrdersList(JSON.parse(savedOrders));
     } else {
       setOrdersList(initialOrders);
-      localStorage.setItem('hilytouch_orders', JSON.stringify(initialOrders));
+      localStorage.setItem("hilytouch_orders", JSON.stringify(initialOrders));
     }
 
     // Sync across tabs
     const handleStorageChange = (e) => {
-      if (e.key === 'hilytouch_orders') {
+      if (e.key === "hilytouch_orders") {
         setOrdersList(JSON.parse(e.newValue));
       }
     };
-    window.addEventListener('storage', handleStorageChange);
-    return () => window.removeEventListener('storage', handleStorageChange);
+    window.addEventListener("storage", handleStorageChange);
+    return () => window.removeEventListener("storage", handleStorageChange);
   }, []);
 
   const handleStatusChange = (orderId, newStatus) => {
-    const updated = ordersList.map(order => 
-      order.id === orderId ? { ...order, status: newStatus } : order
+    const updated = ordersList.map((order) =>
+      order.id === orderId ? { ...order, status: newStatus } : order,
     );
     setOrdersList(updated);
-    localStorage.setItem('hilytouch_orders', JSON.stringify(updated));
+    localStorage.setItem("hilytouch_orders", JSON.stringify(updated));
   };
 
-  const filteredOrders = ordersList.filter(order => {
+  const filteredOrders = ordersList.filter((order) => {
     // 1. Tab Filtering
     const matchesTab = (() => {
-      if (activeOrderTab === 'to_process') return order.status === 'attente';
-      if (activeOrderTab === 'preparation') return order.status === 'preparation';
-      if (activeOrderTab === 'ready') return order.status === 'prete';
-      if (activeOrderTab === 'delivered') return order.status === 'expediee';
-      if (activeOrderTab === 'returns') return order.status === 'annulee';
+      if (activeOrderTab === "to_process") return order.status === "attente";
+      if (activeOrderTab === "preparation")
+        return order.status === "preparation";
+      if (activeOrderTab === "ready") return order.status === "prete";
+      if (activeOrderTab === "delivered") return order.status === "expediee";
+      if (activeOrderTab === "returns") return order.status === "annulee";
       return true;
     })();
 
     // 2. Search Filtering (ID or Client Name)
-    const matchesSearch = 
-      order.id.toLowerCase().includes(searchQuery.toLowerCase()) || 
+    const matchesSearch =
+      order.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
       order.client.toLowerCase().includes(searchQuery.toLowerCase());
 
     return matchesTab && matchesSearch;
@@ -101,18 +174,48 @@ export default function SellerDashboard() {
     stockOutRate: "5%",
     salesGrowth: "+15.4%",
     topProducts: [
-      { id: 1, name: "Sérum Anti-Âge Global", sales: 142, revenue: "639 000", stock: 12 },
-      { id: 3, name: "Huile Scintillante Corps", sales: 89, revenue: "249 200", stock: 45 },
-      { id: 5, name: "Masque Argile Pure", sales: 76, revenue: "167 200", stock: 20 },
-      { id: 8, name: "Brume Hydratante", sales: 64, revenue: "140 800", stock: 8 },
-      { id: 10, name: "Savon Artisanal Olive", sales: 52, revenue: "41 600", stock: 100 }
+      {
+        id: 1,
+        name: "Sérum Anti-Âge Global",
+        sales: 142,
+        revenue: "639 000",
+        stock: 12,
+      },
+      {
+        id: 3,
+        name: "Huile Scintillante Corps",
+        sales: 89,
+        revenue: "249 200",
+        stock: 45,
+      },
+      {
+        id: 5,
+        name: "Masque Argile Pure",
+        sales: 76,
+        revenue: "167 200",
+        stock: 20,
+      },
+      {
+        id: 8,
+        name: "Brume Hydratante",
+        sales: 64,
+        revenue: "140 800",
+        stock: 8,
+      },
+      {
+        id: 10,
+        name: "Savon Artisanal Olive",
+        sales: 52,
+        revenue: "41 600",
+        stock: 100,
+      },
     ],
     slowMovers: [
       { id: 12, name: "Crème Mains Lavande", lastSale: "22 jours", stock: 65 },
       { id: 15, name: "Baume Lèvres Coco", lastSale: "18 jours", stock: 120 },
-      { id: 22, name: "Gommage Pieds Menthe", lastSale: "45 jours", stock: 30 }
+      { id: 22, name: "Gommage Pieds Menthe", lastSale: "45 jours", stock: 30 },
     ],
-    chartData: [20, 35, 25, 45, 30, 55, 65, 50, 75, 80, 70, 90] // Simple points for SVG
+    chartData: [20, 35, 25, 45, 30, 55, 65, 50, 75, 80, 70, 90], // Simple points for SVG
   };
 
   /* ------------ RENDER TABS ------------ */
@@ -152,13 +255,15 @@ export default function SellerDashboard() {
         <div className="alert-box warning">
           <AlertCircle size={20} />
           <div>
-            <strong>Rupture de Stock :</strong> Le produit "Crème Hydratante Nuit" est épuisé.
+            <strong>Rupture de Stock :</strong> Le produit "Crème Hydratante
+            Nuit" est épuisé.
           </div>
         </div>
         <div className="alert-box info">
           <ShoppingCart size={20} />
           <div>
-            <strong>Nouvelles commandes :</strong> Vous avez 3 nouvelles commandes en attente de préparation.
+            <strong>Nouvelles commandes :</strong> Vous avez 3 nouvelles
+            commandes en attente de préparation.
           </div>
         </div>
       </div>
@@ -167,12 +272,15 @@ export default function SellerDashboard() {
 
   const renderProducts = () => {
     if (isAddingProduct) return renderAddProductForm();
-    
+
     return (
       <div className="tab-content fade-in">
         <div className="dashboard-header">
           <h2>Mes Produits</h2>
-          <button className="btn-primary" onClick={() => setIsAddingProduct(true)}>
+          <button
+            className="btn-primary"
+            onClick={() => setIsAddingProduct(true)}
+          >
             <Plus size={18} /> Ajouter un produit
           </button>
         </div>
@@ -190,26 +298,38 @@ export default function SellerDashboard() {
               </tr>
             </thead>
             <tbody>
-              {products.map(p => (
+              {products.map((p) => (
                 <tr key={p.id}>
-                  <td><strong>{p.name}</strong></td>
+                  <td>
+                    <strong>{p.name}</strong>
+                  </td>
                   <td>{p.category}</td>
                   <td>{p.price} DZD</td>
                   <td>
                     {p.stock === 0 ? (
                       <span className="status-badge error">Rupture</span>
                     ) : (
-                      <span className="status-badge success">{p.stock} unités</span>
+                      <span className="status-badge success">
+                        {p.stock} unités
+                      </span>
                     )}
                   </td>
                   <td>
                     <div className="badges-list">
-                      {p.badges.map((b, i) => <span key={i} className="small-badge">{b}</span>)}
+                      {p.badges.map((b, i) => (
+                        <span key={i} className="small-badge">
+                          {b}
+                        </span>
+                      ))}
                     </div>
                   </td>
                   <td className="actions-cell">
-                    <button className="action-btn edit"><Edit2 size={16} /></button>
-                    <button className="action-btn delete"><Trash2 size={16} /></button>
+                    <button className="action-btn edit">
+                      <Edit2 size={16} />
+                    </button>
+                    <button className="action-btn delete">
+                      <Trash2 size={16} />
+                    </button>
                   </td>
                 </tr>
               ))}
@@ -224,7 +344,12 @@ export default function SellerDashboard() {
     <div className="tab-content fade-in">
       <div className="dashboard-header">
         <h2>Ajouter un Nouveau Produit</h2>
-        <button className="btn-secondary" onClick={() => setIsAddingProduct(false)}>Annuler</button>
+        <button
+          className="btn-secondary"
+          onClick={() => setIsAddingProduct(false)}
+        >
+          Annuler
+        </button>
       </div>
 
       <div className="settings-section">
@@ -250,12 +375,17 @@ export default function SellerDashboard() {
         </div>
         <div className="form-group">
           <label>Description (Bienfaits, Utilisation) *</label>
-          <textarea rows="4" placeholder="Décrivez votre produit en détail..."></textarea>
+          <textarea
+            rows="4"
+            placeholder="Décrivez votre produit en détail..."
+          ></textarea>
         </div>
         <div className="form-group">
           <label>Quantité en stock *</label>
           <input type="number" placeholder="Ex: 50" />
-          <p className="sub-text">Inscrivez 0 pour marquer automatiquement le produit en rupture.</p>
+          <p className="sub-text">
+            Inscrivez 0 pour marquer automatiquement le produit en rupture.
+          </p>
         </div>
       </div>
 
@@ -263,17 +393,30 @@ export default function SellerDashboard() {
         <h3>Spécificités Cosmétiques</h3>
         <div className="form-group">
           <label>Liste des Ingrédients (Norme INCI) *</label>
-          <textarea rows="3" placeholder="Aqua, Glycerin, Rosa Damascena Flower Water..."></textarea>
+          <textarea
+            rows="3"
+            placeholder="Aqua, Glycerin, Rosa Damascena Flower Water..."
+          ></textarea>
         </div>
-        
+
         <div className="form-group">
           <label>Badges (Labels & Mentions)</label>
           <div className="badges-checkboxes">
-            <label className="checkbox-label"><input type="checkbox" /> 100% Naturel</label>
-            <label className="checkbox-label"><input type="checkbox" /> Vegan</label>
-            <label className="checkbox-label"><input type="checkbox" /> Sans Parabène</label>
-            <label className="checkbox-label"><input type="checkbox" /> Fait main (Artisanal)</label>
-            <label className="checkbox-label"><input type="checkbox" /> Cruelty Free</label>
+            <label className="checkbox-label">
+              <input type="checkbox" /> 100% Naturel
+            </label>
+            <label className="checkbox-label">
+              <input type="checkbox" /> Vegan
+            </label>
+            <label className="checkbox-label">
+              <input type="checkbox" /> Sans Parabène
+            </label>
+            <label className="checkbox-label">
+              <input type="checkbox" /> Fait main (Artisanal)
+            </label>
+            <label className="checkbox-label">
+              <input type="checkbox" /> Cruelty Free
+            </label>
           </div>
         </div>
 
@@ -287,14 +430,30 @@ export default function SellerDashboard() {
         <h3>Photos du produit</h3>
         <div className="form-group">
           <div className="upload-zone">
-            <span>Glisser-déposer vos photos ici (Max 5 images. La première sera la photo principale)</span>
-            <input type="file" multiple accept="image/*" style={{display: 'none'}} />
+            <span>
+              Glisser-déposer vos photos ici (Max 5 images. La première sera la
+              photo principale)
+            </span>
+            <input
+              type="file"
+              multiple
+              accept="image/*"
+              style={{ display: "none" }}
+            />
           </div>
         </div>
       </div>
 
-      <div className="form-actions" style={{textAlign: 'right', marginBottom: '2rem'}}>
-        <button className="btn-primary" onClick={() => setIsAddingProduct(false)}>Enregistrer le produit</button>
+      <div
+        className="form-actions"
+        style={{ textAlign: "right", marginBottom: "2rem" }}
+      >
+        <button
+          className="btn-primary"
+          onClick={() => setIsAddingProduct(false)}
+        >
+          Enregistrer le produit
+        </button>
       </div>
     </div>
   );
@@ -303,46 +462,51 @@ export default function SellerDashboard() {
     <div className="tab-content fade-in">
       <div className="orders-page-header">
         <h1 className="elegant-title">Mes Commandes</h1>
-        <p className="subtitle">Gérez et suivez le flux de vos ventes en temps réel.</p>
+        <p className="subtitle">
+          Gérez et suivez le flux de vos ventes en temps réel.
+        </p>
       </div>
 
       <div className="internal-nav">
-        <button 
-          className={activeOrderTab === 'to_process' ? 'active' : ''} 
-          onClick={() => setActiveOrderTab('to_process')}
+        <button
+          className={activeOrderTab === "to_process" ? "active" : ""}
+          onClick={() => setActiveOrderTab("to_process")}
         >
-          À traiter <span className="tab-count">{ordersList.filter(o => o.status === 'attente').length}</span>
+          À traiter{" "}
+          <span className="tab-count">
+            {ordersList.filter((o) => o.status === "attente").length}
+          </span>
         </button>
-        <button 
-          className={activeOrderTab === 'preparation' ? 'active' : ''} 
-          onClick={() => setActiveOrderTab('preparation')}
+        <button
+          className={activeOrderTab === "preparation" ? "active" : ""}
+          onClick={() => setActiveOrderTab("preparation")}
         >
           En préparation
         </button>
-        <button 
-          className={activeOrderTab === 'ready' ? 'active' : ''} 
-          onClick={() => setActiveOrderTab('ready')}
+        <button
+          className={activeOrderTab === "ready" ? "active" : ""}
+          onClick={() => setActiveOrderTab("ready")}
         >
           Prêtes (Yalidine)
         </button>
-        <button 
-          className={activeOrderTab === 'delivered' ? 'active' : ''} 
-          onClick={() => setActiveOrderTab('delivered')}
+        <button
+          className={activeOrderTab === "delivered" ? "active" : ""}
+          onClick={() => setActiveOrderTab("delivered")}
         >
           Livrées
         </button>
-        <button 
-          className={activeOrderTab === 'returns' ? 'active' : ''} 
-          onClick={() => setActiveOrderTab('returns')}
+        <button
+          className={activeOrderTab === "returns" ? "active" : ""}
+          onClick={() => setActiveOrderTab("returns")}
         >
           Retours
         </button>
 
         <div className="nav-search">
           <Search size={18} />
-          <input 
-            type="text" 
-            placeholder="Rechercher par ID ou client..." 
+          <input
+            type="text"
+            placeholder="Rechercher par ID ou client..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
@@ -362,17 +526,22 @@ export default function SellerDashboard() {
             </tr>
           </thead>
           <tbody>
-            {filteredOrders.map(o => (
+            {filteredOrders.map((o) => (
               <tr key={o.id}>
-                <td><span className="order-id">#{o.id}</span></td>
                 <td>
-                  <strong>{o.client}</strong><br/>
+                  <span className="order-id">#{o.id}</span>
+                </td>
+                <td>
+                  <strong>{o.client}</strong>
+                  <br />
                   <span className="sub-text">{o.location}</span>
                 </td>
                 <td>{o.products} articles</td>
-                <td><span className="amount">{o.total}</span></td>
                 <td>
-                  <select 
+                  <span className="amount">{o.total}</span>
+                </td>
+                <td>
+                  <select
                     className={`status-select-pill ${o.status}`}
                     value={o.status}
                     onChange={(e) => handleStatusChange(o.id, e.target.value)}
@@ -386,15 +555,19 @@ export default function SellerDashboard() {
                 </td>
                 <td>
                   <div className="actions-cell">
-                    <button className="icon-btn-view" title="Voir détails"><Edit2 size={16} /></button>
-                    <button className="icon-btn-print" title="Imprimer bon"><Printer size={16} /></button>
+                    <button className="icon-btn-view" title="Voir détails">
+                      <Edit2 size={16} />
+                    </button>
+                    <button className="icon-btn-print" title="Imprimer bon">
+                      <Printer size={16} />
+                    </button>
                   </div>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-        
+
         {filteredOrders.length === 0 && (
           <div className="empty-state">
             <ShoppingCart size={40} />
@@ -410,12 +583,14 @@ export default function SellerDashboard() {
       <div className="dashboard-header">
         <div className="title-stack">
           <h2>Statistiques Analytiques</h2>
-          <p className="sub-text">Analysez vos performances pour optimiser votre boutique.</p>
+          <p className="sub-text">
+            Analysez vos performances pour optimiser votre boutique.
+          </p>
         </div>
         <div className="header-filters">
-          <select 
-            className="filter-select" 
-            value={statsPeriod} 
+          <select
+            className="filter-select"
+            value={statsPeriod}
             onChange={(e) => setStatsPeriod(e.target.value)}
           >
             <option value="jour">Aujourd'hui</option>
@@ -435,7 +610,8 @@ export default function SellerDashboard() {
           </div>
           <div className="stat-value">{analyticsMock.revenue}</div>
           <div className="stat-trend positive">
-            <TrendingUp size={14} /> {analyticsMock.salesGrowth} vs période précédente
+            <TrendingUp size={14} /> {analyticsMock.salesGrowth} vs période
+            précédente
           </div>
         </div>
         <div className="stat-card">
@@ -473,44 +649,72 @@ export default function SellerDashboard() {
         <div className="chart-header-row">
           <h3>Évolution des ventes</h3>
           <div className="chart-legend">
-            <span className="legend-item"><span className="dot current"></span> Ventes (DZD)</span>
+            <span className="legend-item">
+              <span className="dot current"></span> Ventes (DZD)
+            </span>
           </div>
         </div>
         <div className="custom-chart-wrapper">
           <svg viewBox="0 0 1000 300" className="analytical-svg">
             <defs>
               <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="var(--color-gold)" stopOpacity="0.3" />
-                <stop offset="100%" stopColor="var(--color-gold)" stopOpacity="0" />
+                <stop
+                  offset="0%"
+                  stopColor="var(--color-gold)"
+                  stopOpacity="0.3"
+                />
+                <stop
+                  offset="100%"
+                  stopColor="var(--color-gold)"
+                  stopOpacity="0"
+                />
               </linearGradient>
             </defs>
             {/* Grid Lines */}
             <line x1="0" y1="50" x2="1000" y2="50" stroke="#f0f0f0" />
             <line x1="0" y1="150" x2="1000" y2="150" stroke="#f0f0f0" />
             <line x1="0" y1="250" x2="1000" y2="250" stroke="#f0f0f0" />
-            
+
             {/* Area */}
-            <path 
-              d={`M 0 300 L ${analyticsMock.chartData.map((d, i) => `${i * 90} ${300 - d * 2.5}`).join(' L ')} L 1000 300 Z`} 
+            <path
+              d={`M 0 300 L ${analyticsMock.chartData.map((d, i) => `${i * 90} ${300 - d * 2.5}`).join(" L ")} L 1000 300 Z`}
               fill="url(#chartGradient)"
             />
             {/* Main Line */}
-            <path 
-              d={`M ${analyticsMock.chartData.map((d, i) => `${i * 90} ${300 - d * 2.5}`).join(' L ')}`} 
-              fill="none" 
-              stroke="var(--color-gold)" 
+            <path
+              d={`M ${analyticsMock.chartData.map((d, i) => `${i * 90} ${300 - d * 2.5}`).join(" L ")}`}
+              fill="none"
+              stroke="var(--color-gold)"
               strokeWidth="4"
               strokeLinecap="round"
               strokeLinejoin="round"
             />
             {/* Data Points */}
             {analyticsMock.chartData.map((d, i) => (
-              <circle key={i} cx={i * 90} cy={300 - d * 2.5} r="6" fill="white" stroke="var(--color-gold)" strokeWidth="3" />
+              <circle
+                key={i}
+                cx={i * 90}
+                cy={300 - d * 2.5}
+                r="6"
+                fill="white"
+                stroke="var(--color-gold)"
+                strokeWidth="3"
+              />
             ))}
           </svg>
           <div className="chart-x-axis">
-            <span>Jan</span><span>Fév</span><span>Mar</span><span>Avr</span><span>Mai</span><span>Juin</span>
-            <span>Juil</span><span>Août</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Déc</span>
+            <span>Jan</span>
+            <span>Fév</span>
+            <span>Mar</span>
+            <span>Avr</span>
+            <span>Mai</span>
+            <span>Juin</span>
+            <span>Juil</span>
+            <span>Août</span>
+            <span>Sep</span>
+            <span>Oct</span>
+            <span>Nov</span>
+            <span>Déc</span>
           </div>
         </div>
       </div>
@@ -531,7 +735,10 @@ export default function SellerDashboard() {
                   <span className="p-rev">{p.revenue} DA de CA</span>
                 </div>
                 <div className="p-bar-container">
-                  <div className="p-bar" style={{ width: `${(p.sales / 150) * 100}%` }}></div>
+                  <div
+                    className="p-bar"
+                    style={{ width: `${(p.sales / 150) * 100}%` }}
+                  ></div>
                 </div>
                 <div className="p-count">{p.sales}</div>
               </div>
@@ -551,12 +758,20 @@ export default function SellerDashboard() {
               </div>
               <div className="inv-metric-row">
                 <div className="inv-label">Taux de rupture critique</div>
-                <div className="inv-val text-red">{analyticsMock.stockOutRate}</div>
+                <div className="inv-val text-red">
+                  {analyticsMock.stockOutRate}
+                </div>
               </div>
               <div className="inv-progress-bar">
-                <div className="progress-fill warning" style={{ width: analyticsMock.stockOutRate }}></div>
+                <div
+                  className="progress-fill warning"
+                  style={{ width: analyticsMock.stockOutRate }}
+                ></div>
               </div>
-              <p className="tiny-text mt-1 text-orange"><AlertTriangle size={12} /> 2 produits phares sont proches de la rupture.</p>
+              <p className="tiny-text mt-1 text-orange">
+                <AlertTriangle size={12} /> 2 produits phares sont proches de la
+                rupture.
+              </p>
             </div>
           </div>
 
@@ -566,7 +781,7 @@ export default function SellerDashboard() {
               <span className="tiny-text">Alerte liquidation</span>
             </div>
             <div className="slow-movers-list">
-              {analyticsMock.slowMovers.map(sm => (
+              {analyticsMock.slowMovers.map((sm) => (
                 <div key={sm.id} className="slow-mover-item">
                   <div className="sm-info">
                     <span className="sm-name">{sm.name}</span>
@@ -596,7 +811,10 @@ export default function SellerDashboard() {
         </div>
         <div className="form-group">
           <label>Description</label>
-          <textarea rows="3" defaultValue="Spécialiste en soins de la peau 100% naturels." />
+          <textarea
+            rows="3"
+            defaultValue="Spécialiste en soins de la peau 100% naturels."
+          />
         </div>
       </div>
 
@@ -610,18 +828,22 @@ export default function SellerDashboard() {
 
       <div className="settings-section danger-zone">
         <h3>Mode Vacances</h3>
-        <p className="sub-text">Activez ce mode pour désactiver temporairement l'achat de vos produits si vous ne pouvez pas traiter les commandes.</p>
+        <p className="sub-text">
+          Activez ce mode pour désactiver temporairement l'achat de vos produits
+          si vous ne pouvez pas traiter les commandes.
+        </p>
         <label className="toggle-switch">
-          <input 
-            type="checkbox" 
-            checked={vacationMode} 
-            onChange={() => setVacationMode(!vacationMode)} 
+          <input
+            type="checkbox"
+            checked={vacationMode}
+            onChange={() => setVacationMode(!vacationMode)}
           />
           <span className="slider"></span>
-          <span className="toggle-label">{vacationMode ? "Mode Vacances Activé" : "Activer le Mode Vacances"}</span>
+          <span className="toggle-label">
+            {vacationMode ? "Mode Vacances Activé" : "Activer le Mode Vacances"}
+          </span>
         </label>
       </div>
-
     </div>
   );
 
@@ -632,21 +854,39 @@ export default function SellerDashboard() {
         <div className="sidebar-brand">
           Hilytouch <span className="seller-badge">Partner</span>
         </div>
-        
+
         <nav className="sidebar-nav">
-          <button className={activeTab === 'overview' ? 'active' : ''} onClick={() => setActiveTab('overview')}>
+          <button
+            className={activeTab === "overview" ? "active" : ""}
+            onClick={() => setActiveTab("overview")}
+          >
             <LayoutDashboard size={20} /> Vue d'ensemble
           </button>
-          <button className={activeTab === 'products' ? 'active' : ''} onClick={() => { setActiveTab('products'); setIsAddingProduct(false); }}>
+          <button
+            className={activeTab === "products" ? "active" : ""}
+            onClick={() => {
+              setActiveTab("products");
+              setIsAddingProduct(false);
+            }}
+          >
             <Package size={20} /> Mes Produits
           </button>
-          <button className={activeTab === 'orders' ? 'active' : ''} onClick={() => setActiveTab('orders')}>
+          <button
+            className={activeTab === "orders" ? "active" : ""}
+            onClick={() => setActiveTab("orders")}
+          >
             <ShoppingCart size={20} /> Mes Commandes
           </button>
-          <button className={activeTab === 'stats' ? 'active' : ''} onClick={() => setActiveTab('stats')}>
+          <button
+            className={activeTab === "stats" ? "active" : ""}
+            onClick={() => setActiveTab("stats")}
+          >
             <BarChart3 size={20} /> Statistiques
           </button>
-          <button className={activeTab === 'settings' ? 'active' : ''} onClick={() => setActiveTab('settings')}>
+          <button
+            className={activeTab === "settings" ? "active" : ""}
+            onClick={() => setActiveTab("settings")}
+          >
             <Settings size={20} /> Paramètres
           </button>
         </nav>
@@ -660,11 +900,11 @@ export default function SellerDashboard() {
 
       {/* MAIN CONTENT AREA */}
       <main className="dashboard-main">
-        {activeTab === 'overview' && renderOverview()}
-        {activeTab === 'products' && renderProducts()}
-        {activeTab === 'orders' && renderOrders()}
-        {activeTab === 'stats' && renderStats()}
-        {activeTab === 'settings' && renderSettings()}
+        {activeTab === "overview" && renderOverview()}
+        {activeTab === "products" && renderProducts()}
+        {activeTab === "orders" && renderOrders()}
+        {activeTab === "stats" && renderStats()}
+        {activeTab === "settings" && renderSettings()}
       </main>
     </div>
   );

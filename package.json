@@ -14,11 +14,17 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
     "algeria-locations": "^1.0.6",
+    "dotenv": "^17.4.2",
     "lucide-react": "^0.577.0",
     "next": "^16.2.1",
     "openai": "^6.34.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^10.4.0",
+    "sass": "^1.99.0"
   }
 }

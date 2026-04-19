@@ -12,14 +12,17 @@
   justify-content: center;
   text-align: center;
   color: white;
-  background-image: url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=2000&auto=format&fit=crop');
+  background-image: url("https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=2000&auto=format&fit=crop");
   background-size: cover;
   background-position: center;
 }
 
 .pb2b-hero-overlay {
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: rgba(0, 0, 0, 0.4);
 }
 
@@ -60,7 +63,9 @@
   text-align: center;
   border-radius: 12px;
   border: 1px solid rgba(176, 141, 87, 0.15);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
 }
 
 .pb2b-benefit-card:hover {
@@ -160,7 +165,9 @@ textarea.pb2b-input {
   font-size: 1.1rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
+  transition:
+    background 0.3s,
+    transform 0.2s;
   margin-top: 1rem;
 }
 
